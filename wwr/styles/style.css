@@ -29,12 +29,12 @@ body {
     background-color: white;
 }
 
-header {
-    background-color: var(--accent2-translucent);    
-}
-
 h4 {
     color: var(--headline-color-on-white)
+}
+
+header {
+    background-color: var(--accent2-translucent);    
 }
 
 footer {
@@ -99,12 +99,12 @@ nav a:hover, .book:hover, .join:hover {
     margin: 0 auto;
 }
 
-#hero-msg h1 {
-    text-align: center;
-}
-
 #hero-img {
     width: 100%
+}
+
+#hero-msg h1 {
+    text-align: center;
 }
 
 #hero-msg h4 {
