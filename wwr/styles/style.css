@@ -127,6 +127,7 @@ nav a:hover, .book:hover, .join:hover {
 }
 
 .logo {
+    /* Note: Instructions call for 80px wide, however, my custom logo is barely legible at that size. */
     width: 180px;
 }
 
