@@ -27,6 +27,18 @@
 
 body {
     background-color: white;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Roboto Slab', Georgia, serif;
+}
+
+h2 {
+    margin: 0;
 }
 
 h4 {
@@ -40,6 +52,13 @@ header {
 footer {
     background-color: var(--primary-color);
     color: white;
+    padding: 25px 50px;
+    margin-top: 200px;
+   
+}
+
+footer .social img {
+    padding-top: 15px;
 }
 
 footer a {
@@ -56,7 +75,7 @@ footer h3 {
 }
 
 footer p {
-    font-size: 1.2em;
+    font-size: 0.8em;
 }
 
 footer p a:hover {
@@ -67,18 +86,25 @@ main section {
     text-align: center;
 }
 
+main section img {
+    box-sizing: border-box;
+}
+
 nav {
     background-color: var(--nav-background-color);
+    
 }
 
 nav a {
     text-align: center;
+    padding: 35px;
 }
 
 nav a, .book, .join {
     background-color: var(--nav-background-color);
     color: var(--nav-link-color);
     text-decoration: none;
+    font-family: 'Roboto Slab', Georgia, serif;
 }
 
 nav a:hover, .book:hover, .join:hover {
@@ -111,19 +137,39 @@ nav a:hover, .book:hover, .join:hover {
     text-align: center;
 }
 
+#logo_link {
+    padding-top: 5px;
+}
+
 
 /******** Class Selectors ********/
+
+
+.book, .join {
+    font-size: 18px;
+    padding: 15px 30px;
+    margin-top: 50px;
+    border-radius: 5px;
+}
 
 .button-box {
     text-align: center;
 }
 
+.card-img {
+    border: 10px solid var(--primary-color);
+}
+
 .home-title {
     color: var(--secondary-color);
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 2em;
+    margin-top: 10px;
 }
 
 .icon {
     width: 80px;
+    padding-top: 10px;
 }
 
 .logo {
@@ -133,6 +179,8 @@ nav a:hover, .book:hover, .join:hover {
 
 .msg {
     background-color: var(--accent2-color);
+    line-height: 1.5em;
+    padding: 35px;
 }
 
 .msg h2 {
@@ -141,5 +189,11 @@ nav a:hover, .book:hover, .join:hover {
 
 .msg p {
     color: var(--paragraph-color-on-color);
+    font-size: 0.8em;
+    padding-bottom: 15px;
+}
+
+.rivers-card, .camping-card, .rapids-card {
+    margin: 200px 0;
 }
 
