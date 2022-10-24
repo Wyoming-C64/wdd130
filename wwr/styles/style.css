@@ -82,6 +82,7 @@ footer h3 {
 footer p {
     font-size: 0.8em;
     padding: 0px 5px;
+    text-align: center;
 }
 
 footer p a:hover {
