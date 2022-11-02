@@ -140,7 +140,19 @@ p {
   color: var(--paragraph-color);
   padding: 0.125em 0;
   text-indent: 1.5em;
+}
 
+p a {
+  font-family: var(--semibold-font);
+  color: var(--c64-ltblue);
+}
+
+p a:active {
+  color: var(--c64-red);
+}
+
+p a:visited {
+  color: var(--c64-purple);
 }
 
 code {
