@@ -108,6 +108,7 @@ body {
 }
 img {
   display: block;
+  max-width: 300px;
   /* margin: 0 auto; */
 }
 h1, h2, h3, h4, h5, h6 {
@@ -234,6 +235,15 @@ nav a:link, nav a:visited {
 nav a:hover {
   color: var(--nav-hover-link-color);
   background-color: var(--nav-hover-background-color);
+}
+
+ul {
+  font-family: var(--paragraph-font);
+}
+
+blockquote {
+  font-family: var(--paragraph-font);
+  font-style: italic;
 }
 
 .sitemap {
