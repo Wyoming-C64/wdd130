@@ -253,6 +253,39 @@ nav a:hover, .book:hover, .join:hover {
     padding-bottom: 15px;
 }
 
+/* RIVERS PAGE */
+.rivers-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 3em;
+    margin: 3em 0;
+}
+
+.rivers-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 2em;
+}
+
+.rivers-info-img {
+    grid-column: 1/2;
+}
+
+.rivers-info-img img {
+    height: 720px;
+}
+
+.rivers-info-txt {
+    grid-column: 2/3;
+}
+
+.rivers-button-box {
+    margin-top: 2em;
+    text-align: left;
+}
+/***************/
+
+
 .rivers-card, .camping-card, .rapids-card {
     margin: 200px 0;
 }
