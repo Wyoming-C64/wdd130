@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&family=Manrope:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;500&family=Manrope:wght@400;700&display=swap');
 
 :root {
     /* change the values below to your colors from your palette */
@@ -304,6 +304,117 @@ nav a:hover, .book:hover, .join:hover {
     grid-row: 2/3;
 }
 
+.centered {
+    margin-top: 2em;
+    width: 100%;
+    text-align: center;
+}
+
+form {
+    /* Center the form on the page */
+    margin: 0 auto;
+    width: 50%;
+    /* Form outline */
+    padding: 1em;
+    /* border: 1px solid #ccc; */
+    border-radius: 1em;
+    background-color: var(--accent2-color);
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  form li + li {
+    margin-top: 1em;
+  }
+  
+  label {
+    /* Uniform size & alignment */
+    display: inline-block;
+    width: 20%;
+    text-align: right;
+    font-family: 'Roboto Slab','Times New Roman',serif;
+    font-weight: 500;
+  }
+  
+  input,
+  textarea {
+    /* To make sure that all text fields have the same font settings
+       By default, textareas have a monospace font */
+    font: 1em sans-serif;
+    font-family: 'Roboto Slab';
+    font-weight: 200;
+    
+  
+    /* Uniform text field size */
+    width: 75%;
+    box-sizing: border-box;
+  
+    /* Match form field borders */
+    border: 1px solid #999;
+    padding: 6px;
+  }
+  
+  input:focus,
+  textarea:focus {
+    /* Additional highlight for focused elements */
+    border-color: #000;
+  }
+  
+  textarea {
+    /* Align multiline text fields with their labels */
+    vertical-align: top;
+  
+    /* Provide space to type some text */
+    height: 12em;
+  }
+  
+  .button {
+    /* Align buttons with the text fields */
+    padding-left: 90px; /* same size as the label elements */
+  }
+  
+button {
+    /* This extra margin represent roughly the same space as the space
+       between the labels and their text fields */
+    /* margin-left: 0.5em; */
+    /* padding: 10px; */
+    
+    font-size: 18px;
+    padding: 15px 30px;
+    margin-left: 4em;
+    border-radius: 10px;
+    background-color: var(--nav-background-color);
+    color: var(--accent1-color);
+    text-decoration: none;
+    font-family: 'Roboto Slab', Georgia, serif;
+}
+
+button:hover {
+    background-color: var(--accent1-color);
+    color: var(--primary-color);
+}
+
+
+#feedback {
+    background-color: antiquewhite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: .5em;
+    /* make this element invisible until we are ready for it */
+    display: none;      
+}
+.moveDown {
+    margin-top: 3em;
+}
+                    
+  
+
 @media screen and (max-width: 900px) {
     #hero, .home-grid {
         display: block;
@@ -351,3 +462,4 @@ nav a:hover, .book:hover, .join:hover {
         margin-top: 25px;
     }
 }
+
