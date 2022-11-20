@@ -298,3 +298,7 @@ blockquote {
   border-top: 1px solid;
   border-right: 1px solid;
 }
+
+s {
+  text-decoration: line-through;
+}
