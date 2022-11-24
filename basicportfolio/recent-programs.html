@@ -10,25 +10,26 @@
 <body>
     <div id="content">
         <header>
+            <div id="logo-block">
+                <a href="#"><img id="logo" src="images/MBP-Logo.png" alt="Mike's Logo"></a>
+            </div>
             <div id="title-line">
-                <a href="index.html"><img id="logo" src="images/MBP-Logo.png" alt="Mike's Logo"></a>
                 <h1 id="page-title">Mike's BASIC Beginnings</h1>
             </div>
+            <div id="empty">&nbsp;</div>
             <nav id="navbar">
                 <a href="index.html">Home</a>
                 <a href="early-works.html">Early Works</a>
-                <a href="#">Recent Programs</a>
+                <a href="recent-programs.html">Recent Programs</a>
                 <a href="mailto:wyoming.c64@gmail.com">Contact Me</a>
             </nav>
         </header>
 
 
-        <main class="home-grid">
-            <section class="left-image">
+        <main>
+            <div class="intro">
                 <h2>Recent Programs</h2>
-            
-                <div class="home-text">
-                    
+                <div class="home-text">   
                 <p>About five or so years ago, I discovered the website at <a href="https://rosettacode.org/" title="Click here to visit the Rosetta Code!" target="_blank">rosettacode.org</a>. It is a wiki-based website, and the introduction on the home page explains it best:</p>
 
                 <blockquote>“Rosetta Code is a programming chrestomathy site. The idea is to present solutions to the same task in as many different languages as possible, to demonstrate how languages are similar and different, and to aid a person with a grounding in one approach to a problem in learning another” (Rosetta Code, 2022).</blockquote>
@@ -36,89 +37,112 @@
                 <p>This intrigued me, and as I started browsing some of the tasks, I discovered that dialects of BASIC from 8-bit machines were represented for as many tasks as those machines were capable of completing. There were already some entries for Commodore BASIC, so I created a user account. On days that I traveled on overnight trips for work, I would spend the evenings in my hotel running the VICE emulator on my modern computer and creating translation entries for Commodore BASIC.</p>
                 
                 <p>In the last four years, I have contributed to 50 programming tasks with Commodore BASIC implementations, most of them in Commodore BASIC V2. My favorites are chosen either because of the unique solution to the problem, or because the task showcases the features (or limits) of the Commodore 64.</p>
-                    
-
-                    <h3>The Programs</h3>
+    
                 </div>
-            </section>
-            <div id="program-grid">
+            </div>
+            <h3>The Programs</h3>
+            <div class="program-grid">
 
                 <div class="program-card">
+                    <div class="program-title">
+                        <h3><a href="#">Count Change - October 8, 2019</a></h3>
+                    </div>
                     <div class="program-pic">
                         <a href="#"><img src="images/prg-images/count-change-1.png" alt="Screenshot for COUNT CHANGE program"></a>
                     </div>
                     <div class="program-description">
-                        <h3><a href="#">Count Change - October 8, 2019</a></h3>
+                        
                         <p>The goal is to figure out how many combinations of coins (pennies, nickles, dimes, and quarters) can be used to make $1.00. This was based on BASIC code already submitted for the Sinclair ZX Spectrum. After directly porting this to Commodore BASIC, I was disappointed to see that the algorithm took 46 minutes and 37 seconds to arrive at a solution. After thinking about the problem, I was able to get the time down to 2 minutes and 12 seconds. Open this program for more details.</p>
                     </div>
                 </div>
            
                 <div class="program-card">
+                    <div class="program-title">
+                        <h3><a href="#">Old Lady Who Swallowed A Fly - August 9, 2020</a></h3>
+                    </div>
                     <div class="program-pic">
                         <a href="#"><img src="images/prg-images/old-lady.png" alt="Screenshot for OLD LADY WHO SWALLOWED A FLY program"></a>
                     </div>
                     <div class="program-description">
-                        <h3><a href="#">Old Lady Who Swallowed A Fly - August 9, 2020</a></h3>
+                        
                         <p>This is the classic nursery song... Sung programatically! I had some fun with this one. The version of BASIC (version 2) on the Commodore 64 is not as robust the BASIC versions on later Commodore computers like the Commodore 128. I decided to build a music interpreter similar to the one that came built in to Commodore BASIC version 7.</p>
                     </div>
                 </div>
 
                 <div class="program-card">
+                    <div class="program-title">
+                        <h3><a href="#">Video Display Modes - August 22, 2020</a></h3>
+                    </div>
                     <div class="program-pic">
                         <a href="#"><img src="images/prg-images/video-modes-1.png" alt="Screenshot for VIDEO MODES program"></a>
                     </div>
                     <div class="program-description">
-                        <h3><a href="#">Video Display Modes - August 22, 2020</a></h3>
-                        <p>The task was to programatically demonstrate all of the video modes available on whatever computer the program is running on. No high definition here... The Commodore 64 was limited to either 320x200 pixel resolution and a 16-color palette. There were also multi-color modes that allowed for a toal of four colors to be displayed within a single 8x8 block of pixels, but this decreased the horizontal resolution by half.</p>
+                        
+                        <p>The task was to programatically demonstrate all of the video modes available on whatever computer the program is running on. No high definition here... The Commodore 64 was limited to a 320x200 pixel resolution and a 16-color palette. There were also multi-color modes that allowed for a toal of four colors to be displayed within a single 8x8 block of pixels, but this decreased the horizontal resolution by half.</p>
                     </div>
                 </div>
 
                 <div class="program-card">
+                    <div class="program-title">
+                        <h3><a href="#">Variables - August 30, 2020</a></h3>
+                    </div>
                     <div class="program-pic">
                         <a href="#"><img src="images/prg-images/variables-1.png" alt="Screenshot for VARIABLES program"></a>
                     </div>
                     <div class="program-description">
-                        <h3><a href="#">Variables - August 30, 2020</a></h3>
+                        
                         <p>The task is to demonstrate all the different ways variables can be used and manipulated within a program. It is more informative to look at a copy of the code while running the program. At some point I will do a better version of the program for this website that explains what is going on.</p>
                     </div>
                 </div>
 
                 <div class="program-card">
+                    <div class="program-title">
+                        <h3><a href="#">24 Game - November 18, 2020</a></h3>
+                    </div>
                     <div class="program-pic">
                         <a href="#"><img src="images/prg-images/24-game-1.png" alt="Screenshot for 24 GAME program"></a>
                     </div>
                     <div class="program-description">
-                        <h3><a href="#">24 Game - November 18, 2020</a></h3>
+                        
                         <p>You are given four random digits ranging from 1 through 9. Your goal is to use arithmetic operations (add, subtract, multiply, and divide) along with parentheses to make the resulting value equal 24. The ZX Spectrum solution took advantage of a feature not available on the Commodore 64, but I found my own solution that I thought was pretty clever, and this became my first self-modifying BASIC program.</p>
                     </div>
                 </div>
 
                 <div class="program-card">
+                    <div class="program-title">
+                        <h3><a href="#">Machine Code - March 6, 2021</a></h3>
+                    </div>
                     <div class="program-pic">
                         <a href="#"><img src="images/prg-images/machine-code-2.png" alt="Screenshot for MACHINE CODE program"></a>
                     </div>
                     <div class="program-description">
-                        <h3><a href="#">Machine Code - March 6, 2021</a></h3>
+                        
                         <p>The goal is to have a piece of machine code execute from within the language you are programming in. This was done all the time on the Commodore 64 to provide much faster processing within BASIC programs. This example simply has the machine code add two numbers.</p>
                     </div>
                 </div>
 
                 <div class="program-card">
+                    <div class="program-title">
+                        <h3><a href="#">Time of Day (CIA) - March 17, 2021</a></h3>
+                    </div>
                     <div class="program-pic">
                         <a href="#"><img src="images/prg-images/system-time.png" alt="Screenshot for TIME OF DAY program"></a>
                     </div>
                     <div class="program-description">
-                        <h3><a href="#">Time of Day (CIA) - March 17, 2021</a></h3>
+                        
                         <p>The goal of this program is to demonstrate displaying and modifying the system time of day clock. I actually wrote two different programs because there are two different ways the Commodore 64 can keep time&mdash;the common one is software based, the other is hardware based. This is the hardware-based version that uses the clock built into both of the Complex Interface Adapter (CIA) chips in the Commodore 64.</p>
                     </div>
                 </div>
 
                 <div class="program-card">
+                    <div class="program-title">
+                        <h3><a href="#">BASIC Error Messages - October 3, 2022</a></h3>
+                    </div>
                     <div class="program-pic">
                         <a href="#"><img src="images/prg-images/errors.png" alt="Screenshot for BASIC ERROR MESSAGES program"></a>
                     </div>
                     <div class="program-description">
-                        <h3><a href="#">BASIC Error Messages - October 3, 2022</a></h3>
+                        
                         <p>This is actually not a submission to Rosetta Code, but is an independent project that I did based on a YouTube video from the 8-bit Show and Tell channel by Robin Harbon.</p>
                         <p>Normally, the LIST command is intended to be an immediate mode command. Using it within a program causes a program to stop executing after the the LIST command. I figured out a way to hack it, and then I put it to good use to show off all but one of the possible error messages on the Commodore 64.</p>
                     </div>
