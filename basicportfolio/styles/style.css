@@ -181,7 +181,6 @@ nav a:hover {
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: max-content;
     grid-column-gap: 5em;
-    align-items: top;
     margin: 10px 2em;
 }
 
@@ -191,18 +190,12 @@ nav a:hover {
     grid-auto-rows: max-content;
     grid-column-gap: 2em;
     min-height: 300px;
-    align-items: top;
-    /* border: 1px solid red; */
     margin-bottom: 2em;
 }
 
 .program-title {
     grid-column: 1/3;
     text-align: left;
-    /* margin-left: 2em; */
-    /* height: 1.5em; */
-    
-    
 }
 
 .program-title h3 {
@@ -246,16 +239,18 @@ nav a:hover {
 .program-screenshots img {
     min-width: 480px;
     transform: scaleX(0.9);
-    
+    margin-bottom: 1em;
 }
+             
 
 
 .listing-grid {
     display: grid;
-    grid-template-columns: 2fr 10fr 4fr;
+    grid-template-columns: 1fr 2fr 1fr;
     grid-column-gap: 2em;
-    align-items: top;
+    grid-auto-rows: max-content;
     justify-items: left;
+    justify-content: left;
     
 }
 
@@ -265,27 +260,75 @@ nav a:hover {
     width: 100%;
 }
 
+
+.listing-screenshots img {
+    transition: transform .5s, box-shadow .5s, transform-origin .5s, position 0.5s, z-index .5s;
+    transform: scaleX(0.9);
+    margin-bottom: 1em;
+    /* z-index: -1; */
+    position: relative;
+}
+
+.listing-img, .listing-img-top, .listing-img-bottom {
+    transform: scale(0.9,1);
+}
+
+.listing-img:hover {
+    transform-origin: center left;
+}
+
+.listing-img-top:hover {
+    transform-origin: top left;
+}
+
+.listing-img-bottom:hover {
+    transform-origin: center left;
+}
+
+.listing-img:hover, .listing-img-top:hover, .listing-img-bottom:hover {
+    position: relative;
+    transform: scale(2.7,3);
+    box-shadow: 10px 10px 10px rgba(0.1,0.1,0.1,0.8);
+    z-index: 9999;
+}
+
+.video {
+    justify-self: center;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .column-header {
     text-align: center;
     width: 100%;
+}
+
+.listing-code {
+    margin: 0;
+    padding: 0;
+    z-index: -9999;
 }
 
 .listing-code pre {
     font-family: var(--code-font);
     font-size: 0.9em;
     line-height: 1em;
-    transform: scaleX(0.8);
-    overflow-x: auto;
+    transform: scaleX(0.85);
+    /* overflow-x: auto; */
     white-space: pre-wrap;
     word-wrap: break-word;
     /* border: 1px solid red; */
     width: 100%;
-    margin: 0;    
-    padding: 0;
+    margin: 0;
+    max-width: 792px;
+    padding: 0px;
+    letter-spacing: 0;
+  }
 
+.dot {
+    text-align: center;
 }
-
-
 ul li {
     margin-top: 0.75em;
 }
