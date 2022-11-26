@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike's BASIC Beginnings: Early Works</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div id="content">
+        <header>
+            <div id="logo-block">
+                <a href="#"><img id="logo" src="images/MBP-Logo.png" alt="Mike's Logo"></a>
+            </div>
+            <div id="title-line">
+                <h1 id="page-title">Mike's BASIC Beginnings</h1>
+            </div>
+            <div id="empty">&nbsp;</div>
+            <nav id="navbar">
+                <a href="index.html">Home</a>
+                <a href="early-works.html">Early Works</a>
+                <a href="recent-programs.html">Recent Programs</a>
+                <a href="mailto:wyoming.c64@gmail.com">Contact Me</a>
+            </nav>
+        </header>
+
+        <main class="listing-grid">
+            <div class="listing-title">
+                <h1>Gypsy Fortune - 1986</h1>
+            </div>
+            <div class="column-header"><h3>Screen Shots</h3></div>
+            <div class="column-header"><h3>Program Listing</h3></div>
+            <div class="column-header"><h3>Comments</h3></div>
+            <div class="listing-screenshots">
+                <img class="listing-img-top" src="images/prg-images/gypsy-fortune-1.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/gypsy-fortune-2.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/gypsy-fortune-3.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/gypsy-fortune-4.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/gypsy-fortune-5.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/gypsy-fortune-6.png" alt="Screenshot of program execution">
+                <img class="listing-img-bottom" src="images/prg-images/gypsy-fortune-7.png" alt="Screenshot of program execution">
+            </div>
+            <div class="listing-code">
+                <pre>1 POKE53281,11:POKE53280,0:PRINT"":F=0
+2 REM FORTUNE TELLER BY MIKE LEWIS AND 
+   LEE WALLEN.
+3 REM PHONE AT 555-5521 OR AT 555-2722
+4 REM ********************************
+5 PRINT "":GOSUB 3000
+6 PRINT "------------------------"
+10 PRINT "FORTUNE TELLER"
+15 PRINT "------------------------"
+20 PRINT "WHAT IS YOUR NAME?";:INPUT N$
+30 PRINT "OK "N$". HIT RETURN TO START."
+40 GET A$:IF A$="" THEN 40
+50 PRINT "----MENU----"
+60 PRINT "1) CRYSTAL BALL"
+70 PRINT "2) A VISION FROM ME"
+80 PRINT "3) SNACK ON A "
+90 PRINT "   FORTUNE COOKIE OR"
+95 PRINT "4) QUIT"
+100 PRINT "HOW DO YOU WANT YOUR"
+110 INPUT "FORTUNE TOLD?";A
+130 IF A=1 THEN GOTO 250
+140 IF A=2 THEN GOTO 350
+150 IF A=3 THEN GOTO 356
+155 IF A=4 THEN PRINT "“COME BACK SOON 
+    "N$"!!!!!":END
+156 IF A<>1 OR A<>2 OR A<>3 OR A<>4 THEN 
+    GOTO 50
+250 PRINT "---CRYSTAL BALL---"
+260 PRINT "CHOSE ONE."  
+270 PRINT "VISIBLE TO-"
+280 PRINT "A) BOTH"
+281 PRINT "B) JUST ME"
+282 PRINT "C) JUST YOU"
+283 PRINT "A,B, OR C?";:INPUT A$
+284 IF A$="A" THEN GOTO 288
+285 IF A$="B" THEN GOTO 294
+286 IF A$="C" THEN GOTO 288
+287 IF A$<>"A"ORA$<>"B"ORA$<>"C" THEN 
+    GOTO 250
+288 GOSUB 2000
+289 PRINT "'LOOK INTO MY CRYSTAL BALL.' 
+     YOU SEE:"
+290 PRINT Z$(F)
+291 PRINT "HIT ANY KEY TO CONTINUE."
+292 GET A$:IF A$="" THEN 292
+293 GOTO 1
+294 GOSUB 2000
+295 PRINT "'LOOK INTO MY CRYSTAL BALL. 
+     THE BALL SAYS:"
+296 PRINT Z$(F)"'"
+297 PRINT "HIT ANY KEY TO CONTINUE.’"
+298 GET A$:IFA$="" THEN 298
+299 GOTO 1
+300 REM VISION
+350 GOSUB 2000
+351 PRINT "'I SEE A VISION. THE FORCAST 
+     FOR TODAY IS:"
+352 PRINT Z$(F)
+353 PRINT "HIT ANY KEY TO CONTINUE.’"
+354 GET A$:IFA$=""THEN 354
+355 GOTO 1
+356 REM COOKIE
+357 PRINT "YOU TAKE A FORTUNE COOKIE."
+358 PRINT "HIT ANY KEY TO OPEN IT."
+359 GETA$:IFA$="" THEN 359
+360 PRINT "IT SAYS:"
+361 GOSUB 2000
+362 PRINT Z$(F)
+363 PRINT "HIT ANY KEY TO CONTINUE.’"
+364 GET A$:IFA$="" THEN 364
+365 GOTO 1
+2000 F=INT(RND(1)*7+1):RETURN
+3000 Z$(1)="NO FORTUNE/FORCAST"
+3010 Z$(2)="TAKE CAUTION OF WHERE YOU 
+      WALK TODAY."
+3020 Z$(3)="YOU WILL MEET THE GIRL/BOY 
+      OF YOUR DREAMS."
+3030 Z$(4)="YOU WILL HAVE GOOD DREAMS 
+      TONIGHT."
+3040 Z$(5)="CAREFUL WITH CLUMSYNESS."
+3050 Z$(6)="YOU WILL MEET A NEW PERSON 
+      TODAY."
+3055 Z$(7)="YOU WILL BE HAPPY THE NEXT 
+      DAY."
+3060 RETURN
+3070 END</pre>
+            </div>
+            <div class="program-comments">
+                <p>It appears that one of my best friends, Lee, helped write this program with me. I'm pretty sure that I wrote most of the code, and Lee came up with most of the ideas.</p>
+                <p>Unlike "Prediction", this fortune teller is not targeted at anyone specific for certain fates. The program asks for your name, only as a courtesy, and the fortunes are all completely random.</p>
+            </div>
+        </main>
+        <footer>
+            <p>Mike's BASIC Beginnings<br>&copy; 2022 - Mike Lewis</p>
+            <p><a href="site-plan.html">Site Plan</a></p>
+            <p><a href="mailto:wyoming.c64@gmail.com">Contact Me</a></p>
+            <div class="social">
+                <a href="https://www.facebook.com/MikeLewis.WYC64/" target="_blank">
+                    <img src="images/facebook.png" alt="Facebook icon">
+                </a>
+                <a href="https://www.youtube.com/@WY.C64-Guy" target="_blank">
+                    <img src="images/youtube.png" alt="YouTube icon">
+                </a>
+            </div>
+        </footer>
+    </div>
+    
+</body>
+</html>

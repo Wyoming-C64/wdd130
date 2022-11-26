@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike's BASIC Beginnings: Early Works</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div id="content">
+        <header>
+            <div id="logo-block">
+                <a href="#"><img id="logo" src="images/MBP-Logo.png" alt="Mike's Logo"></a>
+            </div>
+            <div id="title-line">
+                <h1 id="page-title">Mike's BASIC Beginnings</h1>
+            </div>
+            <div id="empty">&nbsp;</div>
+            <nav id="navbar">
+                <a href="index.html">Home</a>
+                <a href="early-works.html">Early Works</a>
+                <a href="recent-programs.html">Recent Programs</a>
+                <a href="mailto:wyoming.c64@gmail.com">Contact Me</a>
+            </nav>
+        </header>
+
+        <main class="listing-grid">
+            <div class="listing-title">
+                <h1>BASIC Error Messages</h1>
+                <h2>October 3, 2022</h2>
+            </div>
+            <div class="column-header"><h3>Screen Shots</h3></div>
+            <div class="column-header"><h3>Program Listing</h3></div>
+            <div class="column-header"><h3>Comments</h3></div>
+
+            <div class="listing-screenshots">
+                <img class="listing-img" src="images/prg-images/errors.png" alt="Screenshot of program execution">
+                <!-- width="560" height="315" -->
+                <iframe class="video" width="344" height="244" src="https://www.youtube-nocookie.com/embed/7ZL_Hl9AuAY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <div class="listing-code">
+                <pre>1 rem error demonstration program v1.2  
+      by mike lewis (wy c64 guy)
+2 :
+3 rem based on 8-bit show and tell      
+      video #1 (nov. 29, 2018)
+4 rem by robin harbron
+5 :
+6 rem this program uses the list patch  
+      i discovered (lines 3000-3040)
+7 :
+8 print "";:poke 53281,0:poke 53280,6
+9 gosub 3000
+10 print "Error Demonstrations - Pick
+    One:":print
+11 print " 1. bad subscript"
+12 print " 2. break"
+13 print " 3. can't continue"
+14 print " 4. device not"
+   :print "    present"
+15 print " 5. division by"
+   :print "    zero"
+16 print " 6. extra ignored"
+17 print " 7. file data"
+18 print " 8. file not found"
+19 print " 9. file not open"
+20 print "10. file open"
+21 print "11. formula too   "
+   :print "    complex"
+22 print "12. illegal device"
+23 print "13. illegal direct"
+24 print "14. illegal "
+   :print "    quantity"
+25 print "15. load error"
+26 print "16. missing file"
+   :print "    name"
+30 print "";
+37 print tab(19)"17. next without for"
+38 print tab(19)"18. not input file"
+39 print tab(19)"19. not output file"
+40 print tab(19)"20. out of data"
+41 print tab(19)"21. out of memory"
+42 print tab(19)"22. overflow"
+43 print tab(19)"23. redim'd array"
+44 print tab(19)"24. redo from start"
+45 print tab(19)"25. return without"
+   :printtab(23)"gosub"
+46 print tab(19)"26. string too long"
+47 print tab(19)"27. syntax"
+48 print tab(19)"28. too many files"
+49 print tab(19)"29. type mismatch"
+50 print tab(19)"30. undefined"
+   :printtab(23)"function"
+51 print tab(19)"31. undefined"
+   :printtab(23)"statement"
+52 print tab(19)"32. verify"
+55 print:print tab(19)" Q. Quit":print
+56 print "Your choice";:input a$
+59 print "“";
+60 c=val(a$):if c>13 then c=c-13:goto 70
+65 on c goto 1010,1020,1030,1040,1050,
+   1060,1070,1080,1090,1100,1110,1120,
+   1130
+70 if c>13 then c=c-13:goto 80
+75 on c goto 1140,1150,1160,1170,1180,
+   1190,1200,1210,1220,1230,1240,1250,
+   1260
+77 end
+80 on c goto 1270,1280,1290,1300,1310,
+   1320
+100 end
+1006 rem ********************
+1010 rem bad subscript
+1011 list 1012-1015
+1012 dim a(10)
+1015 print a(99)
+1016 rem ********************
+1020 rem break error
+1021 list 1025
+1025 stop
+1026 rem ********************
+1030 rem can't continue
+1032 i$="1035 ?"+chr$(13)+"cont"
+     :gosub 2000
+1033 list 1034
+1034 stop
+1035 print
+1036 rem ********************
+1040 rem device not present
+1041 list 1045
+1045 load "$",35
+1046 rem ********************
+1050 rem divide by zero
+1051 list 1055
+1055 print 42/0
+1056 rem ********************
+1060 rem extra ignored
+1061 list 1063:print
+1062 i$="0,1,2":gosub 2000
+1063 input "Enter a single number";a
+1064 gosub 2500:goto 1
+1069 rem ********************
+1070 rem file data error
+1071 list 1075-1078:print
+1072 i$="z":gosub 2000
+1075 print "type a letter: ";
+1076 open 1,0
+1077 input#1,a
+1078 close 1
+1079 rem ********************
+1080 rem file not found
+1081 list 1085
+1085 load "no such file",8
+1086 rem ********************
+1090 rem file not open
+1091 list 1092-1095
+1092 open 5,3
+1093 close 5
+1095 print#5,"this won't work"
+1096 rem ********************
+1100 rem file open
+1101 list 1102-1105
+1102 open 9,3
+1103 open 9,4
+1106 rem ********************
+1110 rem formula too complex
+1111 list 1115
+1115 print (""+(""+(""+(""))))
+1116 rem ********************
+1120 rem illegal device number
+1121 list 1125
+1125 load "$",0
+1126 rem ********************
+1130 rem illegal direct
+1131 i$="input a":gosub 2000
+1135 end
+1136 rem ********************
+1140 rem illegal quantity
+1141 list 1145
+1145 poke 53281,300
+1146 rem ********************
+1150 rem load error
+1151 print "The only way to reproduce 
+     this is with"
+1152 print "an actual datasette tape 
+     drive."
+1155 gosub 2500
+1156 goto 1
+1159 rem ********************
+1160 rem missing file name
+1161 list 1165
+1165 load "",8
+1166 rem ********************
+1170 rem next without for
+1171 list 1175
+1175 next
+1176 rem ********************
+1180 rem not input file
+1181 list 1185
+1185 open 0
+1186 rem ********************
+1190 rem not output file
+1191 list 1195:print
+1193 print "Press STOP key after next 
+     prompt"
+1194 print "then type 'print#1' and 
+     press RETURN."
+1195 open 1,1,0
+1199 rem ********************
+1200 rem out of data
+1201 list 1205
+1205 read a
+1206 rem ********************
+1210 rem out of memory
+1211 list 1212-1218
+1212 rem   128
+1213 rem   128
+1214 rem x   5 bytes (float)
+1215 rem -----
+1216 rem 80645 bytes > 38911
+1217 :
+1218 dim a(127,127)
+1219 rem ********************
+1220 rem overflow
+1221 list 1225
+1225 print 2^127
+1226 rem ********************
+1230 rem redim'd (redimensioned) array
+1231 list 1232-1234
+1232 dim b(12)
+1233 dim x(30)
+1234 dim b(20)
+1236 rem ********************
+1240 rem redo from start
+1241 list 1245:print
+1244 i$="Name"+chr$(13)+"5":gosub 2000
+1245 input "Enter a number";a
+1246 gosub 2500:goto 1
+1249 rem ********************
+1250 rem return without gosub
+1251 list 1255
+1255 return
+1256 rem ********************
+1260 rem string too long
+1261 list 1262-1267:print
+1262 x$=""
+1263 for i=1 to 256
+1264 ::print"Length:";len(x$)
+1265 ::print x$
+1266 ::x$=x$+"-C64-"
+1267 next i
+1269 rem ********************
+1270 rem syntax
+1271 list 1275
+1275 foobar
+1276 rem ********************
+1280 rem too many files
+1281 list 1282-1286:print
+1282 for i=1 to 11
+1283 ::print i;tab(4);"- ";
+1284 ::open i,3
+1285 ::print "Open"
+1286 next i
+1290 rem type mismatch
+1291 list 1295
+1295 a="Not a number."
+1296 rem ********************
+1300 rem undef'd (undefined) function
+1301 list 1304-1305
+1304 rem fn q(x) is not declared
+1305 print fn q(4)
+1306 rem ********************
+1309 rem ********************
+1310 rem undef'd (undefined) statement
+1311 list 4000-4020:print:list 1315
+1315 goto 4010
+1316 rem ********************
+1320 rem verify
+1321 list 1322-1325
+1322 rem the "verify" program does not  
+         match this program.
+1323 :
+1325 verify "other prg.",8
+1999 end
+2000 rem load buffer for auto input
+2001 i$=i$+chr$(13)
+2005 for i=1 to len(i$):c=asc(mid$(i$,i,
+     1)):poke 630+i,c:next
+2010 poke 198,len(i$)
+2015 return
+2500 rem pause for key press
+2505 print
+2510 print "press a key to continue"
+2515 get k$:if k$="" then 2515
+2520 return
+3000 rem copy basic and apply list      
+         patch
+3001 rem "copy" from 8bs&t:jun.14, 2022
+3002 if peek(42773)=174 and peek(42774)=
+     167 then return
+3004 print "please wait...":print 
+     "copying basic and patching..."
+3005 poke 95,0:poke 96,160:rem start
+3010 poke 90,0:poke 91,192:rem end+1
+3015 poke 88,0:poke 89,192:rem dest
+     :end+1
+3020 sys 41919
+3024 rem change list exit vector
+3025 poke 42773,174:poke 42774,167
+3030 poke 1,peek(1) and 254
+3035 print "";
+3040 return
+4000 rem illustrates non-existing lines
+4005 :                                  
+      no line 4010
+4015 :
+4020 rem end of block</pre>
+            </div>
+            <div class="program-comments">
+                <p>This is actually not a submission to Rosetta Code, but is an independent project that was inspired by a YouTube video from the 8-bit Show and Tell channel by Robin Harbon.</p>
+                <p>Normally, the LIST command is intended to be an immediate mode command. It will work within a program, however, when LIST execution has finished, the machine code routine jumps directly back to immediate mode, thus stopping execution of the program. This behavior can be changed by changing the jump instruction (JMP) to a Return from Subroutine instruction (RTS). This will still allow immediate mode functionality.</p>
+                <p>I put this functionality to work by building this program, allowing it to show the lines of code that will generate the errors before the code is executed. In most cases, the errors will stop execution of the program.</p>
+                <p>The only error that cannot be reproduced is the ?LOAD ERROR, and as far as I know, it requires an actual tape drive connected to a real Commodore 64.</p>
+            </div>
+        </main>
+
+
+        <footer>
+            <p>Mike's BASIC Beginnings<br>&copy; 2022 - Mike Lewis</p>
+            <p><a href="site-plan.html">Site Plan</a></p>
+            <p><a href="mailto:wyoming.c64@gmail.com">Contact Me</a></p>
+            <div class="social">
+                <a href="https://www.facebook.com/MikeLewis.WYC64/" target="_blank">
+                    <img src="images/facebook.png" alt="Facebook icon">
+                </a>
+                <a href="https://www.youtube.com/@WY.C64-Guy" target="_blank">
+                    <img src="images/youtube.png" alt="YouTube icon">
+                </a>
+            </div>
+        </footer>
+    </div>
+    
+</body>
+</html>

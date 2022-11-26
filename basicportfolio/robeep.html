@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike's BASIC Beginnings: Early Works</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div id="content">
+        <header>
+            <div id="logo-block">
+                <a href="#"><img id="logo" src="images/MBP-Logo.png" alt="Mike's Logo"></a>
+            </div>
+            <div id="title-line">
+                <h1 id="page-title">Mike's BASIC Beginnings</h1>
+            </div>
+            <div id="empty">&nbsp;</div>
+            <nav id="navbar">
+                <a href="index.html">Home</a>
+                <a href="early-works.html">Early Works</a>
+                <a href="recent-programs.html">Recent Programs</a>
+                <a href="mailto:wyoming.c64@gmail.com">Contact Me</a>
+            </nav>
+        </header>
+
+        <main class="listing-grid">
+            <div class="listing-title">
+                <h1>Robeep - 1985</h1>
+            </div>
+            <div class="column-header"><h3>Screen Shots</h3></div>
+            <div class="column-header"><h3>Program Listing</h3></div>
+            <div class="column-header"><h3>Comments</h3></div>
+            <div class="listing-screenshots">
+                <img class="listing-img-top" src="images/prg-images/robeep-1.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/robeep-2.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/robeep-3.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/robeep-4.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/robeep-5.png" alt="Screenshot of program execution">
+                <img class="listing-img-bottom" src="images/prg-images/robeep.png" alt="Screenshot of program execution">
+            </div>
+            <div class="listing-code">
+                <pre>1 W=INT(RND(1)*26+1)
+2 B=INT(RND(1)*255+1):A=1024
+5 FOR L=54272 TO 54296:POKE L,0:NEXT
+6 POKE 53281,1:POKE 53280,5
+10 PRINT ""
+20 POKE 54296,15
+25 W=INT(RND(1)*26+1)
+30 POKE 54277,64
+40 POKE 54273,W*2:POKE 54272,W*5
+60 POKE A,W:FORI=1 TO 10:NEXT
+61 IF PEEK(1024)=18 THEN A=1025
+62 IF PEEK(1025)=15 THEN A=1026
+63 IF PEEK(1026)=2 THEN A=1027
+64 IF PEEK(1027)=15 THEN A=1028
+65 IF PEEK(1028)=20 THEN END
+70 POKE 54276,17
+80 POKE 54276,16
+90 GOTO 20</pre>
+            </div>
+            <div class="program-comments">
+              <p>I had learned how to manipulate sound out of the Commodore 64's SID chip. The program loops through random characters until it is able to spell a certain word.</p>
+              <p>The screen memory codes for each letter is not the same as the ASCII codes used to build strings. Characters start at 0 for the @ sign, then 1 for A, 2 for B, etc. I'm not really sure why I chose to do it this way, but if obfuscating the word was the goal, then the program was a success.</p>
+            </div>
+        </main>
+
+
+        <footer>
+            <p>Mike's BASIC Beginnings<br>&copy; 2022 - Mike Lewis</p>
+            <p><a href="site-plan.html">Site Plan</a></p>
+            <p><a href="mailto:wyoming.c64@gmail.com">Contact Me</a></p>
+            <div class="social">
+                <a href="https://www.facebook.com/MikeLewis.WYC64/" target="_blank">
+                    <img src="images/facebook.png" alt="Facebook icon">
+                </a>
+                <a href="https://www.youtube.com/@WY.C64-Guy" target="_blank">
+                    <img src="images/youtube.png" alt="YouTube icon">
+                </a>
+            </div>
+        </footer>
+    </div>
+    
+</body>
+</html>

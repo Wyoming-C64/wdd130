@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike's BASIC Beginnings: Early Works</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div id="content">
+        <header>
+            <div id="logo-block">
+                <a href="#"><img id="logo" src="images/MBP-Logo.png" alt="Mike's Logo"></a>
+            </div>
+            <div id="title-line">
+                <h1 id="page-title">Mike's BASIC Beginnings</h1>
+            </div>
+            <div id="empty">&nbsp;</div>
+            <nav id="navbar">
+                <a href="index.html">Home</a>
+                <a href="early-works.html">Early Works</a>
+                <a href="recent-programs.html">Recent Programs</a>
+                <a href="mailto:wyoming.c64@gmail.com">Contact Me</a>
+            </nav>
+        </header>
+
+        <main class="listing-grid">
+            <div class="listing-title">
+                <h1>Video Display Modes</h1>
+                <h2>August 22, 2020</h2>
+            </div>
+            <div class="column-header"><h3>Screen Shots</h3></div>
+            <div class="column-header"><h3>Program Listing</h3></div>
+            <div class="column-header"><h3>Comments</h3></div>
+            <div class="listing-screenshots">
+                <img class="listing-img-top" src="images/prg-images/video-modes-1.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/video-modes-2.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/video-modes-3.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/video-modes-4.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/video-modes-5.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/video-modes-6.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/video-modes-7.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/video-modes-8.png" alt="Screenshot of program execution">
+                
+            </div>
+            <div class="listing-code">
+                <pre>10&nbsp;rem&nbsp;video&nbsp;modes&nbsp;-&nbsp;c64
+15&nbsp;rem&nbsp;rosetta&nbsp;code
+20&nbsp;print&nbsp;chr$(147);chr$(14):poke&nbsp;53280,0:poke&nbsp;53281,0:poke&nbsp;646,1
+25&nbsp;poke&nbsp;53282,2:poke&nbsp;53283,10:poke&nbsp;53284,6:rem&nbsp;set&nbsp;extended&nbsp;and&nbsp;multi&nbsp;colors
+30&nbsp;if&nbsp;peek(12288)=60&nbsp;and&nbsp;peek(12289)=102&nbsp;then&nbsp;goto&nbsp;100
+35&nbsp;poke&nbsp;52,32:poke&nbsp;56,32:clr
+40&nbsp;print&nbsp;"Initializing&nbsp;-&nbsp;Please&nbsp;wait..."
+45&nbsp;poke&nbsp;56334,peek(56334)&nbsp;and&nbsp;254:poke1,peek(1)&nbsp;and&nbsp;251
+50&nbsp;for&nbsp;i=0&nbsp;to&nbsp;4096:poke&nbsp;i+12288,peek(i+53248):next
+55&nbsp;poke1,peek(1)&nbsp;or&nbsp;4:poke56334,peek(56334)&nbsp;or&nbsp;1
+60&nbsp;for&nbsp;i=0&nbsp;to&nbsp;31:read&nbsp;d:poke&nbsp;15368+i,d:next&nbsp;i
+65&nbsp;x=0:for&nbsp;i=8192&nbsp;to&nbsp;10239:poke&nbsp;i,2^x:x=(x+1)&nbsp;and&nbsp;7:next
+70&nbsp;for&nbsp;i=10240&nbsp;to&nbsp;12287:poke&nbsp;i,228:next
+100&nbsp;data&nbsp;60,66,165,129,165,153,66,60
+105&nbsp;data&nbsp;60,66,165,129,153,165,66,60
+110&nbsp;data&nbsp;245,245,245,245,10,10,10,10
+115&nbsp;data&nbsp;10,10,10,10,245,245,245,245
+480&nbsp;print&nbsp;chr$(147);"Demonstration&nbsp;of&nbsp;Video&nbsp;Modes"
+485&nbsp;print
+490&nbsp;print&nbsp;"The&nbsp;video&nbsp;modes&nbsp;described&nbsp;at&nbsp;Rosetta&nbsp;"
+495&nbsp;print&nbsp;"Code&nbsp;will&nbsp;be&nbsp;demonstrated&nbsp;in&nbsp;order.&nbsp;"
+500&nbsp;print&nbsp;"Simply&nbsp;press&nbsp;a&nbsp;key&nbsp;to&nbsp;advance&nbsp;to&nbsp;the"
+505&nbsp;print&nbsp;"next&nbsp;video&nbsp;mode."
+510&nbsp;print
+515&nbsp;print&nbsp;"See&nbsp;rosettacode.org&nbsp;for&nbsp;description."
+516&nbsp;print
+517&nbsp;print&nbsp;"http://www.rosettacode.org/wiki/";
+518&nbsp;print&nbsp;"Video";chr$(164);"display";chr$(164);"modes#";
+519&nbsp;print&nbsp;"Commodore";chr$(164);"BASIC"
+520&nbsp;print
+525&nbsp;print&nbsp;"Press&nbsp;any&nbsp;key&nbsp;to&nbsp;begin."
+530&nbsp;gosub&nbsp;9010
+600&nbsp;print&nbsp;chr$(147);"Standard&nbsp;Character&nbsp;Mode"
+605&nbsp;print&nbsp;"&nbsp;-&nbsp;ROM&nbsp;Characters"
+610&nbsp;print:gosub&nbsp;1000:print:gosub&nbsp;9000:print&nbsp;chr$(147)
+615&nbsp;gosub&nbsp;1210
+620&nbsp;print&nbsp;chr$(147);"Multicolor&nbsp;Character&nbsp;Mode"
+625&nbsp;print&nbsp;"&nbsp;-&nbsp;ROM&nbsp;Characters"
+630&nbsp;print:gosub&nbsp;1000:print:gosub&nbsp;9000:print&nbsp;chr$(147)
+635&nbsp;gosub&nbsp;1220
+640&nbsp;gosub&nbsp;1310
+645&nbsp;print&nbsp;chr$(147);"Extended&nbsp;Color&nbsp;Character&nbsp;Mode"
+650&nbsp;print&nbsp;"&nbsp;-&nbsp;ROM&nbsp;Characters"
+655&nbsp;print:gosub&nbsp;1000:print:gosub&nbsp;9000:print&nbsp;chr$(147)
+660&nbsp;gosub&nbsp;1320
+665&nbsp;gosub&nbsp;1100
+670&nbsp;print&nbsp;chr$(147);"Standard&nbsp;Character&nbsp;Mode"
+675&nbsp;print&nbsp;"&nbsp;-&nbsp;Programmed&nbsp;Characters"
+680&nbsp;print:gosub&nbsp;1000:print:gosub&nbsp;9000:print&nbsp;chr$(147)
+685&nbsp;gosub&nbsp;1210
+690&nbsp;print&nbsp;chr$(147);"Multicolor&nbsp;Character&nbsp;Mode"
+695&nbsp;print&nbsp;"&nbsp;-&nbsp;Programmed&nbsp;Characters"
+700&nbsp;print:gosub&nbsp;1000:print:gosub&nbsp;9000:print&nbsp;chr$(147)
+705&nbsp;gosub&nbsp;1220
+710&nbsp;gosub&nbsp;1310
+715&nbsp;print&nbsp;chr$(147);"Extended&nbsp;Color&nbsp;Character&nbsp;Mode"
+720&nbsp;print&nbsp;"&nbsp;-&nbsp;Programmed&nbsp;Characters"
+725&nbsp;print:gosub&nbsp;1000:print:gosub&nbsp;9000:print&nbsp;chr$(147)
+730&nbsp;gosub&nbsp;1320
+735&nbsp;print&nbsp;chr$(147);"The&nbsp;next&nbsp;screen&nbsp;will&nbsp;be&nbsp;the"
+740&nbsp;print&nbsp;"High&nbsp;Resolution&nbsp;Bit&nbsp;Map&nbsp;Mode"
+745&nbsp;print
+750&nbsp;gosub&nbsp;9000
+755&nbsp;gosub&nbsp;1430:gosub&nbsp;1410
+760&nbsp;print:gosub&nbsp;1050:print:gosub&nbsp;9010:print&nbsp;chr$(147)
+765&nbsp;gosub&nbsp;1420:gosub&nbsp;1120
+770&nbsp;print&nbsp;chr$(147);"The&nbsp;next&nbsp;screen&nbsp;will&nbsp;be&nbsp;the"
+775&nbsp;print&nbsp;"Multicolor&nbsp;High&nbsp;Resolution&nbsp;Bit&nbsp;Map&nbsp;Mode"
+780&nbsp;print
+785&nbsp;gosub&nbsp;9000
+790&nbsp;gosub&nbsp;1430:gosub&nbsp;1410:gosub&nbsp;1210
+795&nbsp;print:gosub&nbsp;1050:print:gosub&nbsp;9010:print&nbsp;chr$(147)
+800&nbsp;gosub&nbsp;1420:gosub&nbsp;1220:gosub&nbsp;1120
+805&nbsp;print&nbsp;chr$(147);"End&nbsp;of&nbsp;demonstration."
+810&nbsp;end
+1000&nbsp;rem&nbsp;put&nbsp;some&nbsp;characters&nbsp;up&nbsp;for&nbsp;demo
+1005&nbsp;for&nbsp;i=0&nbsp;to&nbsp;15:poke&nbsp;646,i
+1010&nbsp;print"&nbsp;a&nbsp;b&nbsp;c&nbsp;d&nbsp;";
+1011&nbsp;print&nbsp;chr$(160);"A";chr$(160);"B";chr$(160);"C";chr$(160);"D";chr$(160);
+1012&nbsp;print&nbsp;chr$(18);"&nbsp;a&nbsp;b&nbsp;c&nbsp;d&nbsp;";
+1013&nbsp;print&nbsp;chr$(160);"A";chr$(160);"B";chr$(160);"C";chr$(160);"D";chr$(160);
+1014&nbsp;print&nbsp;chr$(146)
+1015&nbsp;next&nbsp;i:poke&nbsp;646,1
+1020&nbsp;return
+1050&nbsp;rem&nbsp;show&nbsp;color&nbsp;variety&nbsp;for&nbsp;hi-res&nbsp;modes
+1051&nbsp;print&nbsp;chr$(147)
+1055&nbsp;for&nbsp;i=0&nbsp;to&nbsp;255:poke&nbsp;1024+i,i:poke55296+i,15-(i&nbsp;and&nbsp;15):next&nbsp;i
+1060&nbsp;for&nbsp;i=0&nbsp;to&nbsp;255:poke&nbsp;1280+i,i:poke&nbsp;55552+i,int(rnd(1)*16):next&nbsp;i
+1065&nbsp;return
+1100&nbsp;rem&nbsp;programmable&nbsp;character&nbsp;mode
+1110&nbsp;poke&nbsp;53272,(peek(53272)&nbsp;and&nbsp;240)+14:return:rem&nbsp;on
+1120&nbsp;poke&nbsp;53272,(peek(53272)&nbsp;and&nbsp;240)+6:return:rem&nbsp;off
+1200&nbsp;rem&nbsp;multicolor&nbsp;mode
+1210&nbsp;poke&nbsp;53270,peek(53270)&nbsp;or&nbsp;16:return:rem&nbsp;on
+1220&nbsp;poke&nbsp;53270,peek(53270)&nbsp;and&nbsp;239:return:rem&nbsp;off
+1300&nbsp;rem&nbsp;extended&nbsp;color&nbsp;mode
+1310&nbsp;poke&nbsp;53265,peek(53265)&nbsp;or&nbsp;64:return:rem&nbsp;on
+1320&nbsp;poke&nbsp;53265,peek(53265)&nbsp;and&nbsp;191:return:rem&nbsp;off
+1400&nbsp;rem&nbsp;hi&nbsp;res&nbsp;mode
+1410&nbsp;poke&nbsp;53265,(peek(53265)&nbsp;or&nbsp;32):return:rem&nbsp;on
+1420&nbsp;poke&nbsp;53265,(peek(53265)&nbsp;and&nbsp;223):return:rem&nbsp;off
+1430&nbsp;poke&nbsp;53272,peek(53272)&nbsp;or&nbsp;8:return:rem&nbsp;place&nbsp;bitmap&nbsp;at&nbsp;8192
+9000&nbsp;print&nbsp;"Press&nbsp;any&nbsp;key&nbsp;for&nbsp;next&nbsp;screen.";
+9010&nbsp;get&nbsp;k$:if&nbsp;k$=""&nbsp;then&nbsp;9010
+9020&nbsp;return</pre>
+            </div>
+            <div class="program-comments">
+                <p>The task was to programatically demonstrate all of the video modes available on whatever computer the program is running on. No high definition here... The Commodore 64 is limited to a 320x200 pixel resolution and a 16-color palette. There are also multi-color modes that allowed for a toal of four colors to be displayed within a single 8x8 block of pixels, but this decreases the horizontal resolution by half.</p>
+                <p>Here are the specifications of the video modes:
+                    
+                    <h4>Standard Character Mode</h4>
+                    <ul>
+                        <li>40 x 25 characters.</li>
+                        <li>Single foreground color per character.</li>
+                        <li>16 colors available for use.</li>
+                        <li>Font data comes from ROM.</li>
+                    </ul>
+                
+                    <h4>Multicolor Character Mode</h4>
+                    <ul>
+                        <li>40 x 25 characters.</li>
+                        <li>Characters are either single colored or multi-colored.</li>
+                        <li>Multi-color allows for 3 foreground colors per character.</li>
+                        <li>1 foreground color limited to first 8 colors of the palette; other 2 are global for entire screen, but may be any of 16 colors.</li>
+                    </ul>
+                
+                    <h4>Extended Color Mode</h4>
+                    <ul>
+                        <li>Enables a total of 4 background colors which can be any of the 16 palette colors.</li>
+                        <li>Limits character set to only first 64 characters (no PETSCII graphics or reverse characters.)</li>
+                    </ul>
+                
+                    <h4>Programmable Character Mode</h4>
+                    <ul>
+                        <li>Works with any of the modes described above.</li>
+                        <li>Exception is that font data comes from data in RAM.</li>
+                    </ul>
+                
+                    <h4>Standard High Resolution Bit Mapped Mode</h4>
+                    <ul>
+                        <li>320 x 200 pixel resolution.</li>
+                        <li>Single foreground color per 8x8 pixel cell.</li>
+                        <li>Single background color per 8x8 pixel cell.</li>
+                        <li>Foreground and background color can be any of the 16 color palette.</li>
+                        <li>Color information stored in character screen RAM, not color RAM.</li>
+                    </ul>
+                
+                    <h4>Multicolor Hi-res Bit Mapped Mode</h4>
+                    <ul>
+                        <li>160 x 200 pixel resolution.</li>
+                        <li>Each 4x8 cell can have 3 foreground colors and 1 global background color.</li>
+                        <li>Color information for foreground colors is stored in character screen RAM as well as color RAM (12 bits of color information).</li>
+                    </ul>
+                </p>
+            </div>
+        </main>
+
+
+        <footer>
+            <p>Mike's BASIC Beginnings<br>&copy; 2022 - Mike Lewis</p>
+            <p><a href="site-plan.html">Site Plan</a></p>
+            <p><a href="mailto:wyoming.c64@gmail.com">Contact Me</a></p>
+            <div class="social">
+                <a href="https://www.facebook.com/MikeLewis.WYC64/" target="_blank">
+                    <img src="images/facebook.png" alt="Facebook icon">
+                </a>
+                <a href="https://www.youtube.com/@WY.C64-Guy" target="_blank">
+                    <img src="images/youtube.png" alt="YouTube icon">
+                </a>
+            </div>
+        </footer>
+    </div>
+    
+</body>
+</html>

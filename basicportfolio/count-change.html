@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike's BASIC Beginnings: Early Works</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div id="content">
+        <header>
+            <div id="logo-block">
+                <a href="#"><img id="logo" src="images/MBP-Logo.png" alt="Mike's Logo"></a>
+            </div>
+            <div id="title-line">
+                <h1 id="page-title">Mike's BASIC Beginnings</h1>
+            </div>
+            <div id="empty">&nbsp;</div>
+            <nav id="navbar">
+                <a href="index.html">Home</a>
+                <a href="early-works.html">Early Works</a>
+                <a href="recent-programs.html">Recent Programs</a>
+                <a href="mailto:wyoming.c64@gmail.com">Contact Me</a>
+            </nav>
+        </header>
+
+        <main class="listing-grid">
+            <div class="listing-title">
+                <h1>Count Change - October 8, 2019</h1>
+            </div>
+            <div class="column-header"><h3>Screen Shots</h3></div>
+            <div class="column-header"><h3>Program Listing</h3></div>
+            <div class="column-header"><h3>Comments</h3></div>
+            <div class="listing-screenshots">
+                <img class="listing-img-top" src="images/prg-images/count-change-1.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/count-change-2.png" alt="Screenshot of program execution">
+                <img class="listing-img-bottom" src="images/prg-images/count-change-3.png" alt="Screenshot of program execution">
+            </div>
+            <div class="listing-code">
+                <pre>5 m=100:rem money = $1.00 or 100 pennies
+10 print chr$(147);chr$(14);"This program 
+    will calculate the number"
+11 print "of combinations of 'change'
+    that can be"
+12 print "given for a $1 bill."
+13 print:print "The coin values are:"
+14 print "0.01 = Penny":print "0.05 =
+    Nickle"
+15 print "0.10 = Dime":print "0.25 =
+    Quarter"
+16 print
+20 print "Would you like to see each
+    combination?"
+25 get k$:yn=(k$="y"):if k$="" then 25
+100 p=m:ti$="000000"
+130 q=int(m/25)
+140 count=0:ps=1
+145 if not yn then poke 53265,peek(53265)
+    and 239
+147 if yn then print "Count  P    N    D    Q"
+150 for qc=0 to q:d=int((m-qc*25)/10)
+160 for dc=0 to d:n=int((m-dc*10)/5)
+170 for nc=0 to n:p=m-nc*5
+180 for pc=0 to p step 5
+190 s=pc+nc*5+dc*10+qc*25
+200 if s=m then count=count+1:if yn then
+    gosub 1000
+210 next:next:next:next
+245 en$=ti$:if not yn then poke 53265,
+    peek(53265) or 16
+250 print:print count;"different
+    combinations found in"
+260 print tab(len(str$(count))+1);
+265 print left$(en$,2);":";mid$(en$,3,2)
+    ;":";right$(en$,2);"."
+270 end
+1000 print count;tab(6);pc;tab(11);nc
+     ;tab(16);dc;tab(21);qc:return</pre>
+            </div>
+            <div class="program-comments">
+                <p>The goal is to have the computer figure out how many combinations of coins (pennies, nickles, dimes, and quarters) can be used to make $1.00. This was based on BASIC code already submitted for the Sinclair ZX Spectrum.</p>
+                <p>After directly porting the Spectrum code to Commodore BASIC, I was disappointed to see that the algorithm took 46 minutes and 37 seconds to achieve a solution. After thinking about the problem, I was able to optimize the code and get the processing time down to less than 2 minutes and 20 seconds. Algorithm optimizations included things like counting pennies in multiples of 5 (since every other denomination is a multiple of 5) and looping through remainder values instead of processing combinations that are impossible.</p>
+                <p>The question of "Would you like to see each combination?" is an optional optimization. Printing each combination adds to the overall processing time. Choosing "no" also causes the video processor to be switched off (the screen goes blank) which gives the CPU additional cycles per second. This achieves a total processing time of less than 2 minutes on a US/NTSC Commodore 64.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Mike's BASIC Beginnings<br>&copy; 2022 - Mike Lewis</p>
+            <p><a href="site-plan.html">Site Plan</a></p>
+            <p><a href="mailto:wyoming.c64@gmail.com">Contact Me</a></p>
+            <div class="social">
+                <a href="https://www.facebook.com/MikeLewis.WYC64/" target="_blank">
+                    <img src="images/facebook.png" alt="Facebook icon">
+                </a>
+                <a href="https://www.youtube.com/@WY.C64-Guy" target="_blank">
+                    <img src="images/youtube.png" alt="YouTube icon">
+                </a>
+            </div>
+        </footer>
+    </div>
+    
+</body>
+</html>

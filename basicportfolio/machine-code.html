@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike's BASIC Beginnings: Early Works</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div id="content">
+        <header>
+            <div id="logo-block">
+                <a href="#"><img id="logo" src="images/MBP-Logo.png" alt="Mike's Logo"></a>
+            </div>
+            <div id="title-line">
+                <h1 id="page-title">Mike's BASIC Beginnings</h1>
+            </div>
+            <div id="empty">&nbsp;</div>
+            <nav id="navbar">
+                <a href="index.html">Home</a>
+                <a href="early-works.html">Early Works</a>
+                <a href="recent-programs.html">Recent Programs</a>
+                <a href="mailto:wyoming.c64@gmail.com">Contact Me</a>
+            </nav>
+        </header>
+
+        <main class="listing-grid">
+            <div class="listing-title">
+                <h1>Machine Code</h1>
+                <h2>March 6, 2021</h2>
+            </div>
+            <div class="column-header"><h3>Screen Shots</h3></div>
+            <div class="column-header"><h3>Program Listing</h3></div>
+            <div class="column-header"><h3>Comments</h3></div>
+            <div class="listing-screenshots">
+                <img class="listing-img-top" src="images/prg-images/machine code.png" alt="Screenshot of program execution">
+                <img class="listing-img-bottom" src="images/prg-images/machine-code-2.png" alt="Screenshot of program execution">
+            </div>
+            <div class="listing-code">
+                <pre>10 print chr$(147);
+15 ml=8192
+20 if peek(ml+3)&lt;&gt;173 and peek(ml+12)&lt;&gt;96 then gosub 100
+30 for ad=ml to ml+2:poke ad,0:next
+40 poke ml,9:poke ml+1,23
+50 print "before:";peek(ml+2)
+60 sys ml+3
+70 print "after:";peek(ml+2)
+80 end
+100 rem machine language loader
+105 for ad=ml+3 to ml+13
+110 read b
+115 poke ad,b
+120 print ad,b:next
+126 return
+8195 data 24       :rem clc
+8196 data 173,0,32 :rem lda $2000
+8199 data 109,1,32 :rem adc $2001
+8202 data 141,2,32 :rem sta $2002
+8205 data 96       :rem rts</pre>
+            </div>
+            <div class="program-comments">
+                <p>The goal is to have a piece of machine code execute from within the language you are programming in. This was done all the time on the Commodore 64 to provide much faster processing within BASIC programs. This example simply has the machine code add two numbers and place the result in a memory location which is later read and displayed to the screen.</p>
+            </div>
+
+            <div class="listing-title">
+                <h2>Alternate Solution</h2>
+            </div>
+            <div class="listing-screenshots">
+                <img class="listing-img"src="images/prg-images/machine-code-3.png" alt="Screenshot of program execution">
+            </div>
+            <div class="listing-code">
+                <pre>10 print chr$(147);
+15 ml=49152
+20 if peek(ml)&lt;&gt;24 and peek(ml+4)&lt;&gt;96 then gosub 100
+30 poke 780,12:rem a register argument
+35 poke 781,7:rem x register argument
+40 sys 49152
+45 a=peek(780):print a
+50 end
+100 for ad=49152 to 49156
+110 read b
+120 poke ad,b
+130 next
+140 return
+9152 data 24:       rem clc
+9153 data 109,13,3: rem adc $030d
+9156 data 96:       rem rts</pre>
+            </div>
+            <div class="program-comments">
+                <p>After some research (possibly when watching one of Robin Harbon's videos) I realized that Commodore BASIC has dedicated memory locations that allow the programmer to preset CPU register values for when the SYS command is executed. When the machine code returns control to BASIC, the registers are then unloaded into these same memory values, making a convenient pipleline for passing parameters.</p>
+                <p>In this example, whatever value is in location 780 will be loaded into the <b>.A</b> register (acumulator), and the value in location in 781 is loaded into the <b>.X</b> register. With the registers pre-loaded at this point, the machine code only needs to clear the carry flag and perform the "Add with Carry" (ADC) operation, which puts the result in the <b>.A</b> register.</p>
+                <p>On exit, the value is then transferred back to location 780 for reading by BASIC.</p>
+            </div>
+        </main>
+
+
+        <footer>
+            <p>Mike's BASIC Beginnings<br>&copy; 2022 - Mike Lewis</p>
+            <p><a href="site-plan.html">Site Plan</a></p>
+            <p><a href="mailto:wyoming.c64@gmail.com">Contact Me</a></p>
+            <div class="social">
+                <a href="https://www.facebook.com/MikeLewis.WYC64/" target="_blank">
+                    <img src="images/facebook.png" alt="Facebook icon">
+                </a>
+                <a href="https://www.youtube.com/@WY.C64-Guy" target="_blank">
+                    <img src="images/youtube.png" alt="YouTube icon">
+                </a>
+            </div>
+        </footer>
+    </div>
+    
+</body>
+</html>
