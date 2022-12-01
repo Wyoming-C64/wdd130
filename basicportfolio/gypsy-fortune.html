@@ -25,7 +25,7 @@
             </nav>
         </header>
 
-        <main class="listing-grid">
+        <main id="listing-grid">
             <div class="listing-title">
                 <h1>Gypsy Fortune - 1986</h1>
             </div>
@@ -33,13 +33,54 @@
             <div class="column-header"><h3>Program Listing</h3></div>
             <div class="column-header"><h3>Comments</h3></div>
             <div class="listing-screenshots">
-                <img class="listing-img-top" src="images/prg-images/gypsy-fortune-1.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/gypsy-fortune-2.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/gypsy-fortune-3.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/gypsy-fortune-4.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/gypsy-fortune-5.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/gypsy-fortune-6.png" alt="Screenshot of program execution">
-                <img class="listing-img-bottom" src="images/prg-images/gypsy-fortune-7.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(1)" src="images/prg-images/gypsy-fortune-1.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(2)" src="images/prg-images/gypsy-fortune-2.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(3)" src="images/prg-images/gypsy-fortune-3.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(4)" src="images/prg-images/gypsy-fortune-4.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(5)" src="images/prg-images/gypsy-fortune-5.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(6)" src="images/prg-images/gypsy-fortune-6.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(7)" src="images/prg-images/gypsy-fortune-7.png" alt="Screenshot of program execution">
+                <div id="myModal" class="modal">
+                    <span class="close cursor" onclick="closeModal()">&times;</span>
+                    <div class="modal-content">
+                        <div class="mySlides">
+                            <div class="numbertext">1/7</div>
+                            <img class="slide-img" src="images/prg-images/gypsy-fortune-1.png" style="width:100%" alt="Screenshot of program execution.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">2/7</div>
+                            <img class="slide-img" src="images/prg-images/gypsy-fortune-2.png" style="width:100%" alt="Screenshot of program execution.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">3/7</div>
+                            <img class="slide-img" src="images/prg-images/gypsy-fortune-3.png" style="width:100%" alt="Screenshot of program execution.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">4/7</div>
+                            <img class="slide-img" src="images/prg-images/gypsy-fortune-4.png" style="width:100%" alt="Screenshot of program execution.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">5/7</div>
+                            <img class="slide-img" src="images/prg-images/gypsy-fortune-5.png" style="width:100%" alt="Screenshot of program execution.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">6/7</div>
+                            <img class="slide-img" src="images/prg-images/gypsy-fortune-6.png" style="width:100%" alt="Screenshot of program execution.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">7/7</div>
+                            <img class="slide-img" src="images/prg-images/gypsy-fortune-7.png" style="width:100%" alt="Screenshot of program execution.">
+                        </div>
+                        <!-- Next/previous controls -->
+                        <a class="prev" onclick="plusSlides(-1)">&lt;</a>
+                        <a class="next" onclick="plusSlides(1)">&gt;</a>
+                        <!-- Caption text -->
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
             <div class="listing-code">
                 <pre>1 POKE53281,11:POKE53280,0:PRINT"":F=0
@@ -149,5 +190,6 @@
         </footer>
     </div>
     
+<script src="script/images.js"></script>
 </body>
 </html>

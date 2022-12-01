@@ -25,22 +25,68 @@
             </nav>
         </header>
 
-        <main class="listing-grid">
+        <main id="listing-grid">
             <div class="listing-title">
                 <h1>Railroad Roster - 1991</h1>
             </div>
             <div class="column-header"><h3>Screen Shots</h3></div>
             <div class="column-header"><h3>Program Listing</h3></div>
             <div class="column-header"><h3>Comments</h3></div>
-            <div class="listing-screenshots">
-                <img class="listing-img-top" src="images/prg-images/Railroad-Roster.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/railroad-roster-1.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/railroad-roster-2.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/railroad-roster-3.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/railroad-roster-4.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/railroad-roster-5.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/railroad-roster-6.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/railroad-roster-7.png" alt="Screenshot of program execution">
+            <div class="listing-screenshots" id="the-images">
+                <img class="listing-img" onclick="openModal();currentSlide(1)" src="images/prg-images/Railroad-Roster.png" alt="Screenshot of program execution.">
+                <img class="listing-img" onclick="openModal();currentSlide(2)" src="images/prg-images/railroad-roster-1.png" alt="Screenshot of program execution.">
+                <img class="listing-img" onclick="openModal();currentSlide(3)" src="images/prg-images/railroad-roster-2.png" alt="Screenshot of program execution.">
+                <img class="listing-img" onclick="openModal();currentSlide(4)" src="images/prg-images/railroad-roster-3.png" alt="Screenshot of program execution.">
+                <img class="listing-img" onclick="openModal();currentSlide(5)" src="images/prg-images/railroad-roster-4.png" alt="Screenshot of program execution.">
+                <img class="listing-img" onclick="openModal();currentSlide(6)" src="images/prg-images/railroad-roster-5.png" alt="Screenshot of program execution.">
+                <img class="listing-img" onclick="openModal();currentSlide(7)" src="images/prg-images/railroad-roster-6.png" alt="Screenshot of program execution.">
+                <img class="listing-img" onclick="openModal();currentSlide(8)" src="images/prg-images/railroad-roster-7.png" alt="Screenshot of program execution.">
+                <div id="myModal" class="modal">
+                    <span class="close cursor" onclick="closeModal()">&times;</span>
+                    <div class="modal-content">
+                    
+                        <div class="mySlides">
+                            <div class="numbertext">1/8</div>
+                            <img class="slide-img" src="images/prg-images/Railroad-Roster.png" style="width:100%" alt="Title screen and main menu.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">2/8</div>
+                            <img class="slide-img" src="images/prg-images/railroad-roster-1.png" style="width:100%" alt="Viewing a record from a data file.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">3/8</div>
+                            <img class="slide-img" src="images/prg-images/railroad-roster-2.png" style="width:100%" alt="Entering record data.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">4/8</div>
+                            <img class="slide-img" src="images/prg-images/railroad-roster-3.png" style="width:100%" alt="Warning screen.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">5/8</div>
+                            <img class="slide-img" src="images/prg-images/railroad-roster-4.png" style="width:100%" alt="Viewing the available data files on the disk.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">6/8</div>
+                            <img class="slide-img" src="images/prg-images/railroad-roster-5.png" style="width:100%" alt="Editing the data of a record.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">7/8</div>
+                            <img class="slide-img" src="images/prg-images/railroad-roster-6.png" style="width:100%" alt="Sort menu.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">8/8</div>
+                            <img class="slide-img" src="images/prg-images/railroad-roster-7.png" style="width:100%" alt="Sorting progress.">
+                        </div>
+
+                        <!-- Next/previous controls -->
+                        <a class="prev" onclick="plusSlides(-1)">&lt;</a>
+                        <a class="next" onclick="plusSlides(1)">&gt;</a>
+                        <!-- Caption text -->
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
+                    </div>
+                </div>
                 
             </div>
             <div class="listing-code">
@@ -495,6 +541,6 @@
             </div>
         </footer>
     </div>
-    
+    <script src="script/images.js"></script>
 </body>
 </html>
