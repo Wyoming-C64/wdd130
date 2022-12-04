@@ -33,9 +33,34 @@
             <div class="column-header"><h3>Program Listing</h3></div>
             <div class="column-header"><h3>Comments</h3></div>
             <div class="listing-screenshots">
-                <img class="listing-img" src="images/prg-images/count-change-1.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/count-change-2.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/count-change-3.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(1)" src="images/prg-images/count-change-1.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(2)" src="images/prg-images/count-change-2.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(3)" src="images/prg-images/count-change-3.png" alt="Screenshot of program execution">
+
+                <div id="myModal" class="modal">
+                    <span class="close cursor" onclick="closeModal()">&times;</span>
+                    <div class="modal-content">
+                        <div class="mySlides">
+                            <div class="numbertext">1/2</div>
+                            <img class="slide-img" src="images/prg-images/count-change-1.png" alt="Screenshot of program execution.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">2/2</div>
+                            <img class="slide-img" src="images/prg-images/count-change-2.png" alt="Screenshot of program execution.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">2/2</div>
+                            <img class="slide-img" src="images/prg-images/count-change-3.png" alt="Screenshot of program execution.">
+                        </div>
+                        <!-- Next/previous controls -->
+                        <a class="prev" onclick="plusSlides(-1)">&lt;</a>
+                        <a class="next" onclick="plusSlides(1)">&gt;</a>
+                        <!-- Caption text -->
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="listing-code">
                 <pre>5&nbsp;m=100:rem&nbsp;money&nbsp;=&nbsp;$1.00&nbsp;or&nbsp;100&nbsp;pennies

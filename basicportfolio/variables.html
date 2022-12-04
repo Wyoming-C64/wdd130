@@ -34,15 +34,67 @@
             <div class="column-header"><h3>Program Listing</h3></div>
             <div class="column-header"><h3>Comments</h3></div>
             <div class="listing-screenshots">
-                <img class="listing-img" src="images/prg-images/variables-1.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/variables-2.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/variables-3.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/variables-4.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/variables-5.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/variables-6.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/variables-7.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/variables-8.png" alt="Screenshot of program execution">
-                <img class="listing-img" src="images/prg-images/variables-9.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(1)" src="images/prg-images/variables-1.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(2)" src="images/prg-images/variables-2.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(3)" src="images/prg-images/variables-3.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(4)" src="images/prg-images/variables-4.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(5)" src="images/prg-images/variables-5.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(6)" src="images/prg-images/variables-6.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(7)" src="images/prg-images/variables-7.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(8)" src="images/prg-images/variables-8.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(9)" src="images/prg-images/variables-9.png" alt="Screenshot of program execution">
+                <div id="myModal" class="modal">
+                    <span class="close cursor" onclick="closeModal()">&times;</span>
+                    <div class="modal-content">
+                        <div class="mySlides">
+                            <div class="numbertext">1/9</div>
+                            <img class="slide-img" src="images/prg-images/variables-1.png" alt="Demonstration of different variable types and operations.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">2/9</div>
+                            <img class="slide-img" src="images/prg-images/variables-2.png" alt="Demonstration of different variable types and operations.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">3/9</div>
+                            <img class="slide-img" src="images/prg-images/variables-3.png" alt="Demonstration of different variable types and operations.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">4/9</div>
+                            <img class="slide-img" src="images/prg-images/variables-4.png" alt="Demonstration of different variable types and operations.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">5/9</div>
+                            <img class="slide-img" src="images/prg-images/variables-5.png" alt="Demonstration of different variable types and operations.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">6/9</div>
+                            <img class="slide-img" src="images/prg-images/variables-6.png" alt="Demonstration of different variable types and operations.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">7/9</div>
+                            <img class="slide-img" src="images/prg-images/variables-7.png" alt="Demonstration of different variable types and operations.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">8/9</div>
+                            <img class="slide-img" src="images/prg-images/variables-8.png" alt="Demonstration of different variable types and operations.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">9/9</div>
+                            <img class="slide-img" src="images/prg-images/variables-8.png" alt="Demonstration of different variable types and operations.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">2/9</div>
+                            <img class="slide-img" src="images/prg-images/variables-9.png" alt="Demonstration of different variable types and operations.">
+                        </div>
+                        <!-- Next/previous controls -->
+                        <a class="prev" onclick="plusSlides(-1)">&lt;</a>
+                        <a class="next" onclick="plusSlides(1)">&gt;</a>
+                        <!-- Caption text -->
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="listing-code">
                 <pre>1&nbsp;rem&nbsp;rosetta&nbsp;code

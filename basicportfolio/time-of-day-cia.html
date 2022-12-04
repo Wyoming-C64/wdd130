@@ -34,7 +34,23 @@
             <div class="column-header"><h3>Program Listing</h3></div>
             <div class="column-header"><h3>Comments</h3></div>
             <div class="listing-screenshots">
-                <img class="listing-img" src="images/prg-images/system-time.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(1)" src="images/prg-images/system-time.png" alt="Screenshot of program execution">
+                <div id="myModal" class="modal">
+                    <span class="close cursor" onclick="closeModal()">&times;</span>
+                    <div class="modal-content">
+                        <div class="mySlides">
+                            <div class="numbertext">1/1</div>
+                            <img class="slide-img" src="images/prg-images/system-time.png" alt="Screenshot of program execution.">
+                        </div>
+                        <!-- Next/previous controls
+                        <a class="prev" onclick="plusSlides(-1)">&lt;</a>
+                        <a class="next" onclick="plusSlides(1)">&gt;</a> -->
+                        <!-- Caption text -->
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="listing-code">
                 <pre>1&nbsp;rem&nbsp;read&nbsp;and&nbsp;set&nbsp;cia&nbsp;time&nbsp;of&nbsp;day&nbsp;clock
