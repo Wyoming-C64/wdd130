@@ -246,7 +246,7 @@ nav a:hover {
 
 .program-screenshots img {
     min-width: 480px;
-    transform: scaleX(0.75);
+    /* transform: scaleX(0.75); */
     margin-bottom: 1em;
 }
              
@@ -273,29 +273,27 @@ nav a:hover {
     width: 100%;
 }
 
-.listing-screenshots img {
+
+.listing-img {
+    display: block;
     transition: 
         z-index 0.1s 0.6s,
         transform-origin .2s 0.1s,
         transform .2s 0.1s, 
         box-shadow .2s 0.1s, 
         position 0.2s 0.1s;
-    transform: scaleX(0.75);
-    margin-bottom: 1em;
+    max-width: 384px;
+    margin: 0 auto;
+    margin-bottom: 2em;
     z-index: 90; 
-    position: relative;
-}
-
-.listing-img, .listing-img-top, .listing-img-bottom {
-    transform: scale(0.75,1);
 }
 
 
 .listing-img:hover, .listing-img-top:hover, .listing-img-bottom:hover {
     transform-origin: center left;
     position: relative;
-    transform: scale(1.125,1.5);
-    box-shadow: 10px 10px 10px rgba(0.1,0.1,0.1,0.8);
+    transform: scale(1.25);
+    box-shadow: 10px 10px 10px rgba(0.1,0.1,0.1,0.66);
     z-index: 99;
     transition:
         z-index 0.1s 0.0s,
@@ -321,16 +319,14 @@ nav a:hover {
 
 .listing-code pre {
     font-family: var(--code-font);
-    color: var(--code-font-color);
-    background-color: var(--code-bkg-color);
-    border: 0px solid var(--code-border-color);
+    color: var(--c64-grey2);
+    background-color: var(--c64-white);
+    border: 00px solid var(--c64-grey2);
     font-size: 0.9em;
     line-height: 1em;
     transform: scaleX(0.85);
-    /* overflow-x: auto; */
     white-space: pre-wrap;
     word-wrap: break-word;
-    /* border: 1px solid red; */
     width: 40em;
     margin: 0 auto;
     max-width: 792px;
@@ -367,6 +363,12 @@ nav a:hover {
     padding: 0;
     width: 90%;
     max-width: 1024px;
+  }
+
+  .slide-img {
+    display: block;
+    width: 75%;
+    margin: auto;
   }
   
   /* The Close Button */
@@ -420,14 +422,14 @@ nav a:hover {
   /* On hover, change color */
   .prev:hover,
   .next:hover {
-    color: var(--c64-ltgreen);
+    color: var(--c64-green);
   }
   
   /* Number text (1/3 etc) */
   .numbertext {
     color: var(--c64-grey2);
     font-family: var(--code-font);
-    font-size: 24px;
+    font-size: 0.5em;
     padding: 8px 12px;
     position: absolute;
     top: 0;
@@ -437,7 +439,7 @@ nav a:hover {
   .caption-container {
     text-align: center;
     background-color: #222;
-    padding: 2px 16px;
+    padding: 14px 16px;
     color: white;
   }
 

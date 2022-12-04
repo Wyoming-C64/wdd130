@@ -34,17 +34,17 @@
             <div class="column-header"><h3>Comments</h3></div>
             <div class="listing-screenshots">
                 <img class="listing-img" onclick="openModal();currentSlide(1)" src="images/prg-images/ebits-1.png" alt="Screenshot of program execution">
-                <img class="listing-img" onclick="openModal();currentSlide(1)" src="images/prg-images/ebits-2.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(2)" src="images/prg-images/ebits-2.png" alt="Screenshot of program execution">
                 <div id="myModal" class="modal">
                     <span class="close cursor" onclick="closeModal()">&times;</span>
                     <div class="modal-content">
                         <div class="mySlides">
                             <div class="numbertext">1/2</div>
-                            <img class="slide-img" src="images/prg-images/ebits-1.png" style="width:100%" alt="Simplified title screen.">
+                            <img class="slide-img" src="images/prg-images/ebits-1.png" alt="Simplified title screen.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">2/2</div>
-                            <img class="slide-img" src="images/prg-images/ebits-2.png" style="width:100%" alt="Instructions.">
+                            <img class="slide-img" src="images/prg-images/ebits-2.png" alt="Instructions.">
                         </div>
                         <!-- Next/previous controls -->
                         <a class="prev" onclick="plusSlides(-1)">&lt;</a>
@@ -57,48 +57,46 @@
                 </div>
             </div>
             <div class="listing-code">
-                <pre>5 REM  *****************
-10 REM *****E-BITS!*****
-20 REM **BY MIKE LEWIS**
-30 REM *****************
-35 HS=0:GOSUB 50000
-40 PRINT "E-BITS!"
-50 PRINT "BY"
-60 PRINT "MIKE LEWIS"
-70 PRINT "PRESS ANY KEY TO BEGIN"
-80 GET K$:IF K$=""THEN 80
-100 PRINT "“MAY I ASK WHAT YOUR NAME IS";:INPUTN$
-110 PRINT "AWLRIGHT. HERE IS HOW YOU"
-111 PRINT "PLAY E-BITS!:"
-112 PRINT "1) CHARACTERS:"
-113 PRINT "♣........"N$
-114 PRINT "•........WHOLE E-BITS"
-115 PRINT "○........HALF E-BITS"
-116 PRINT "▒........WALL"
-117 PRINT "Z........X-TRA TIME DIAMOND"
-118 PRINT ""
-120 PRINT "2) RULES:"
-130 PRINT "ALL • ARE WORTH 50. ALL ○
-     ARE WORTH 25.▒ ARE IMPASSIBLE."
-140 PRINT "Z GIVE YOU MORE TIME."
-150 PRINT ""
-160 PRINT ">>>>HIT ANY KEY TO CONTINUE<<<<"
-170 GET Z$
-180 IF Z$="" THEN 170
-200 REM ***MAIN SUBROUTINE***
-210 REM VARIBLE SETUP
-220 J=56320:W=102:D=90:R=88:E=81:F=87:B=8:
-    L=1:S=L:X=1524:S2=0:S3=500:MN=3
-221 CO=54272:BO=1064
-225 GOSUB 5000
-230 REM SCREEN SETUP
-235 PRINT"":FORK=1 TO B
-240 A=INT(RND(1)*897+1)
-250 POKEBO+A,E:POKEBO+CO+A,13
-255 NEXT
-260 FORK=1 TO B
-265 A=INT(RND(1)*897+π
-50000 POKE 53280,11:POKE 53281,0:RETURN</pre>
+                <pre>5&nbsp;REM&nbsp;&nbsp;*****************
+10&nbsp;REM&nbsp;*****E-BITS!*****
+20&nbsp;REM&nbsp;**BY&nbsp;MIKE&nbsp;LEWIS**
+30&nbsp;REM&nbsp;*****************
+35&nbsp;HS=0:GOSUB&nbsp;50000
+40&nbsp;PRINT&nbsp;"E-BITS!"
+50&nbsp;PRINT&nbsp;"BY"
+60&nbsp;PRINT&nbsp;"MIKE&nbsp;LEWIS"
+70&nbsp;PRINT&nbsp;"PRESS&nbsp;ANY&nbsp;KEY&nbsp;TO&nbsp;BEGIN"
+80&nbsp;GET&nbsp;K$:IF&nbsp;K$=""THEN&nbsp;80
+100&nbsp;PRINT&nbsp;"“MAY&nbsp;I&nbsp;ASK&nbsp;WHAT&nbsp;YOUR&nbsp;NAME&nbsp;IS";:INPUTN$
+110&nbsp;PRINT&nbsp;"AWLRIGHT.&nbsp;HERE&nbsp;IS&nbsp;HOW&nbsp;YOU"
+111&nbsp;PRINT&nbsp;"PLAY&nbsp;E-BITS!:"
+112&nbsp;PRINT&nbsp;"1)&nbsp;CHARACTERS:"
+113&nbsp;PRINT&nbsp;"♣........"N$
+114&nbsp;PRINT&nbsp;"•........WHOLE&nbsp;E-BITS"
+115&nbsp;PRINT&nbsp;"○........HALF&nbsp;E-BITS"
+116&nbsp;PRINT&nbsp;"▒........WALL"
+117&nbsp;PRINT&nbsp;"Z........X-TRA TIME DIAMOND"
+118&nbsp;PRINT&nbsp;""
+120&nbsp;PRINT&nbsp;"2)&nbsp;RULES:"
+130&nbsp;PRINT&nbsp;"ALL&nbsp;•&nbsp;ARE&nbsp;WORTH&nbsp;50.&nbsp;ALL&nbsp;○&nbsp;ARE&nbsp;WORTH&nbsp;25.▒&nbsp;ARE&nbsp;IMPASSIBLE."
+140&nbsp;PRINT&nbsp;"Z&nbsp;GIVE&nbsp;YOU&nbsp;MORE&nbsp;TIME."
+150&nbsp;PRINT&nbsp;""
+160&nbsp;PRINT&nbsp;">>>>HIT&nbsp;ANY&nbsp;KEY&nbsp;TO&nbsp;CONTINUE<<<<"
+170&nbsp;GET&nbsp;Z$
+180&nbsp;IF&nbsp;Z$=""&nbsp;THEN&nbsp;170
+200&nbsp;REM&nbsp;***MAIN&nbsp;SUBROUTINE***
+210&nbsp;REM&nbsp;VARIBLE&nbsp;SETUP
+220&nbsp;J=56320:W=102:D=90:R=88:E=81:F=87:B=8:L=1:S=L:X=1524:S2=0:S3=500:MN=3
+221&nbsp;CO=54272:BO=1064
+225&nbsp;GOSUB&nbsp;5000
+230&nbsp;REM&nbsp;SCREEN&nbsp;SETUP
+235&nbsp;PRINT"":FORK=1&nbsp;TO&nbsp;B
+240&nbsp;A=INT(RND(1)*897+1)
+250&nbsp;POKEBO+A,E:POKEBO+CO+A,13
+255&nbsp;NEXT
+260&nbsp;FORK=1&nbsp;TO&nbsp;B
+265&nbsp;A=INT(RND(1)*897+π
+50000&nbsp;POKE&nbsp;53280,11:POKE&nbsp;53281,0:RETURN</pre>
             </div>
             <div class="program-comments">
                 <p>Unfortunately, at this time I do not have a complete working copy of this program. I was able to salvage only the title screen and the instructions. At least this is enough to show the intent of the game. Basically, move around the screen and pick up as many points as you can before the time runs out.</p>
@@ -111,7 +109,8 @@
                 <p class="dot">&sdot;</p>
                 <p class="dot">&sdot;</p>
                 <p class="dot">&sdot;</p>
-                <p>The end of line 265 is where the program becomes corrupted. Line 50000 was added after the fact to make the title screen and instructions work.</p>
+                <p>The end of line 265 is where the program becomes corrupted.</p>
+				<p>Line 50000 was added after the fact to make the title screen and instructions work, but if I remember correctly, the original routine here was an animated splash screen.</p>
             </div>
         </main>
 

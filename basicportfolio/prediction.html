@@ -33,33 +33,33 @@
             <div class="column-header"><h3>Program Listing</h3></div>
             <div class="column-header"><h3>Comments</h3></div>
             <div class="listing-screenshots">
-                <img class="listing-img-top" onclick="openModal();currentSlide(1)" src="images/prg-images/prediction-0.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(1)" src="images/prg-images/prediction-0.png" alt="Screenshot of program execution">
                 <img class="listing-img" onclick="openModal();currentSlide(2)" src="images/prg-images/prediction-1.png" alt="Screenshot of program execution">
                 <img class="listing-img" onclick="openModal();currentSlide(3)" src="images/prg-images/prediction-2.png" alt="Screenshot of program execution">
                 <img class="listing-img" onclick="openModal();currentSlide(4)" src="images/prg-images/prediction-3.png" alt="Screenshot of program execution">
-                <img class="listing-img-bottom" onclick="openModal();currentSlide(5)" src="images/prg-images/prediction-4.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(5)" src="images/prg-images/prediction-4.png" alt="Screenshot of program execution">
                 <div id="myModal" class="modal">
                     <span class="close cursor" onclick="closeModal()">&times;</span>
                     <div class="modal-content">
                         <div class="mySlides">
                             <div class="numbertext">1/2</div>
-                            <img class="slide-img" src="images/prg-images/prediction-0.png" style="width:100%" alt="Screenshot of program execution.">
+                            <img class="slide-img" src="images/prg-images/prediction-0.png" alt="Screenshot of program execution.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">1/2</div>
-                            <img class="slide-img" src="images/prg-images/prediction-1.png" style="width:100%" alt="Screenshot of program execution.">
+                            <img class="slide-img" src="images/prg-images/prediction-1.png" alt="Screenshot of program execution.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">1/2</div>
-                            <img class="slide-img" src="images/prg-images/prediction-2.png" style="width:100%" alt="Screenshot of program execution.">
+                            <img class="slide-img" src="images/prg-images/prediction-2.png" alt="Screenshot of program execution.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">1/2</div>
-                            <img class="slide-img" src="images/prg-images/prediction-3.png" style="width:100%" alt="Screenshot of program execution.">
+                            <img class="slide-img" src="images/prg-images/prediction-3.png" alt="Screenshot of program execution.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">1/2</div>
-                            <img class="slide-img" src="images/prg-images/prediction-4.png" style="width:100%" alt="Screenshot of program execution.">
+                            <img class="slide-img" src="images/prg-images/prediction-4.png" alt="Screenshot of program execution.">
                         </div>
                         <!-- Next/previous controls -->
                         <a class="prev" onclick="plusSlides(-1)">&lt;</a>
@@ -72,34 +72,28 @@
                 </div>
             </div>
             <div class="listing-code">
-                <pre>5 POKE 53281,0:POKE 53280,2
-10 PRINT "PREDICTION"
-20 PRINT "CHOSE A NAME"
-30 PRINT "MIKE/KEVIN/MATT/CAMRON/GEORGE"
-40 INPUT A$
-50 IF A$="MIKE" THEN PRINT "JUST A MINUTE "
-    A$".":FOR I=1 TO 2000:NEXT:GOTO 110
-60 IF A$="CAMRON" THEN GOTO 100
-70 IF A$="GEORGE" THEN GOTO 100
-80 IF A$="MATT" THEN PRINT "JUST A MINUTE "
-    A$".":FOR I=1 TO 2000:NEXT:GOTO 120
-90 IF A$="KEVIN" THEN PRINT"JUST A MINUTE "
-    A$".":FOR I=1 TO 2000:NEXT:GOTO 130
-100 FORI=0 TO 254:POKE 53281,I:NEXT:GOTO 140
-110 PRINT"YOU WILL TO BE A TRAIN ENGINEER"
-    :END
-120 PRINT "YOU WILL TO BE A ELECTRONICS
-        ENGINEER":END
-130 GOTO 160
-140 PRINT "@KLJJD@E@G.GT;THLHYGJDKSJSKJK
-    FJGKGFJFKGJFKJFKFSKSKGORKRSKSJRKFK"
-150 GOTO 140
-160 FOR I=1 TO 5
-170 PRINT "↑ YOU WILL BE A NINJA ↑"
-180 FOR L=1 TO 500:NEXT
-190 PRINT ""
-200 FOR L=1 TO 500:NEXT
-210 NEXT I</pre>
+                <pre>5&nbsp;POKE&nbsp;53281,0:POKE&nbsp;53280,2
+10&nbsp;PRINT&nbsp;"PREDICTION"
+20&nbsp;PRINT&nbsp;"CHOSE&nbsp;A&nbsp;NAME"
+30&nbsp;PRINT&nbsp;"MIKE/KEVIN/MATT/CAMRON/GEORGE"
+40&nbsp;INPUT&nbsp;A$
+50&nbsp;IF&nbsp;A$="MIKE"&nbsp;THEN&nbsp;PRINT&nbsp;"JUST&nbsp;A&nbsp;MINUTE&nbsp;"A$".":FOR&nbsp;I=1&nbsp;TO&nbsp;2000:NEXT:GOTO&nbsp;110
+60&nbsp;IF&nbsp;A$="CAMRON"&nbsp;THEN&nbsp;GOTO&nbsp;100
+70&nbsp;IF&nbsp;A$="GEORGE"&nbsp;THEN&nbsp;GOTO&nbsp;100
+80&nbsp;IF&nbsp;A$="MATT"&nbsp;THEN&nbsp;PRINT&nbsp;"JUST&nbsp;A&nbsp;MINUTE&nbsp;"A$".":FOR&nbsp;I=1&nbsp;TO&nbsp;2000:NEXT:GOTO&nbsp;120
+90&nbsp;IF&nbsp;A$="KEVIN"&nbsp;THEN&nbsp;PRINT"JUST&nbsp;A&nbsp;MINUTE&nbsp;"A$".":FOR&nbsp;I=1&nbsp;TO&nbsp;2000:NEXT:GOTO&nbsp;130
+100&nbsp;FORI=0&nbsp;TO&nbsp;254:POKE&nbsp;53281,I:NEXT:GOTO&nbsp;140
+110&nbsp;PRINT"YOU&nbsp;WILL&nbsp;TO&nbsp;BE&nbsp;A&nbsp;TRAIN&nbsp;ENGINEER":END
+120&nbsp;PRINT&nbsp;"YOU&nbsp;WILL&nbsp;TO&nbsp;BE&nbsp;A&nbsp;ELECTRONICS&nbsp;ENGINEER":END
+130&nbsp;GOTO&nbsp;160
+140&nbsp;PRINT&nbsp;"@KLJJD@E@G.GT;THLHYGJDKSJSKJKFJGKGFJFKGJFKJFKFSKSKGORKRSKSJRKFK"
+150&nbsp;GOTO&nbsp;140
+160&nbsp;FOR&nbsp;I=1&nbsp;TO&nbsp;5
+170&nbsp;PRINT&nbsp;"↑&nbsp;YOU&nbsp;WILL&nbsp;BE&nbsp;A&nbsp;NINJA&nbsp;↑"
+180&nbsp;FOR&nbsp;L=1&nbsp;TO&nbsp;500:NEXT
+190&nbsp;PRINT&nbsp;""
+200&nbsp;FOR&nbsp;L=1&nbsp;TO&nbsp;500:NEXT
+210&nbsp;NEXT&nbsp;I</pre>
             </div>
             <div class="program-comments">
                 <p>Writing computer programs is fun, especially when you can amaze your friends... And throw some shade on your enemies. To be fair, "Camron" (Cameron) and George were bullies who started picking on us first. (Honest.)</p>

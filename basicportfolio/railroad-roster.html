@@ -47,35 +47,35 @@
                     
                         <div class="mySlides">
                             <div class="numbertext">1/8</div>
-                            <img class="slide-img" src="images/prg-images/Railroad-Roster.png" style="width:100%" alt="Title screen and main menu.">
+                            <img class="slide-img" src="images/prg-images/Railroad-Roster.png" alt="Title screen and main menu.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">2/8</div>
-                            <img class="slide-img" src="images/prg-images/railroad-roster-1.png" style="width:100%" alt="Viewing a record from a data file.">
+                            <img class="slide-img" src="images/prg-images/railroad-roster-1.png" alt="Viewing a record from a data file.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">3/8</div>
-                            <img class="slide-img" src="images/prg-images/railroad-roster-2.png" style="width:100%" alt="Entering record data.">
+                            <img class="slide-img" src="images/prg-images/railroad-roster-2.png" alt="Entering record data.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">4/8</div>
-                            <img class="slide-img" src="images/prg-images/railroad-roster-3.png" style="width:100%" alt="Warning screen.">
+                            <img class="slide-img" src="images/prg-images/railroad-roster-3.png" alt="Warning screen.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">5/8</div>
-                            <img class="slide-img" src="images/prg-images/railroad-roster-4.png" style="width:100%" alt="Viewing the available data files on the disk.">
+                            <img class="slide-img" src="images/prg-images/railroad-roster-4.png" alt="Viewing the available data files on the disk.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">6/8</div>
-                            <img class="slide-img" src="images/prg-images/railroad-roster-5.png" style="width:100%" alt="Editing the data of a record.">
+                            <img class="slide-img" src="images/prg-images/railroad-roster-5.png" alt="Editing the data of a record.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">7/8</div>
-                            <img class="slide-img" src="images/prg-images/railroad-roster-6.png" style="width:100%" alt="Sort menu.">
+                            <img class="slide-img" src="images/prg-images/railroad-roster-6.png" alt="Sort menu.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">8/8</div>
-                            <img class="slide-img" src="images/prg-images/railroad-roster-7.png" style="width:100%" alt="Sorting progress.">
+                            <img class="slide-img" src="images/prg-images/railroad-roster-7.png" alt="Sorting progress.">
                         </div>
 
                         <!-- Next/previous controls -->
@@ -90,7 +90,7 @@
                 
             </div>
             <div class="listing-code">
-                <pre>10 rem **************
+<pre>10 rem **************
 20 rem ** railroad **
 30 rem **  roster  **
 40 rem **************
@@ -114,8 +114,10 @@
 260 fi$="0:"+rn$+",s,r"
 270 open 9,8,9,fi$
 280 gosub 1500
-285 if a$&gt;"00" then print""er$:for i=1 
-    to 2000:next:close 15:close 9:goto100
+285 if a$&gt;"00" then print""er$:for 
+    i=1 
+    to 2000:next:close 15:close 9:goto
+	100
 310 er$="Ok."
 320 input#9,fl
 330 for l=1 to fl
@@ -124,7 +126,8 @@
 345 rem ** heading **
 350 gosub 3000
 365 print "Number of cars:";fl
-370 print:print "EDIT MENU options are:"
+370 print:print "EDIT MENU options 
+    are:"
 375 print:print "1) View file"
 377 print:print "2) Sort file"
 380 print:print "3) Edit entry"
@@ -133,7 +136,8 @@
 395 print:print "6) Save Updates"
 400 print:print "7) MAIN MENU"
 405 ns$="7":fa=56272:gosub 2500
-410 on a goto 415,4300,500,600,540,570,100
+410 on a goto 415,4300,500,600,540,570
+    ,100
 415 gosub 3000
 416 print "Screen or Printer?";
 417 getsp$:ifsp$="" then 417
@@ -240,11 +244,11 @@
 710 open 9,8,9,fi$
 712 open 15,8,15
 714 input#15,a$
-716 ifa$="63"thenprint"Sorry, file exists."
-    :fortd=1to2000:next:goto 722
-718 if a$&gt;"00" and a$&lt;&gt;"63"then print 
-    "Disk Error.":fordt=1to2000:next
-    :goto100
+716 ifa$="63"thenprint"Sorry, file 
+    exists.":fortd=1to2000:next:goto 722
+718 if a$&gt;"00" and a$&lt;&gt;"63"then 
+    print"Disk Error.":fordt=1to2000:
+	next:goto100
 720 print#9,fl
 722 close 9:close15:goto 100
 730 rem *** delete file ***
@@ -261,8 +265,10 @@
 744 goto 100
 750 rem *** rename ***
 752 gosub 1000
-754 print:input "Old Railroad Name";no$
-756 print:input "New Railroad Name";nn$
+754 print:input "Old Railroad Name";
+    no$
+756 print:input "New Railroad Name";
+    nn$
 758 print:print ""no$" to "nn$""
 760 print:input "Correct";wl$
 762 if wl$="y" or wl$="Y" then goto 766
@@ -276,8 +282,8 @@
 1005 print chr$(14);chr$(8)
 1010 print "":poke53280,0:poke53281,0
 1020 for i=1 to 20:print "__";:next
-1025 print:print tab(6);"Railroad Roster, 
-     Version 2.1"
+1025 print:print tab(6);"Railroad 
+     Roster, Version 2.1"
 1030 print tab(14);"by Mike Lewis"
 1035 print
 1040 fori=1 to 20:print "";:next
@@ -286,8 +292,8 @@
 1500 open 15,8,15:input#15,a$
 1510 if a$="62" then er$="Not Found"
      :goto 1530
-1520 if a$&lt;&gt;"62"and a$&lt;&gt;"00" then 
-     er$="Disk Error":goto 1530
+1520 if a$&lt;&gt;"62"and a$&lt;&gt;"00"
+     then er$="Disk Error":goto 1530
 1525 er$="Ok."
 1530 return
 2000 print ""chr$(142);chr$(9):end
@@ -297,13 +303,15 @@
 2510 cx=cx+1:pokefa,c(cx):if cx=8 then 
      cx=0
 2520 get a$:if a$="" then 2510
-2525 if a$&lt;"1" or a$&gt;ns$ then goto 2510
+2525 if a$&lt;"1" or a$&gt;ns$ then goto
+     2510
 2530 print ""a$""
 2540 a=val(a$):return
 3000 print "":for i=1 to 20:print "__";
      :next
 3002 rn$=left$(rn$,11)
-3005 print:print tab(20-(len(rn$)/2));rn$
+3005 print:print tab(20-(len(rn$)/2));
+     rn$
 3010 fori=1 to 20:print "";:next:print
 3015 return
 4000 rem *** warning ***
@@ -311,9 +319,11 @@
 4020 for ob=1 to 51:read x,y,va
 4030 poke 1024+x+(y*40),va:next
 4040 print ""tab(12)"w a r n i n g !"
-4041 print ""tab(12)"deleting a file will"
+4041 print ""tab(12)"deleting a file 
+     will"
 4042 print tab(12)"erase it -"
-4043 printtab(12)"p e r m a n e n t l y !"
+4043 printtab(12)"p e r m a n e n t l y
+      !"
 4044 print:printtab(12)"are you sure?"
 4050 li(1)=55296+3+(40*9):li(2)=55296+9
      +(40*9)
@@ -329,13 +339,15 @@
 4130 data 4,2,77,6,2,81,8,2,78,5,3,77,6
      ,3,66,7,3,78,6,4,86,5,5,78,6,5,66
 4140 data 7,5,77,4,6,78,6,6,66,8,6,77,6
-     ,7,66,2,8,85,3,8,64,4,8,73,6,8,66,8,8,85
+     ,7,66,2,8,85,3,8,64,4,8,73,6,8,66,8
+	 ,8,85
 4150 data 9,8,64,10,8,73,2,9,66,3,9,81,4
      ,9,107,5,9,64,6,9,91,7,9,64,8,9,115
 4160 data 9,9,81,10,9,66,2,10,74,3,10,64
      ,4,10,75,6,10,66,8,10,74,9,10,64
 4170 data 10,10,75,6,11,66,6,12,66,6,13
-     ,66,6,14,66,4,15,85,5,15,64,6,15,113
+     ,66,6,14,66,4,15,85,5,15,64,6,15,
+	 113
 4180 data 7,15,64,8,15,73,4,16,99,5,16
      ,99,6,16,99,7,16,99,8,16,99
 4200 poke54296,15
@@ -435,7 +447,8 @@
 5080 goto 5030
 5090 if hi=1 then f$=""+f$+chr$(34)+""
      :goto 5130
-5100 if right$(f$,4)=".rrf" then goto 5120
+5100 if right$(f$,4)=".rrf" then goto
+     5120
 5110 f$="":goto 5030
 5120 f$=left$(f$,12)+chr$(34)
 5130 print f$:f$="":if hi=1 then print
@@ -509,6 +522,15 @@
                 <p class="dot">&middot;</p>
                 <p class="dot">&middot;</p>
                 <p class="dot">&middot;</p>
+				<p class="dot">&middot;</p>
+				<p class="dot">&middot;</p>
+				<p class="dot">&middot;</p>
+				<p class="dot">&middot;</p>
+				<p class="dot">&middot;</p>
+				<p class="dot">&middot;</p>
+				<p class="dot">&middot;</p>
+				<p class="dot">&middot;</p>
+				<p class="dot">&middot;</p>
                 <p class="dot">&middot;</p>
                 <p>One of my favorite parts to design and code this railroad-themed warning screen. It's almost like an easter egg...</p>
                 <p class="dot">&middot;</p>

@@ -33,46 +33,32 @@
             <div class="column-header"><h3>Program Listing</h3></div>
             <div class="column-header"><h3>Comments</h3></div>
             <div class="listing-screenshots">
-                <img class="listing-img-top" src="images/prg-images/job-1.png" alt="Screenshot of program execution">
-                <img class="listing-img-bottom" src="images/prg-images/job-2.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(1)" src="images/prg-images/job-1.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(2)" src="images/prg-images/job-2.png" alt="Screenshot of program execution">
+
+                <div id="myModal" class="modal">
+                    <span class="close cursor" onclick="closeModal()">&times;</span>
+                    <div class="modal-content">
+                        <div class="mySlides">
+                            <div class="numbertext">1/2</div>
+                            <img class="slide-img" src="images/prg-images/job-1.png" alt="Screenshot of program execution.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">2/2</div>
+                            <img class="slide-img" src="images/prg-images/job-2.png" alt="Screenshot of program execution.">
+                        </div>
+                        <!-- Next/previous controls -->
+                        <a class="prev" onclick="plusSlides(-1)">&lt;</a>
+                        <a class="next" onclick="plusSlides(1)">&gt;</a>
+                        <!-- Caption text -->
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="listing-code">
-                <pre>10 PRINT "ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"
-20 PRINT "JOB JOB JOB JOB JOB JOB"
-30 PRINT "▝▘▝▘▝▘▝▘▝▘▘▝▘▝▘▝▘▝▘▝▘▝▘▝▘"
-40 PRINT "▗▖▗▖▗▖▗▖▗▖▗▖▗▖▗▖▗▖▗▖▗▖▗▖"
-50 PRINT "▝▘▝▘▝▘▝▘▝▘▝▘▝▘▝▘▝▘▝▘▝▘▝▘"
-60 POKE 53281,7:POKE 53280,8
-70 PRINT "♥ KISS ♥"
-80 PRINT "╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳╳
-90 PRINT "▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌"
-100 PRINT "▎▎▎▎▎▎▎▎▎▎▎▎▎▎▎▎▎▎▎▎▎▎▎▎▎▎▎"
-101 PRINT "♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦"
-102 PRINT "NAME?":INPUT A$
-103 PRINT "MINE IS COMMODORE 64"
-104 PRINT "HH DOES NOT COUNT!"
-105 PRINT "MIKE DOES COUNT."
-106 PRINT "HA HA YOU LIKE JOKES":INPUT A$
-107 PRINT "I LIKE JOKES HA HA HA HA HA"
-108 PRINT "WHAT DO YOU WANT":INPUT A$
-109 PRINT "THAT'S WHAT YOU WANT?":INPUT A$
-200 PRINT "OK,"
-201 PRINT "WHAT ELSE DO YOU WANT":INPUT A$
-202 PRINT "YOU CAN HAVE A POP":INPUT A$
-203 PRINT "YOU WANT A POP?":INPUT A$
-204 PRINT "OKYYYYY!!!"
-205 PRINT "**FIZZZZZZZZZZZ**"
-206 PRINT "GLUG GLUG GLUG GLUG"
-207 PRINT "DO YOU LIKE THES?":INPUT A$
-208 PRINT "LET'S GET BACK TO WORK!!"
-209 PRINT "DO THAT WORK!":INPUT A$
-300 PRINT "THAT IS ALL"
-301 PRINT "KICK KICK"
-302 PRINT "LET'S TAKE IT":INPUT A$
-303 PRINT "NO NO!!!! DO NOT TOCH THAT!"
-304 PRINT "YES HE CAN":INPUT A$
-305 PRINT "▚▚▚▚▚▚ HEY YOU ARE FIRED!▚▚▚▚▚▚▚▚▚▚▚▚▚▚▚▚▚▚▚▚▚
-                </pre>
+                <pre>10 print chr$(int(rnd(1)*.5)+205);:goto 10</pre>
             </div>
             <div class="program-comments">
                 <p>This is the very first program I wrote entirely on my own based on what I had learned. It is definitely the nonsense of a 6-year old. I knew how to output messages to the screen, display the built-in graphics characters, and change colors of the text, background, and screen border.</p>

@@ -37,286 +37,287 @@
             <div class="listing-screenshots">
                 <img class="listing-img" src="images/prg-images/errors.png" alt="Screenshot of program execution">
                 <!-- width="560" height="315" -->
+				<h3 class="column-header">Video</h3>
                 <iframe class="video" width="344" height="244" src="https://www.youtube-nocookie.com/embed/7ZL_Hl9AuAY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
             <div class="listing-code">
-                <pre>1 rem error demonstration program v1.2  
-      by mike lewis (wy c64 guy)
-2 :
-3 rem based on 8-bit show and tell      
-      video #1 (nov. 29, 2018)
-4 rem by robin harbron
-5 :
-6 rem this program uses the list patch  
-      i discovered (lines 3000-3040)
-7 :
-8 print "";:poke 53281,0:poke 53280,6
-9 gosub 3000
-10 print "Error Demonstrations - Pick
-    One:":print
-11 print " 1. bad subscript"
-12 print " 2. break"
-13 print " 3. can't continue"
-14 print " 4. device not"
-   :print "    present"
-15 print " 5. division by"
-   :print "    zero"
-16 print " 6. extra ignored"
-17 print " 7. file data"
-18 print " 8. file not found"
-19 print " 9. file not open"
-20 print "10. file open"
-21 print "11. formula too   "
-   :print "    complex"
-22 print "12. illegal device"
-23 print "13. illegal direct"
-24 print "14. illegal "
-   :print "    quantity"
-25 print "15. load error"
-26 print "16. missing file"
-   :print "    name"
-30 print "";
-37 print tab(19)"17. next without for"
-38 print tab(19)"18. not input file"
-39 print tab(19)"19. not output file"
-40 print tab(19)"20. out of data"
-41 print tab(19)"21. out of memory"
-42 print tab(19)"22. overflow"
-43 print tab(19)"23. redim'd array"
-44 print tab(19)"24. redo from start"
-45 print tab(19)"25. return without"
-   :printtab(23)"gosub"
-46 print tab(19)"26. string too long"
-47 print tab(19)"27. syntax"
-48 print tab(19)"28. too many files"
-49 print tab(19)"29. type mismatch"
-50 print tab(19)"30. undefined"
-   :printtab(23)"function"
-51 print tab(19)"31. undefined"
-   :printtab(23)"statement"
-52 print tab(19)"32. verify"
-55 print:print tab(19)" Q. Quit":print
-56 print "Your choice";:input a$
-59 print "“";
-60 c=val(a$):if c>13 then c=c-13:goto 70
-65 on c goto 1010,1020,1030,1040,1050,
-   1060,1070,1080,1090,1100,1110,1120,
-   1130
-70 if c>13 then c=c-13:goto 80
-75 on c goto 1140,1150,1160,1170,1180,
-   1190,1200,1210,1220,1230,1240,1250,
-   1260
-77 end
-80 on c goto 1270,1280,1290,1300,1310,
-   1320
-100 end
-1006 rem ********************
-1010 rem bad subscript
-1011 list 1012-1015
-1012 dim a(10)
-1015 print a(99)
-1016 rem ********************
-1020 rem break error
-1021 list 1025
-1025 stop
-1026 rem ********************
-1030 rem can't continue
-1032 i$="1035 ?"+chr$(13)+"cont"
-     :gosub 2000
-1033 list 1034
-1034 stop
-1035 print
-1036 rem ********************
-1040 rem device not present
-1041 list 1045
-1045 load "$",35
-1046 rem ********************
-1050 rem divide by zero
-1051 list 1055
-1055 print 42/0
-1056 rem ********************
-1060 rem extra ignored
-1061 list 1063:print
-1062 i$="0,1,2":gosub 2000
-1063 input "Enter a single number";a
-1064 gosub 2500:goto 1
-1069 rem ********************
-1070 rem file data error
-1071 list 1075-1078:print
-1072 i$="z":gosub 2000
-1075 print "type a letter: ";
-1076 open 1,0
-1077 input#1,a
-1078 close 1
-1079 rem ********************
-1080 rem file not found
-1081 list 1085
-1085 load "no such file",8
-1086 rem ********************
-1090 rem file not open
-1091 list 1092-1095
-1092 open 5,3
-1093 close 5
-1095 print#5,"this won't work"
-1096 rem ********************
-1100 rem file open
-1101 list 1102-1105
-1102 open 9,3
-1103 open 9,4
-1106 rem ********************
-1110 rem formula too complex
-1111 list 1115
-1115 print (""+(""+(""+(""))))
-1116 rem ********************
-1120 rem illegal device number
-1121 list 1125
-1125 load "$",0
-1126 rem ********************
-1130 rem illegal direct
-1131 i$="input a":gosub 2000
-1135 end
-1136 rem ********************
-1140 rem illegal quantity
-1141 list 1145
-1145 poke 53281,300
-1146 rem ********************
-1150 rem load error
-1151 print "The only way to reproduce 
-     this is with"
-1152 print "an actual datasette tape 
-     drive."
-1155 gosub 2500
-1156 goto 1
-1159 rem ********************
-1160 rem missing file name
-1161 list 1165
-1165 load "",8
-1166 rem ********************
-1170 rem next without for
-1171 list 1175
-1175 next
-1176 rem ********************
-1180 rem not input file
-1181 list 1185
-1185 open 0
-1186 rem ********************
-1190 rem not output file
-1191 list 1195:print
-1193 print "Press STOP key after next 
-     prompt"
-1194 print "then type 'print#1' and 
-     press RETURN."
-1195 open 1,1,0
-1199 rem ********************
-1200 rem out of data
-1201 list 1205
-1205 read a
-1206 rem ********************
-1210 rem out of memory
-1211 list 1212-1218
-1212 rem   128
-1213 rem   128
-1214 rem x   5 bytes (float)
-1215 rem -----
-1216 rem 80645 bytes > 38911
-1217 :
-1218 dim a(127,127)
-1219 rem ********************
-1220 rem overflow
-1221 list 1225
-1225 print 2^127
-1226 rem ********************
-1230 rem redim'd (redimensioned) array
-1231 list 1232-1234
-1232 dim b(12)
-1233 dim x(30)
-1234 dim b(20)
-1236 rem ********************
-1240 rem redo from start
-1241 list 1245:print
-1244 i$="Name"+chr$(13)+"5":gosub 2000
-1245 input "Enter a number";a
-1246 gosub 2500:goto 1
-1249 rem ********************
-1250 rem return without gosub
-1251 list 1255
-1255 return
-1256 rem ********************
-1260 rem string too long
-1261 list 1262-1267:print
-1262 x$=""
-1263 for i=1 to 256
-1264 ::print"Length:";len(x$)
-1265 ::print x$
-1266 ::x$=x$+"-C64-"
-1267 next i
-1269 rem ********************
-1270 rem syntax
-1271 list 1275
-1275 foobar
-1276 rem ********************
-1280 rem too many files
-1281 list 1282-1286:print
-1282 for i=1 to 11
-1283 ::print i;tab(4);"- ";
-1284 ::open i,3
-1285 ::print "Open"
-1286 next i
-1290 rem type mismatch
-1291 list 1295
-1295 a="Not a number."
-1296 rem ********************
-1300 rem undef'd (undefined) function
-1301 list 1304-1305
-1304 rem fn q(x) is not declared
-1305 print fn q(4)
-1306 rem ********************
-1309 rem ********************
-1310 rem undef'd (undefined) statement
-1311 list 4000-4020:print:list 1315
-1315 goto 4010
-1316 rem ********************
-1320 rem verify
-1321 list 1322-1325
-1322 rem the "verify" program does not  
-         match this program.
-1323 :
-1325 verify "other prg.",8
-1999 end
-2000 rem load buffer for auto input
-2001 i$=i$+chr$(13)
-2005 for i=1 to len(i$):c=asc(mid$(i$,i,
-     1)):poke 630+i,c:next
-2010 poke 198,len(i$)
-2015 return
-2500 rem pause for key press
-2505 print
-2510 print "press a key to continue"
-2515 get k$:if k$="" then 2515
-2520 return
-3000 rem copy basic and apply list      
-         patch
-3001 rem "copy" from 8bs&t:jun.14, 2022
-3002 if peek(42773)=174 and peek(42774)=
-     167 then return
-3004 print "please wait...":print 
-     "copying basic and patching..."
-3005 poke 95,0:poke 96,160:rem start
-3010 poke 90,0:poke 91,192:rem end+1
-3015 poke 88,0:poke 89,192:rem dest
-     :end+1
-3020 sys 41919
-3024 rem change list exit vector
-3025 poke 42773,174:poke 42774,167
-3030 poke 1,peek(1) and 254
-3035 print "";
-3040 return
-4000 rem illustrates non-existing lines
-4005 :                                  
-      no line 4010
-4015 :
-4020 rem end of block</pre>
+                <pre>1&nbsp;rem&nbsp;error&nbsp;demonstration&nbsp;program&nbsp;v1.2&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;mike&nbsp;lewis&nbsp;(wy&nbsp;c64&nbsp;guy)
+2&nbsp;:
+3&nbsp;rem&nbsp;based&nbsp;on&nbsp;8-bit&nbsp;show&nbsp;and&nbsp;tell&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;video&nbsp;#1&nbsp;(nov.&nbsp;29,&nbsp;2018)
+4&nbsp;rem&nbsp;by&nbsp;robin&nbsp;harbron
+5&nbsp;:
+6&nbsp;rem&nbsp;this&nbsp;program&nbsp;uses&nbsp;the&nbsp;list&nbsp;patch&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;discovered&nbsp;(lines&nbsp;3000-3040)
+7&nbsp;:
+8&nbsp;print&nbsp;"";:poke&nbsp;53281,0:poke&nbsp;53280,6
+9&nbsp;gosub&nbsp;3000
+10&nbsp;print&nbsp;"Error&nbsp;Demonstrations&nbsp;-&nbsp;Pick
+&nbsp;&nbsp;&nbsp;&nbsp;One:":print
+11&nbsp;print&nbsp;"&nbsp;1.&nbsp;bad&nbsp;subscript"
+12&nbsp;print&nbsp;"&nbsp;2.&nbsp;break"
+13&nbsp;print&nbsp;"&nbsp;3.&nbsp;can't&nbsp;continue"
+14&nbsp;print&nbsp;"&nbsp;4.&nbsp;device&nbsp;not"
+&nbsp;&nbsp;&nbsp;:print&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;present"
+15&nbsp;print&nbsp;"&nbsp;5.&nbsp;division&nbsp;by"
+&nbsp;&nbsp;&nbsp;:print&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;zero"
+16&nbsp;print&nbsp;"&nbsp;6.&nbsp;extra&nbsp;ignored"
+17&nbsp;print&nbsp;"&nbsp;7.&nbsp;file&nbsp;data"
+18&nbsp;print&nbsp;"&nbsp;8.&nbsp;file&nbsp;not&nbsp;found"
+19&nbsp;print&nbsp;"&nbsp;9.&nbsp;file&nbsp;not&nbsp;open"
+20&nbsp;print&nbsp;"10.&nbsp;file&nbsp;open"
+21&nbsp;print&nbsp;"11.&nbsp;formula&nbsp;too&nbsp;&nbsp;&nbsp;"
+&nbsp;&nbsp;&nbsp;:print&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;complex"
+22&nbsp;print&nbsp;"12.&nbsp;illegal&nbsp;device"
+23&nbsp;print&nbsp;"13.&nbsp;illegal&nbsp;direct"
+24&nbsp;print&nbsp;"14.&nbsp;illegal&nbsp;"
+&nbsp;&nbsp;&nbsp;:print&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;quantity"
+25&nbsp;print&nbsp;"15.&nbsp;load&nbsp;error"
+26&nbsp;print&nbsp;"16.&nbsp;missing&nbsp;file"
+&nbsp;&nbsp;&nbsp;:print&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;name"
+30&nbsp;print&nbsp;"";
+37&nbsp;print&nbsp;tab(19)"17.&nbsp;next&nbsp;without&nbsp;for"
+38&nbsp;print&nbsp;tab(19)"18.&nbsp;not&nbsp;input&nbsp;file"
+39&nbsp;print&nbsp;tab(19)"19.&nbsp;not&nbsp;output&nbsp;file"
+40&nbsp;print&nbsp;tab(19)"20.&nbsp;out&nbsp;of&nbsp;data"
+41&nbsp;print&nbsp;tab(19)"21.&nbsp;out&nbsp;of&nbsp;memory"
+42&nbsp;print&nbsp;tab(19)"22.&nbsp;overflow"
+43&nbsp;print&nbsp;tab(19)"23.&nbsp;redim'd&nbsp;array"
+44&nbsp;print&nbsp;tab(19)"24.&nbsp;redo&nbsp;from&nbsp;start"
+45&nbsp;print&nbsp;tab(19)"25.&nbsp;return&nbsp;without"
+&nbsp;&nbsp;&nbsp;:printtab(23)"gosub"
+46&nbsp;print&nbsp;tab(19)"26.&nbsp;string&nbsp;too&nbsp;long"
+47&nbsp;print&nbsp;tab(19)"27.&nbsp;syntax"
+48&nbsp;print&nbsp;tab(19)"28.&nbsp;too&nbsp;many&nbsp;files"
+49&nbsp;print&nbsp;tab(19)"29.&nbsp;type&nbsp;mismatch"
+50&nbsp;print&nbsp;tab(19)"30.&nbsp;undefined"
+&nbsp;&nbsp;&nbsp;:printtab(23)"function"
+51&nbsp;print&nbsp;tab(19)"31.&nbsp;undefined"
+&nbsp;&nbsp;&nbsp;:printtab(23)"statement"
+52&nbsp;print&nbsp;tab(19)"32.&nbsp;verify"
+55&nbsp;print:print&nbsp;tab(19)"&nbsp;Q.&nbsp;Quit":print
+56&nbsp;print&nbsp;"Your&nbsp;choice";:input&nbsp;a$
+59&nbsp;print&nbsp;"“";
+60&nbsp;c=val(a$):if&nbsp;c>13&nbsp;then&nbsp;c=c-13:goto&nbsp;70
+65&nbsp;on&nbsp;c&nbsp;goto&nbsp;1010,1020,1030,1040,1050,
+&nbsp;&nbsp;&nbsp;1060,1070,1080,1090,1100,1110,1120,
+&nbsp;&nbsp;&nbsp;1130
+70&nbsp;if&nbsp;c>13&nbsp;then&nbsp;c=c-13:goto&nbsp;80
+75&nbsp;on&nbsp;c&nbsp;goto&nbsp;1140,1150,1160,1170,1180,
+&nbsp;&nbsp;&nbsp;1190,1200,1210,1220,1230,1240,1250,
+&nbsp;&nbsp;&nbsp;1260
+77&nbsp;end
+80&nbsp;on&nbsp;c&nbsp;goto&nbsp;1270,1280,1290,1300,1310,
+&nbsp;&nbsp;&nbsp;1320
+100&nbsp;end
+1006&nbsp;rem&nbsp;********************
+1010&nbsp;rem&nbsp;bad&nbsp;subscript
+1011&nbsp;list&nbsp;1012-1015
+1012&nbsp;dim&nbsp;a(10)
+1015&nbsp;print&nbsp;a(99)
+1016&nbsp;rem&nbsp;********************
+1020&nbsp;rem&nbsp;break&nbsp;error
+1021&nbsp;list&nbsp;1025
+1025&nbsp;stop
+1026&nbsp;rem&nbsp;********************
+1030&nbsp;rem&nbsp;can't&nbsp;continue
+1032&nbsp;i$="1035&nbsp;?"+chr$(13)+"cont"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:gosub&nbsp;2000
+1033&nbsp;list&nbsp;1034
+1034&nbsp;stop
+1035&nbsp;print
+1036&nbsp;rem&nbsp;********************
+1040&nbsp;rem&nbsp;device&nbsp;not&nbsp;present
+1041&nbsp;list&nbsp;1045
+1045&nbsp;load&nbsp;"$",35
+1046&nbsp;rem&nbsp;********************
+1050&nbsp;rem&nbsp;divide&nbsp;by&nbsp;zero
+1051&nbsp;list&nbsp;1055
+1055&nbsp;print&nbsp;42/0
+1056&nbsp;rem&nbsp;********************
+1060&nbsp;rem&nbsp;extra&nbsp;ignored
+1061&nbsp;list&nbsp;1063:print
+1062&nbsp;i$="0,1,2":gosub&nbsp;2000
+1063&nbsp;input&nbsp;"Enter&nbsp;a&nbsp;single&nbsp;number";a
+1064&nbsp;gosub&nbsp;2500:goto&nbsp;1
+1069&nbsp;rem&nbsp;********************
+1070&nbsp;rem&nbsp;file&nbsp;data&nbsp;error
+1071&nbsp;list&nbsp;1075-1078:print
+1072&nbsp;i$="z":gosub&nbsp;2000
+1075&nbsp;print&nbsp;"type&nbsp;a&nbsp;letter:&nbsp;";
+1076&nbsp;open&nbsp;1,0
+1077&nbsp;input#1,a
+1078&nbsp;close&nbsp;1
+1079&nbsp;rem&nbsp;********************
+1080&nbsp;rem&nbsp;file&nbsp;not&nbsp;found
+1081&nbsp;list&nbsp;1085
+1085&nbsp;load&nbsp;"no&nbsp;such&nbsp;file",8
+1086&nbsp;rem&nbsp;********************
+1090&nbsp;rem&nbsp;file&nbsp;not&nbsp;open
+1091&nbsp;list&nbsp;1092-1095
+1092&nbsp;open&nbsp;5,3
+1093&nbsp;close&nbsp;5
+1095&nbsp;print#5,"this&nbsp;won't&nbsp;work"
+1096&nbsp;rem&nbsp;********************
+1100&nbsp;rem&nbsp;file&nbsp;open
+1101&nbsp;list&nbsp;1102-1105
+1102&nbsp;open&nbsp;9,3
+1103&nbsp;open&nbsp;9,4
+1106&nbsp;rem&nbsp;********************
+1110&nbsp;rem&nbsp;formula&nbsp;too&nbsp;complex
+1111&nbsp;list&nbsp;1115
+1115&nbsp;print&nbsp;(""+(""+(""+(""))))
+1116&nbsp;rem&nbsp;********************
+1120&nbsp;rem&nbsp;illegal&nbsp;device&nbsp;number
+1121&nbsp;list&nbsp;1125
+1125&nbsp;load&nbsp;"$",0
+1126&nbsp;rem&nbsp;********************
+1130&nbsp;rem&nbsp;illegal&nbsp;direct
+1131&nbsp;i$="input&nbsp;a":gosub&nbsp;2000
+1135&nbsp;end
+1136&nbsp;rem&nbsp;********************
+1140&nbsp;rem&nbsp;illegal&nbsp;quantity
+1141&nbsp;list&nbsp;1145
+1145&nbsp;poke&nbsp;53281,300
+1146&nbsp;rem&nbsp;********************
+1150&nbsp;rem&nbsp;load&nbsp;error
+1151&nbsp;print&nbsp;"The&nbsp;only&nbsp;way&nbsp;to&nbsp;reproduce&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this&nbsp;is&nbsp;with"
+1152&nbsp;print&nbsp;"an&nbsp;actual&nbsp;datasette&nbsp;tape&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drive."
+1155&nbsp;gosub&nbsp;2500
+1156&nbsp;goto&nbsp;1
+1159&nbsp;rem&nbsp;********************
+1160&nbsp;rem&nbsp;missing&nbsp;file&nbsp;name
+1161&nbsp;list&nbsp;1165
+1165&nbsp;load&nbsp;"",8
+1166&nbsp;rem&nbsp;********************
+1170&nbsp;rem&nbsp;next&nbsp;without&nbsp;for
+1171&nbsp;list&nbsp;1175
+1175&nbsp;next
+1176&nbsp;rem&nbsp;********************
+1180&nbsp;rem&nbsp;not&nbsp;input&nbsp;file
+1181&nbsp;list&nbsp;1185
+1185&nbsp;open&nbsp;0
+1186&nbsp;rem&nbsp;********************
+1190&nbsp;rem&nbsp;not&nbsp;output&nbsp;file
+1191&nbsp;list&nbsp;1195:print
+1193&nbsp;print&nbsp;"Press&nbsp;STOP&nbsp;key&nbsp;after&nbsp;next&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prompt"
+1194&nbsp;print&nbsp;"then&nbsp;type&nbsp;'print#1'&nbsp;and&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;press&nbsp;RETURN."
+1195&nbsp;open&nbsp;1,1,0
+1199&nbsp;rem&nbsp;********************
+1200&nbsp;rem&nbsp;out&nbsp;of&nbsp;data
+1201&nbsp;list&nbsp;1205
+1205&nbsp;read&nbsp;a
+1206&nbsp;rem&nbsp;********************
+1210&nbsp;rem&nbsp;out&nbsp;of&nbsp;memory
+1211&nbsp;list&nbsp;1212-1218
+1212&nbsp;rem&nbsp;&nbsp;&nbsp;128
+1213&nbsp;rem&nbsp;&nbsp;&nbsp;128
+1214&nbsp;rem&nbsp;x&nbsp;&nbsp;&nbsp;5&nbsp;bytes&nbsp;(float)
+1215&nbsp;rem&nbsp;-----
+1216&nbsp;rem&nbsp;80645&nbsp;bytes&nbsp;>&nbsp;38911
+1217&nbsp;:
+1218&nbsp;dim&nbsp;a(127,127)
+1219&nbsp;rem&nbsp;********************
+1220&nbsp;rem&nbsp;overflow
+1221&nbsp;list&nbsp;1225
+1225&nbsp;print&nbsp;2^127
+1226&nbsp;rem&nbsp;********************
+1230&nbsp;rem&nbsp;redim'd&nbsp;(redimensioned)&nbsp;array
+1231&nbsp;list&nbsp;1232-1234
+1232&nbsp;dim&nbsp;b(12)
+1233&nbsp;dim&nbsp;x(30)
+1234&nbsp;dim&nbsp;b(20)
+1236&nbsp;rem&nbsp;********************
+1240&nbsp;rem&nbsp;redo&nbsp;from&nbsp;start
+1241&nbsp;list&nbsp;1245:print
+1244&nbsp;i$="Name"+chr$(13)+"5":gosub&nbsp;2000
+1245&nbsp;input&nbsp;"Enter&nbsp;a&nbsp;number";a
+1246&nbsp;gosub&nbsp;2500:goto&nbsp;1
+1249&nbsp;rem&nbsp;********************
+1250&nbsp;rem&nbsp;return&nbsp;without&nbsp;gosub
+1251&nbsp;list&nbsp;1255
+1255&nbsp;return
+1256&nbsp;rem&nbsp;********************
+1260&nbsp;rem&nbsp;string&nbsp;too&nbsp;long
+1261&nbsp;list&nbsp;1262-1267:print
+1262&nbsp;x$=""
+1263&nbsp;for&nbsp;i=1&nbsp;to&nbsp;256
+1264&nbsp;::print"Length:";len(x$)
+1265&nbsp;::print&nbsp;x$
+1266&nbsp;::x$=x$+"-C64-"
+1267&nbsp;next&nbsp;i
+1269&nbsp;rem&nbsp;********************
+1270&nbsp;rem&nbsp;syntax
+1271&nbsp;list&nbsp;1275
+1275&nbsp;foobar
+1276&nbsp;rem&nbsp;********************
+1280&nbsp;rem&nbsp;too&nbsp;many&nbsp;files
+1281&nbsp;list&nbsp;1282-1286:print
+1282&nbsp;for&nbsp;i=1&nbsp;to&nbsp;11
+1283&nbsp;::print&nbsp;i;tab(4);"-&nbsp;";
+1284&nbsp;::open&nbsp;i,3
+1285&nbsp;::print&nbsp;"Open"
+1286&nbsp;next&nbsp;i
+1290&nbsp;rem&nbsp;type&nbsp;mismatch
+1291&nbsp;list&nbsp;1295
+1295&nbsp;a="Not&nbsp;a&nbsp;number."
+1296&nbsp;rem&nbsp;********************
+1300&nbsp;rem&nbsp;undef'd&nbsp;(undefined)&nbsp;function
+1301&nbsp;list&nbsp;1304-1305
+1304&nbsp;rem&nbsp;fn&nbsp;q(x)&nbsp;is&nbsp;not&nbsp;declared
+1305&nbsp;print&nbsp;fn&nbsp;q(4)
+1306&nbsp;rem&nbsp;********************
+1309&nbsp;rem&nbsp;********************
+1310&nbsp;rem&nbsp;undef'd&nbsp;(undefined)&nbsp;statement
+1311&nbsp;list&nbsp;4000-4020:print:list&nbsp;1315
+1315&nbsp;goto&nbsp;4010
+1316&nbsp;rem&nbsp;********************
+1320&nbsp;rem&nbsp;verify
+1321&nbsp;list&nbsp;1322-1325
+1322&nbsp;rem&nbsp;the&nbsp;"verify"&nbsp;program&nbsp;does&nbsp;not&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;match&nbsp;this&nbsp;program.
+1323&nbsp;:
+1325&nbsp;verify&nbsp;"other&nbsp;prg.",8
+1999&nbsp;end
+2000&nbsp;rem&nbsp;load&nbsp;buffer&nbsp;for&nbsp;auto&nbsp;input
+2001&nbsp;i$=i$+chr$(13)
+2005&nbsp;for&nbsp;i=1&nbsp;to&nbsp;len(i$):c=asc(mid$(i$,i,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1)):poke&nbsp;630+i,c:next
+2010&nbsp;poke&nbsp;198,len(i$)
+2015&nbsp;return
+2500&nbsp;rem&nbsp;pause&nbsp;for&nbsp;key&nbsp;press
+2505&nbsp;print
+2510&nbsp;print&nbsp;"press&nbsp;a&nbsp;key&nbsp;to&nbsp;continue"
+2515&nbsp;get&nbsp;k$:if&nbsp;k$=""&nbsp;then&nbsp;2515
+2520&nbsp;return
+3000&nbsp;rem&nbsp;copy&nbsp;basic&nbsp;and&nbsp;apply&nbsp;list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;patch
+3001&nbsp;rem&nbsp;"copy"&nbsp;from&nbsp;8bs&t:jun.14,&nbsp;2022
+3002&nbsp;if&nbsp;peek(42773)=174&nbsp;and&nbsp;peek(42774)=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;167&nbsp;then&nbsp;return
+3004&nbsp;print&nbsp;"please&nbsp;wait...":print&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"copying&nbsp;basic&nbsp;and&nbsp;patching..."
+3005&nbsp;poke&nbsp;95,0:poke&nbsp;96,160:rem&nbsp;start
+3010&nbsp;poke&nbsp;90,0:poke&nbsp;91,192:rem&nbsp;end+1
+3015&nbsp;poke&nbsp;88,0:poke&nbsp;89,192:rem&nbsp;dest
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:end+1
+3020&nbsp;sys&nbsp;41919
+3024&nbsp;rem&nbsp;change&nbsp;list&nbsp;exit&nbsp;vector
+3025&nbsp;poke&nbsp;42773,174:poke&nbsp;42774,167
+3030&nbsp;poke&nbsp;1,peek(1)&nbsp;and&nbsp;254
+3035&nbsp;print&nbsp;"";
+3040&nbsp;return
+4000&nbsp;rem&nbsp;illustrates&nbsp;non-existing&nbsp;lines
+4005&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;line&nbsp;4010
+4015&nbsp;:
+4020&nbsp;rem&nbsp;end&nbsp;of&nbsp;block</pre>
             </div>
             <div class="program-comments">
                 <p>This is actually not a submission to Rosetta Code, but is an independent project that was inspired by a YouTube video from the 8-bit Show and Tell channel by Robin Harbon.</p>

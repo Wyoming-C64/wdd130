@@ -34,143 +34,142 @@
             <div class="column-header"><h3>Program Listing</h3></div>
             <div class="column-header"><h3>Comments</h3></div>
             <div class="listing-screenshots">
-                <img class="listing-img-top" src="images/prg-images/24-game-1.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/24-game-1.png" alt="Screenshot of program execution">
                 <img class="listing-img" src="images/prg-images/24-game-2.png" alt="Screenshot of program execution">
                 <img class="listing-img" src="images/prg-images/24-game-3.png" alt="Screenshot of program execution">
                 <img class="listing-img" src="images/prg-images/24-game-4.png" alt="Screenshot of program execution">
                 <img class="listing-img" src="images/prg-images/24-game-5.png" alt="Screenshot of program execution">
-                <img class="listing-img-bottom" src="images/prg-images/24-game-6.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/24-game-6.png" alt="Screenshot of program execution">
             </div>
             <div class="listing-code">
-                <pre>
-1 rem 24 game
-2 rem for rosetta code
-10 rem use appropriate basic base address
-11 bh=08:bl=01: 
-   rem $0801 commodore 64
-12 rem bh=16:bl=01: 
-   rem $1001 commodore +4
-13 rem bh=18:bl=01: 
-   rem $1201 commodore vic-20 (35k ram)
-14 rem bh=04:bl=01: 
-   rem $0401 commodore pet
-15 rem bh=28:bl=01: 
-   rem $1c01 commodore 128 (bank 0)
-35 print chr$(147);chr$(14);
-   "Initializing...":gosub 1400
-40 gosub 1440:n$="":x=rnd(-ti):rem similar to 'randomize'
-45 for i=1 to 4
-50 t$=str$(int(rnd(1)*9)+1)
-55 n$=n$+mid$(t$,2,1)
-60 next i
-65 print chr$(147)
-70 print spc(16);"24 Game"
-71 print:print " The goal of this game is to formulate"
-72 print:print " an arithmetic expression that"
-73 print:print " evaluates to a value of 24, however"
-74 print:print " you may only use four numbers provided"
-75 print:print " at random by the computer and the"
-76 print:print " standard arithmetic operations of add,"
-77 print:print " subtract, multiply, and divide. Each"
-78 print:print " digit must be used by itself. (e.g. if"
-79 print:print " given 1, 2, 3, 4, you cannot combine"
-80 print:print " 1 and 2 to make 12.)"
-89 gosub 1000
-90 i$="":f$="":p$=""
-95 print chr$(147);"Allowed characters:"
-100 i$=n$+"+-*/()"
-110 print
-120 for i=1 to len(i$)
-130 print mid$(i$,i,1);" ";
-140 next i:print
-150 print:print "Spaces are ignored."
-155 print "Enter 'end' to end.":print
-160 input "Enter the formula";f$
-170 if f$="end" then print "Program terminated.":end
-180 print:print "Checking syntax... ";tab(34);
-190 for i=1 to len(f$)
-200 if mid$(f$,i,1)=" " then next i
-210 c$=mid$(f$,i,1)
-220 if c$="+" or c$="-" or c$="*" or c$="/" then p$=p$+"o":goto 250
-230 if c$="(" or c$=")" then p$=p$+c$:goto 250
-240 p$=p$+"n"
-250 next i
-260 restore
-270 for i=1 to 11
-280 read t$
-290 if t$=p$ then i=11
-300 next i
-310 if t$&lt;&gt;p$ then gosub 1100:gosub 1000:goto 90
-315 print "OK":print "Checking for illegal numbers... ";tab(34);
-320 for i=1 to len(f$)
-330 for j=1 to 10
-335 ft$=mid$(f$,i,1)
-336 il$=left$(i$,j-1):it$=mid$(i$,j,1):ir$=mid$(i$,j+1,len(i$))
-340 if ft$=it$ and ft$&gt;"0" and ft$&lt;="9" then i$=il$+" "+ir$
-350 next j
-360 next i
-370 if mid$(i$,1,4)&lt;&gt;"    " then gosub 1200:gosub 1000:goto 90
-375 print "OK":print "Evaluating expression...":print:print tab(10);f$;" =";
-380 gosub 600:rem r=val(f$)
-390 print r;" "
-400 if r&lt;&gt;24 then gosub 1300:gosub 1000:goto 90
-410 print "Correct!"
-420 print:print "Would you like to go again (y/n)? ";
-425 get k$:if k$&lt;&gt;"y" and k$&lt;&gt;"n" then 425
-430 print k$
-435 if k$="y" then goto 40
-440 print:print "Very well. Have a nice day!"
-450 end
-500 rem pattern matching
-501 data "nononon","(non)onon",
-    "nono(non)"
-504 data "no(no(non))","((non)on)on",
-    "no(non)on"
-507 data "(non)o(non)","no((non)on)",
-    "(nonon)on"
-510 data "(no(non))on","no(nonon)"
-600 rem get basic to evaluate our expression
-605 a$="r="+f$:gosub 1440
-610 for i=1 to len(a$)
-615 rem simple token translation
-620 b=asc(mid$(a$,i,1))
-625 if (b&gt;41 and b&lt;48) or b=61 or b=94 then b=t(b)
-630 poke (ad+i-1),b
-635 next
-640 gosub 2000
-645 rem gosub 1440:rem uncomment to clear evaluation line after use
-650 return
-1000 rem screen pause
-1005 pt$=" Press a key to continue. "
-1010 print:print spc(20-int(len(pt$)/2));
-1015 print chr$(18);pt$;chr$(146);
-1020 get k$:if k$=""then 1020
-1030 return
-1100 rem syntax error
-1105 print "ERROR":print
-1110 print "Maybe something is out of place..."
-1120 return
-1200 rem invalid arguments
-1205 print "ERROR":print
-1210 print "?Invalid Arguments - "
-1215 print "You used a number that is not allowed."
-1220 return
-1300 rem wrong formula
-1305 print:print "Wrong answer. Try again."
-1310 return
+                <pre>1&nbsp;rem&nbsp;24&nbsp;game
+2&nbsp;rem&nbsp;for&nbsp;rosetta&nbsp;code
+10&nbsp;rem&nbsp;use&nbsp;appropriate&nbsp;basic&nbsp;base&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;address
+11&nbsp;bh=08:bl=01:&nbsp;
+&nbsp;&nbsp;&nbsp;rem&nbsp;$0801&nbsp;commodore&nbsp;64
+12&nbsp;rem&nbsp;bh=16:bl=01:&nbsp;
+&nbsp;&nbsp;&nbsp;rem&nbsp;$1001&nbsp;commodore&nbsp;+4
+13&nbsp;rem&nbsp;bh=18:bl=01:&nbsp;
+&nbsp;&nbsp;&nbsp;rem&nbsp;$1201&nbsp;commodore&nbsp;vic-20&nbsp;(35k&nbsp;ram)
+14&nbsp;rem&nbsp;bh=04:bl=01:&nbsp;
+&nbsp;&nbsp;&nbsp;rem&nbsp;$0401&nbsp;commodore&nbsp;pet
+15&nbsp;rem&nbsp;bh=28:bl=01:&nbsp;
+&nbsp;&nbsp;&nbsp;rem&nbsp;$1c01&nbsp;commodore&nbsp;128&nbsp;(bank&nbsp;0)
+35&nbsp;print&nbsp;chr$(147);chr$(14);
+&nbsp;&nbsp;&nbsp;"Initializing...":gosub&nbsp;1400
+40&nbsp;gosub&nbsp;1440:n$="":x=rnd(-ti):rem&nbsp;similar&nbsp;to&nbsp;'randomize'
+45&nbsp;for&nbsp;i=1&nbsp;to&nbsp;4
+50&nbsp;t$=str$(int(rnd(1)*9)+1)
+55&nbsp;n$=n$+mid$(t$,2,1)
+60&nbsp;next&nbsp;i
+65&nbsp;print&nbsp;chr$(147)
+70&nbsp;print&nbsp;spc(16);"24&nbsp;Game"
+71&nbsp;print:print&nbsp;"&nbsp;The&nbsp;goal&nbsp;of&nbsp;this&nbsp;game&nbsp;is&nbsp;to&nbsp;formulate"
+72&nbsp;print:print&nbsp;"&nbsp;an&nbsp;arithmetic&nbsp;expression&nbsp;that"
+73&nbsp;print:print&nbsp;"&nbsp;evaluates&nbsp;to&nbsp;a&nbsp;value&nbsp;of&nbsp;24,&nbsp;however"
+74&nbsp;print:print&nbsp;"&nbsp;you&nbsp;may&nbsp;only&nbsp;use&nbsp;four&nbsp;numbers&nbsp;provided"
+75&nbsp;print:print&nbsp;"&nbsp;at&nbsp;random&nbsp;by&nbsp;the&nbsp;computer&nbsp;and&nbsp;the"
+76&nbsp;print:print&nbsp;"&nbsp;standard&nbsp;arithmetic&nbsp;operations&nbsp;of&nbsp;add,"
+77&nbsp;print:print&nbsp;"&nbsp;subtract,&nbsp;multiply,&nbsp;and&nbsp;divide.&nbsp;Each"
+78&nbsp;print:print&nbsp;"&nbsp;digit&nbsp;must&nbsp;be&nbsp;used&nbsp;by&nbsp;itself.&nbsp;(e.g.&nbsp;if"
+79&nbsp;print:print&nbsp;"&nbsp;given&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;you&nbsp;cannot&nbsp;combine"
+80&nbsp;print:print&nbsp;"&nbsp;1&nbsp;and&nbsp;2&nbsp;to&nbsp;make&nbsp;12.)"
+89&nbsp;gosub&nbsp;1000
+90&nbsp;i$="":f$="":p$=""
+95&nbsp;print&nbsp;chr$(147);"Allowed&nbsp;characters:"
+100&nbsp;i$=n$+"+-*/()"
+110&nbsp;print
+120&nbsp;for&nbsp;i=1&nbsp;to&nbsp;len(i$)
+130&nbsp;print&nbsp;mid$(i$,i,1);"&nbsp;";
+140&nbsp;next&nbsp;i:print
+150&nbsp;print:print&nbsp;"Spaces&nbsp;are&nbsp;ignored."
+155&nbsp;print&nbsp;"Enter&nbsp;'end'&nbsp;to&nbsp;end.":print
+160&nbsp;input&nbsp;"Enter&nbsp;the&nbsp;formula";f$
+170&nbsp;if&nbsp;f$="end"&nbsp;then&nbsp;print&nbsp;"Program&nbsp;terminated.":end
+180&nbsp;print:print&nbsp;"Checking&nbsp;syntax...&nbsp;";tab(34);
+190&nbsp;for&nbsp;i=1&nbsp;to&nbsp;len(f$)
+200&nbsp;if&nbsp;mid$(f$,i,1)="&nbsp;"&nbsp;then&nbsp;next&nbsp;i
+210&nbsp;c$=mid$(f$,i,1)
+220&nbsp;if&nbsp;c$="+"&nbsp;or&nbsp;c$="-"&nbsp;or&nbsp;c$="*"&nbsp;or&nbsp;c$="/"&nbsp;then&nbsp;p$=p$+"o":goto&nbsp;250
+230&nbsp;if&nbsp;c$="("&nbsp;or&nbsp;c$=")"&nbsp;then&nbsp;p$=p$+c$:goto&nbsp;250
+240&nbsp;p$=p$+"n"
+250&nbsp;next&nbsp;i
+260&nbsp;restore
+270&nbsp;for&nbsp;i=1&nbsp;to&nbsp;11
+280&nbsp;read&nbsp;t$
+290&nbsp;if&nbsp;t$=p$&nbsp;then&nbsp;i=11
+300&nbsp;next&nbsp;i
+310&nbsp;if&nbsp;t$&lt;&gt;p$&nbsp;then&nbsp;gosub&nbsp;1100:gosub&nbsp;1000:goto&nbsp;90
+315&nbsp;print&nbsp;"OK":print&nbsp;"Checking&nbsp;for&nbsp;illegal&nbsp;numbers...&nbsp;";tab(34);
+320&nbsp;for&nbsp;i=1&nbsp;to&nbsp;len(f$)
+330&nbsp;for&nbsp;j=1&nbsp;to&nbsp;10
+335&nbsp;ft$=mid$(f$,i,1)
+336&nbsp;il$=left$(i$,j-1):it$=mid$(i$,j,1):ir$=mid$(i$,j+1,len(i$))
+340&nbsp;if&nbsp;ft$=it$&nbsp;and&nbsp;ft$&gt;"0"&nbsp;and&nbsp;ft$&lt;="9"&nbsp;then&nbsp;i$=il$+"&nbsp;"+ir$
+350&nbsp;next&nbsp;j
+360&nbsp;next&nbsp;i
+370&nbsp;if&nbsp;mid$(i$,1,4)&lt;&gt;"&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;then&nbsp;gosub&nbsp;1200:gosub&nbsp;1000:goto&nbsp;90
+375&nbsp;print&nbsp;"OK":print&nbsp;"Evaluating&nbsp;expression...":print:print&nbsp;tab(10);f$;"&nbsp;=";
+380&nbsp;gosub&nbsp;600:rem&nbsp;r=val(f$)
+390&nbsp;print&nbsp;r;"&nbsp;"
+400&nbsp;if&nbsp;r&lt;&gt;24&nbsp;then&nbsp;gosub&nbsp;1300:gosub&nbsp;1000:goto&nbsp;90
+410&nbsp;print&nbsp;"Correct!"
+420&nbsp;print:print&nbsp;"Would&nbsp;you&nbsp;like&nbsp;to&nbsp;go&nbsp;again&nbsp;(y/n)?&nbsp;";
+425&nbsp;get&nbsp;k$:if&nbsp;k$&lt;&gt;"y"&nbsp;and&nbsp;k$&lt;&gt;"n"&nbsp;then&nbsp;425
+430&nbsp;print&nbsp;k$
+435&nbsp;if&nbsp;k$="y"&nbsp;then&nbsp;goto&nbsp;40
+440&nbsp;print:print&nbsp;"Very&nbsp;well.&nbsp;Have&nbsp;a&nbsp;nice&nbsp;day!"
+450&nbsp;end
+500&nbsp;rem&nbsp;pattern&nbsp;matching
+501&nbsp;data&nbsp;"nononon","(non)onon",
+&nbsp;&nbsp;&nbsp;&nbsp;"nono(non)"
+504&nbsp;data&nbsp;"no(no(non))","((non)on)on",
+&nbsp;&nbsp;&nbsp;&nbsp;"no(non)on"
+507&nbsp;data&nbsp;"(non)o(non)","no((non)on)",
+&nbsp;&nbsp;&nbsp;&nbsp;"(nonon)on"
+510&nbsp;data&nbsp;"(no(non))on","no(nonon)"
+600&nbsp;rem&nbsp;get&nbsp;basic&nbsp;to&nbsp;evaluate&nbsp;our&nbsp;expression
+605&nbsp;a$="r="+f$:gosub&nbsp;1440
+610&nbsp;for&nbsp;i=1&nbsp;to&nbsp;len(a$)
+615&nbsp;rem&nbsp;simple&nbsp;token&nbsp;translation
+620&nbsp;b=asc(mid$(a$,i,1))
+625&nbsp;if&nbsp;(b&gt;41&nbsp;and&nbsp;b&lt;48)&nbsp;or&nbsp;b=61&nbsp;or&nbsp;b=94&nbsp;then&nbsp;b=t(b)
+630&nbsp;poke&nbsp;(ad+i-1),b
+635&nbsp;next
+640&nbsp;gosub&nbsp;2000
+645&nbsp;rem&nbsp;gosub&nbsp;1440:rem&nbsp;uncomment&nbsp;to&nbsp;clear&nbsp;evaluation&nbsp;line&nbsp;after&nbsp;use
+650&nbsp;return
+1000&nbsp;rem&nbsp;screen&nbsp;pause
+1005&nbsp;pt$="&nbsp;Press&nbsp;a&nbsp;key&nbsp;to&nbsp;continue.&nbsp;"
+1010&nbsp;print:print&nbsp;spc(20-int(len(pt$)/2));
+1015&nbsp;print&nbsp;chr$(18);pt$;chr$(146);
+1020&nbsp;get&nbsp;k$:if&nbsp;k$=""then&nbsp;1020
+1030&nbsp;return
+1100&nbsp;rem&nbsp;syntax&nbsp;error
+1105&nbsp;print&nbsp;"ERROR":print
+1110&nbsp;print&nbsp;"Maybe&nbsp;something&nbsp;is&nbsp;out&nbsp;of&nbsp;place..."
+1120&nbsp;return
+1200&nbsp;rem&nbsp;invalid&nbsp;arguments
+1205&nbsp;print&nbsp;"ERROR":print
+1210&nbsp;print&nbsp;"?Invalid&nbsp;Arguments&nbsp;-&nbsp;"
+1215&nbsp;print&nbsp;"You&nbsp;used&nbsp;a&nbsp;number&nbsp;that&nbsp;is&nbsp;not&nbsp;allowed."
+1220&nbsp;return
+1300&nbsp;rem&nbsp;wrong&nbsp;formula
+1305&nbsp;print:print&nbsp;"Wrong&nbsp;answer.&nbsp;Try&nbsp;again."
+1310&nbsp;return
 1400&nbsp;dim&nbsp;t(94):t(43)=170:t(45)=171:t(42)=172:t(47)=173:t(61)=178:t(94)=174
-1405 rem locate line 2005 in ram
-1410 lh=bh:ll=bl:nh=0:nl=0
-1415 ad=lh*256+ll
-1420 lh=peek(ad+1):ll=peek(ad)
+1405&nbsp;rem&nbsp;locate&nbsp;line&nbsp;2005&nbsp;in&nbsp;ram
+1410&nbsp;lh=bh:ll=bl:nh=0:nl=0
+1415&nbsp;ad=lh*256+ll
+1420&nbsp;lh=peek(ad+1):ll=peek(ad)
 1425&nbsp;nl=peek(ad+2):nh=peek(ad+3):n=nh*256+nl
-1430 if n&lt;&gt;2005 then goto 1415
-1435 ad=ad+4:return
-1440 for j=ad to ad+73:poke j,asc(":"):next
-1445 return
-2000 rem put 74 colons on the next line
+1430&nbsp;if&nbsp;n&lt;&gt;2005&nbsp;then&nbsp;goto&nbsp;1415
+1435&nbsp;ad=ad+4:return
+1440&nbsp;for&nbsp;j=ad&nbsp;to&nbsp;ad+73:poke&nbsp;j,asc(":"):next
+1445&nbsp;return
+2000&nbsp;rem&nbsp;put&nbsp;74&nbsp;colons&nbsp;on&nbsp;the&nbsp;next&nbsp;line
 2005&nbsp;::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-2010 return
+2010&nbsp;return
                 </pre>
             </div>
             <div class="program-comments">

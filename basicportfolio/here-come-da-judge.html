@@ -42,19 +42,19 @@
                     <div class="modal-content">
                         <div class="mySlides">
                             <div class="numbertext">1/4</div>
-                            <img class="slide-img" src="images/prg-images/da-judge-1.png" style="width:100%" alt="Title screen.">
+                            <img class="slide-img" src="images/prg-images/da-judge-1.png" alt="Title screen.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">2/4</div>
-                            <img class="slide-img" src="images/prg-images/da-judge-2.png" style="width:100%" alt="Confirmation of data entry.">
+                            <img class="slide-img" src="images/prg-images/da-judge-2.png" alt="Confirmation of data entry.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">3/4</div>
-                            <img class="slide-img" src="images/prg-images/da-judge-3.png" style="width:100%" alt="After calculations are performed.">
+                            <img class="slide-img" src="images/prg-images/da-judge-3.png" alt="After calculations are performed.">
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">4/4</div>
-                            <img class="slide-img" src="images/prg-images/da-judge-4.png" style="width:100%" alt="Program end.">
+                            <img class="slide-img" src="images/prg-images/da-judge-4.png" alt="Program end.">
                         </div>
                         <!-- Next/previous controls -->
                         <a class="prev" onclick="plusSlides(-1)">&lt;</a>
@@ -68,119 +68,100 @@
                 </div>
             </div>
             <div class="listing-code">
-<pre>4 POKE53281,1:POKE53280,6
-5 PRINT"      HERE COME DA JUDGE!"
-6 PRINT"         PROGRAMMED BY MIKE LEWIS"
-7 PRINT"         (PRESS ANY KEY TO BEGIN)"
-8 GET A$:IF A$="" THEN GOTO 8
-9 BD=0:MO=0:MI=0:SF=0:I=0:TB=0
-10 PRINT "NAME(LAST,FIRST)";:INPUT L$
-   ,N$:GOSUB 1000
-20 PRINT "ORIGINAL BALANCE DUE";:INPUTBD
-   :GOSUB 1000
-30 PRINT "NO. OF MONTHS";:INPUT MO
-   :GOSUB 1000
-40 PRINT "MISC. CHARGES";:INPUT MI
-   :GOSUB 1000
-50 PRINT "SERVICE FEE";:INPUT SF
-   :GOSUB 1000
-60 CF=25:PP=30
-70 PRINT "NAME:"TAB(22);L$", "N$
-71 PRINT "ORIGINAL BALANCE DUE:"
-   ;TAB(22);"$"BD
-72 PRINT "MONTHS:";TAB(23);MO
-73 PRINT "MISC. FEE:";TAB(22);"$"MI
-74 PRINT "SERVICE FEE:";TAB(22);"$"SF
-75 PRINT "
-"
-76 B=BD
-77 PRINT "ANY CHANGES";:INPUTS$
-78 IF S$="Y" THEN T=1:GOSUB 2999
-79 GOSUB 4000:GOSUB 1500
-80 END
-1000 IF T=0 THEN RETURN
-1001 IF T=1 THEN T=0:GOTO 70
-1500 REM ***BREAK***
-1501 I$=STR$(I)
-1502 IFI>99.999999THEN Y$=MID$(I$,5,2)
-1503 IFI<=99.999999THENY$=MID$(I$,4,2)
-1504 A=VAL(Y$):X=VAL(I$):V=INT(X)
-     :X$=STR$(V)
-2004 PRINT"CENTRAL UTAH EYECARE"
-2005 PRINT""
-2006 PRINT"NAME:    ";L$", "N$
-2007 PRINT"ORIGINAL BALANCE DUE:"TAB(31)
-     ;"R$"BD
-2008 PRINT"NUMBER OF MONTHS:";TAB(31)
-     ;" ";MO
-2009 PRINT"TOTAL SERVICE CHARGES:"
-     ;TAB(31);"R$"X$+Y$
-2010 PRINT"MISC. FEES"
-2011 PRINT"(CERT. POSTAGE, ETC.)";TAB(31)
-     ;"R$";MI
-2012 PRINT"COURT SERVICE FEE:";TAB(31)
-     ;"$"SF
-2014 PRINT"COURT FILING FEE:";TAB(31)
-     ;"$ 25.00"
-2016 PRINT"PREPARATION AND"
-2017 PRINT "PRESENTATION FEE:";TAB(31)
-     ;"$ 30.00’"
-2018 PRINT"TOTAL DUE:";TAB(31);"$"V$
-     +W$;""
-2020 PRINT "
-"
-2025 PRINT "DO YOU WISH TO PRINT THIS";
-     :INPUTPR$
-2030 IFPR$="Y"THEN GOTO 4700
-2031 GOTO 5000
-2500 REM ***BREAK***
-2999 PRINT "N,B,M,C, OR S?"
-3000 GET W$:IFW$="" THEN 3000
-3001 IF W$="N" THEN GOTO 10
-3002 IF W$="B" THEN GOTO 20
-3003 IF W$="M" THEN GOTO 30
-3004 IF W$="C" THEN GOTO 40
-3005 IF W$="S" THEN GOTO 50
-3006 GOTO 3000
-4000 IF MO<=6 THEN M=MO:GOTO 4500
-4001 M=MO-6
-4002 FOR R=1 TO M
-4003 X=BD*0.015
-4005 IF X<=2.0 THEN AM=2.0
-4006 IF X>2.0 THEN AM=X
-4009 BD=BD+AM
-4010 NEXT:M=6
-4500 FOR R=1 TO M
-4501 X=BD*0.015
-4502 IF X<=3.0 THEN AM=3.0
-4503 IF X>3.0 THEN AM=X
-4504 BD=BD+AM:NEXT:H=BD:I=H-B:GOTO 4600
-4600 TB=H+MI+CF+SF+PP
-4601 TB$=STR$(TB)
-4602 W$=MID$(TB$,5,2)
-4603 A=VAL(W$):X=VAL(TB$):V=INT(X):V$=
-     STR$(V):RETURN
-4700 PRINT "VERIFY PRINTER IS ON AND PAPER IS SET."
-4701 PRINT "  PRESS ANY KEY TO CONTINUE."
-4702 GET A$:IF A$="" THEN 4702
-4703 OPEN7,4
-4704 PRINT#7,CHR$(14)"CENTRAL UTAH EYECARE"
-4705 PRINT#7,""
-4706 PRINT#7:PRINT#7,CHR$(15)"NAME:    ";L$", "N$
-4707 PRINT#7,"ORIGINAL BALANCE DUE:         $"B
-4708 PRINT#7,"NUMBER OF MONTHS      "MO
-4709 PRINT#7,"TOTAL SERVICE CHARGES:          "X$+Y$
-4710 PRINT#7,"MISC. FEES (CERT. POSTAGE, ETC)$"MI
-4711 PRINT#7,"COURT SERVICE FEE:             $"SF
-4712 PRINT#7,"COURT FILING FEE:              $ 25.00"
-4713 PRINT#7,"PREPARATION/PRESENTATION FEE:  $ 30.00"
-4714 PRINT#7,"TOTAL DUE:                     $"V$+W$
-4720 PRINT#7,""
-4725 PRINT#7:PRINT#7
-4730 CLOSE7:GOTO 5000
-5000 PRINT "ANY MORE";:INPUT A$
-5001 IF A$="Y" THEN GOTO 9
-5002 PRINT "MAY DA JUDGE RULE IN YOUR FAVOR!":END</pre>
+<pre>4&nbsp;POKE53281,1:POKE53280,6
+5&nbsp;PRINT"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HERE&nbsp;COME&nbsp;DA&nbsp;JUDGE!"
+6&nbsp;PRINT"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROGRAMMED&nbsp;BY&nbsp;MIKE&nbsp;LEWIS"
+7&nbsp;PRINT"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(PRESS&nbsp;ANY&nbsp;KEY&nbsp;TO&nbsp;BEGIN)"
+8&nbsp;GET&nbsp;A$:IF&nbsp;A$=""&nbsp;THEN&nbsp;GOTO&nbsp;8
+9&nbsp;BD=0:MO=0:MI=0:SF=0:I=0:TB=0
+10&nbsp;PRINT&nbsp;"NAME(LAST,FIRST)";:INPUT&nbsp;L$,N$:GOSUB&nbsp;1000
+20&nbsp;PRINT&nbsp;"ORIGINAL&nbsp;BALANCE&nbsp;DUE";:INPUTBD:GOSUB&nbsp;1000
+30&nbsp;PRINT&nbsp;"NO.&nbsp;OF&nbsp;MONTHS";:INPUT&nbsp;MO:GOSUB&nbsp;1000
+40&nbsp;PRINT&nbsp;"MISC.&nbsp;CHARGES";:INPUT&nbsp;MI:GOSUB&nbsp;1000
+50&nbsp;PRINT&nbsp;"SERVICE&nbsp;FEE";:INPUT&nbsp;SF:GOSUB&nbsp;1000
+60&nbsp;CF=25:PP=30
+70&nbsp;PRINT&nbsp;"NAME:"TAB(22);L$",&nbsp;"N$
+71&nbsp;PRINT&nbsp;"ORIGINAL&nbsp;BALANCE&nbsp;DUE:";TAB(22);"$"BD
+72&nbsp;PRINT&nbsp;"MONTHS:";TAB(23);MO
+73&nbsp;PRINT&nbsp;"MISC.&nbsp;FEE:";TAB(22);"$"MI
+74&nbsp;PRINT&nbsp;"SERVICE&nbsp;FEE:";TAB(22);"$"SF
+75&nbsp;PRINT&nbsp;""
+76&nbsp;B=BD
+77&nbsp;PRINT&nbsp;"ANY&nbsp;CHANGES";:INPUTS$
+78&nbsp;IF&nbsp;S$="Y"&nbsp;THEN&nbsp;T=1:GOSUB&nbsp;2999
+79&nbsp;GOSUB&nbsp;4000:GOSUB&nbsp;1500
+80&nbsp;END
+1000&nbsp;IF&nbsp;T=0&nbsp;THEN&nbsp;RETURN
+1001&nbsp;IF&nbsp;T=1&nbsp;THEN&nbsp;T=0:GOTO&nbsp;70
+1500&nbsp;REM&nbsp;***BREAK***
+1501&nbsp;I$=STR$(I)
+1502&nbsp;IFI&gt;99.999999THEN&nbsp;Y$=MID$(I$,5,2)
+1503&nbsp;IFI&lt;=99.999999THENY$=MID$(I$,4,2)
+1504&nbsp;A=VAL(Y$):X=VAL(I$):V=INT(X):X$=STR$(V)
+2004&nbsp;PRINT"CENTRAL&nbsp;UTAH&nbsp;EYECARE"
+2005&nbsp;PRINT""
+2006&nbsp;PRINT"NAME:&nbsp;&nbsp;&nbsp;&nbsp;";L$",&nbsp;"N$
+2007&nbsp;PRINT"ORIGINAL&nbsp;BALANCE&nbsp;DUE:"TAB(31);"R$"BD
+2008&nbsp;PRINT"NUMBER&nbsp;OF&nbsp;MONTHS:";TAB(31);"&nbsp;";MO
+2009&nbsp;PRINT"TOTAL&nbsp;SERVICE&nbsp;CHARGES:";TAB(31);"R$"X$+Y$
+2010&nbsp;PRINT"MISC.&nbsp;FEES"
+2011&nbsp;PRINT"(CERT.&nbsp;POSTAGE,&nbsp;ETC.)";TAB(31);"R$";MI
+2012&nbsp;PRINT"COURT&nbsp;SERVICE&nbsp;FEE:";TAB(31);"$"SF
+2014&nbsp;PRINT"COURT&nbsp;FILING&nbsp;FEE:";TAB(31);"$&nbsp;25.00"
+2016&nbsp;PRINT"PREPARATION&nbsp;AND"
+2017&nbsp;PRINT&nbsp;"PRESENTATION&nbsp;FEE:";TAB(31);"$&nbsp;30.00’"
+2018&nbsp;PRINT"TOTAL&nbsp;DUE:";TAB(31);"$"V$+W$;""
+2020&nbsp;PRINT&nbsp;""
+2025&nbsp;PRINT&nbsp;"DO&nbsp;YOU&nbsp;WISH&nbsp;TO&nbsp;PRINT&nbsp;THIS";:INPUTPR$
+2030&nbsp;IFPR$="Y"THEN&nbsp;GOTO&nbsp;4700
+2031&nbsp;GOTO&nbsp;5000
+2500&nbsp;REM&nbsp;***BREAK***
+2999&nbsp;PRINT&nbsp;"N,B,M,C,&nbsp;OR&nbsp;S?"
+3000&nbsp;GET&nbsp;W$:IFW$=""&nbsp;THEN&nbsp;3000
+3001&nbsp;IF&nbsp;W$="N"&nbsp;THEN&nbsp;GOTO&nbsp;10
+3002&nbsp;IF&nbsp;W$="B"&nbsp;THEN&nbsp;GOTO&nbsp;20
+3003&nbsp;IF&nbsp;W$="M"&nbsp;THEN&nbsp;GOTO&nbsp;30
+3004&nbsp;IF&nbsp;W$="C"&nbsp;THEN&nbsp;GOTO&nbsp;40
+3005&nbsp;IF&nbsp;W$="S"&nbsp;THEN&nbsp;GOTO&nbsp;50
+3006&nbsp;GOTO&nbsp;3000
+4000&nbsp;IF&nbsp;MO&lt;=6&nbsp;THEN&nbsp;M=MO:GOTO&nbsp;4500
+4001&nbsp;M=MO-6
+4002&nbsp;FOR&nbsp;R=1&nbsp;TO&nbsp;M
+4003&nbsp;X=BD*0.015
+4005&nbsp;IF&nbsp;X&lt;=2.0&nbsp;THEN&nbsp;AM=2.0
+4006&nbsp;IF&nbsp;X&gt;2.0&nbsp;THEN&nbsp;AM=X
+4009&nbsp;BD=BD+AM
+4010&nbsp;NEXT:M=6
+4500&nbsp;FOR&nbsp;R=1&nbsp;TO&nbsp;M
+4501&nbsp;X=BD*0.015
+4502&nbsp;IF&nbsp;X&lt;=3.0&nbsp;THEN&nbsp;AM=3.0
+4503&nbsp;IF&nbsp;X&gt;3.0&nbsp;THEN&nbsp;AM=X
+4504&nbsp;BD=BD+AM:NEXT:H=BD:I=H-B:GOTO&nbsp;4600
+4600&nbsp;TB=H+MI+CF+SF+PP
+4601&nbsp;TB$=STR$(TB)
+4602&nbsp;W$=MID$(TB$,5,2)
+4603&nbsp;A=VAL(W$):X=VAL(TB$):V=INT(X):V$=STR$(V):RETURN
+4700&nbsp;PRINT&nbsp;"VERIFY&nbsp;PRINTER&nbsp;IS&nbsp;ON&nbsp;AND&nbsp;PAPER&nbsp;IS&nbsp;SET."
+4701&nbsp;PRINT&nbsp;"&nbsp;&nbsp;PRESS&nbsp;ANY&nbsp;KEY&nbsp;TO&nbsp;CONTINUE."
+4702&nbsp;GET&nbsp;A$:IF&nbsp;A$=""&nbsp;THEN&nbsp;4702
+4703&nbsp;OPEN7,4
+4704&nbsp;PRINT#7,CHR$(14)"CENTRAL&nbsp;UTAH&nbsp;EYECARE"
+4705&nbsp;PRINT#7,""
+4706&nbsp;PRINT#7:PRINT#7,CHR$(15)"NAME:&nbsp;&nbsp;&nbsp;&nbsp;";L$",&nbsp;"N$
+4707&nbsp;PRINT#7,"ORIGINAL&nbsp;BALANCE&nbsp;DUE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$"B
+4708&nbsp;PRINT#7,"NUMBER&nbsp;OF&nbsp;MONTHS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MO
+4709&nbsp;PRINT#7,"TOTAL&nbsp;SERVICE&nbsp;CHARGES:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"X$+Y$
+4710&nbsp;PRINT#7,"MISC.&nbsp;FEES&nbsp;(CERT.&nbsp;POSTAGE,&nbsp;ETC)$"MI
+4711&nbsp;PRINT#7,"COURT&nbsp;SERVICE&nbsp;FEE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$"SF
+4712&nbsp;PRINT#7,"COURT&nbsp;FILING&nbsp;FEE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$&nbsp;25.00"
+4713&nbsp;PRINT#7,"PREPARATION/PRESENTATION&nbsp;FEE:&nbsp;&nbsp;$&nbsp;30.00"
+4714&nbsp;PRINT#7,"TOTAL&nbsp;DUE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$"V$+W$
+4720&nbsp;PRINT#7,""
+4725&nbsp;PRINT#7:PRINT#7
+4730&nbsp;CLOSE7:GOTO&nbsp;5000
+5000&nbsp;PRINT&nbsp;"ANY&nbsp;MORE";:INPUT&nbsp;A$
+5001&nbsp;IF&nbsp;A$="Y"&nbsp;THEN&nbsp;GOTO&nbsp;9
+5002&nbsp;PRINT&nbsp;"MAY&nbsp;DA&nbsp;JUDGE&nbsp;RULE&nbsp;IN&nbsp;YOUR&nbsp;FAVOR!":END</pre>
             </div>
             <div class="program-comments">
                 <p>About six years after my very first programming experience, I finally wrote a useful application. This was done at the request of my father who was working many long hours in private practice as an optometrist. Unfortunately, some of his patients were way behind on their bills, and he needed a calculator to figure out what was owed after factoring in interest, processing, and other fees, as well as how long the bill was past due.</p>

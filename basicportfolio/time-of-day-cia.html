@@ -37,70 +37,69 @@
                 <img class="listing-img" src="images/prg-images/system-time.png" alt="Screenshot of program execution">
             </div>
             <div class="listing-code">
-                <pre>1 rem read and set cia time of day clock
-2 rem rosetta code commodore 64/128 example
-10 print chr$(147);chr$(14)
-15&nbsp;hr=56331:mr=56330:sr=56329:tr=56328:gosub 300
-20 print spc(11);"CIA #1 Time of Day"
-21 print:print "Press S to start or stop the clock."
-22 print "Press T to change the time."
-23 print:print "Press Q to quit.":print
-25&nbsp;h=peek(hr):m=peek(mr):s=peek(sr):th=peek(tr):t=h:gosub 200
-35 print chr$(19);:for q=1 to 8:print chr$(17);:next q
-36 print "Clock is:";tab(12);
-   cl$(b):print
-40 print "Hours:";tab(12);h;" "
-45 print "Minutes:";tab(12);m;" "
-50 print "Seconds:";tab(12);s;" "
-55 print "1/10 Sec.:";tab(12);th;" "
-60 print "AM or PM? ";tab(13);ap$
-65 get k$:if k$="" then goto 25
-70 if k$="s" and b=0 then poke tr,0:b=1:goto 25
-75 if k$="s" and b=1 then poke hr,t:b=0:goto 25
-80 if k$="t" then gosub 400:goto 20
-90 if k$="q" then end
-100 goto 25
-200 rem decode bcd
-210 ap$="AM":if (h and 128)=128 then ap$="PM"
-220 s=int((s and 112)/16)*10+(s and 15)
-230 m=int((m and 112)/16)*10+(m and 15)
-240 h=int((h and 48)/16)*10+(h and 15)
-250 return
-300 rem decide if clock is running
-301 rem latch, read/resume
+                <pre>1&nbsp;rem&nbsp;read&nbsp;and&nbsp;set&nbsp;cia&nbsp;time&nbsp;of&nbsp;day&nbsp;clock
+2&nbsp;rem&nbsp;rosetta&nbsp;code&nbsp;commodore&nbsp;64/128&nbsp;example
+10&nbsp;print&nbsp;chr$(147);chr$(14)
+15&nbsp;hr=56331:mr=56330:sr=56329:tr=56328:gosub&nbsp;300
+20&nbsp;print&nbsp;spc(11);"CIA&nbsp;#1&nbsp;Time&nbsp;of&nbsp;Day"
+21&nbsp;print:print&nbsp;"Press&nbsp;S&nbsp;to&nbsp;start&nbsp;or&nbsp;stop&nbsp;the&nbsp;clock."
+22&nbsp;print&nbsp;"Press&nbsp;T&nbsp;to&nbsp;change&nbsp;the&nbsp;time."
+23&nbsp;print:print&nbsp;"Press&nbsp;Q&nbsp;to&nbsp;quit.":print
+25&nbsp;h=peek(hr):m=peek(mr):s=peek(sr):th=peek(tr):t=h:gosub&nbsp;200
+35&nbsp;print&nbsp;chr$(19);:for&nbsp;q=1&nbsp;to&nbsp;8:print&nbsp;chr$(17);:next&nbsp;q
+36&nbsp;print&nbsp;"Clock&nbsp;is:";tab(12);cl$(b):print
+40&nbsp;print&nbsp;"Hours:";tab(12);h;"&nbsp;"
+45&nbsp;print&nbsp;"Minutes:";tab(12);m;"&nbsp;"
+50&nbsp;print&nbsp;"Seconds:";tab(12);s;"&nbsp;"
+55&nbsp;print&nbsp;"1/10&nbsp;Sec.:";tab(12);th;"&nbsp;"
+60&nbsp;print&nbsp;"AM&nbsp;or&nbsp;PM?&nbsp;";tab(13);ap$
+65&nbsp;get&nbsp;k$:if&nbsp;k$=""&nbsp;then&nbsp;goto&nbsp;25
+70&nbsp;if&nbsp;k$="s"&nbsp;and&nbsp;b=0&nbsp;then&nbsp;poke&nbsp;tr,0:b=1:goto&nbsp;25
+75&nbsp;if&nbsp;k$="s"&nbsp;and&nbsp;b=1&nbsp;then&nbsp;poke&nbsp;hr,t:b=0:goto&nbsp;25
+80&nbsp;if&nbsp;k$="t"&nbsp;then&nbsp;gosub&nbsp;400:goto&nbsp;20
+90&nbsp;if&nbsp;k$="q"&nbsp;then&nbsp;end
+100&nbsp;goto&nbsp;25
+200&nbsp;rem&nbsp;decode&nbsp;bcd
+210&nbsp;ap$="AM":if&nbsp;(h&nbsp;and&nbsp;128)=128&nbsp;then&nbsp;ap$="PM"
+220&nbsp;s=int((s&nbsp;and&nbsp;112)/16)*10+(s&nbsp;and&nbsp;15)
+230&nbsp;m=int((m&nbsp;and&nbsp;112)/16)*10+(m&nbsp;and&nbsp;15)
+240&nbsp;h=int((h&nbsp;and&nbsp;48)/16)*10+(h&nbsp;and&nbsp;15)
+250&nbsp;return
+300&nbsp;rem&nbsp;decide&nbsp;if&nbsp;clock&nbsp;is&nbsp;running
+301&nbsp;rem&nbsp;latch,&nbsp;read/resume
 305&nbsp;cl$(0)="Stopped":cl$(1)="Running":b=0
-310 z=peek(hr):t1=peek(tr)
-315 for i=1 to 100:next i
-320 z=peek(hr):t2=peek(tr)
-325 if t1&lt;&gt;t2 then b=1
-330 return
-400 rem change clock value
-405 print chr$(147)
-410 input "Hour";nh$
-415 if val(nh$)&lt;1 or val(nh$)>12 then goto 410
-416 if val(nh$)&lt;10 then nh$="0"+nh$
-420 input "Minutes";nm$
-425 if val(nm$)&lt;0 or val(nm$)>59 then goto 420
-426 if val(nm$)&lt;10 then nm$="0"+nm$
-430 input "Seconds";ns$
-435 if val(ns$)&lt;0 or val(ns$)>59 then goto 430
-436 if val(ns$)&lt;10 then ns$="0"+ns$
-440 print "AM or PM (a,p)? ";
-445 get ap$:if ap$&lt;&gt;"a" and ap$&lt;&gt;"p" then 445
-446 print ap$
-450 ap=0:if ap$="p" then ap=128
-455 rem convert input to bcd
+310&nbsp;z=peek(hr):t1=peek(tr)
+315&nbsp;for&nbsp;i=1&nbsp;to&nbsp;100:next&nbsp;i
+320&nbsp;z=peek(hr):t2=peek(tr)
+325&nbsp;if&nbsp;t1&lt;&gt;t2&nbsp;then&nbsp;b=1
+330&nbsp;return
+400&nbsp;rem&nbsp;change&nbsp;clock&nbsp;value
+405&nbsp;print&nbsp;chr$(147)
+410&nbsp;input&nbsp;"Hour";nh$
+415&nbsp;if&nbsp;val(nh$)&lt;1&nbsp;or&nbsp;val(nh$)>12&nbsp;then&nbsp;goto&nbsp;410
+416&nbsp;if&nbsp;val(nh$)&lt;10&nbsp;then&nbsp;nh$="0"+nh$
+420&nbsp;input&nbsp;"Minutes";nm$
+425&nbsp;if&nbsp;val(nm$)&lt;0&nbsp;or&nbsp;val(nm$)>59&nbsp;then&nbsp;goto&nbsp;420
+426&nbsp;if&nbsp;val(nm$)&lt;10&nbsp;then&nbsp;nm$="0"+nm$
+430&nbsp;input&nbsp;"Seconds";ns$
+435&nbsp;if&nbsp;val(ns$)&lt;0&nbsp;or&nbsp;val(ns$)>59&nbsp;then&nbsp;goto&nbsp;430
+436&nbsp;if&nbsp;val(ns$)&lt;10&nbsp;then&nbsp;ns$="0"+ns$
+440&nbsp;print&nbsp;"AM&nbsp;or&nbsp;PM&nbsp;(a,p)?&nbsp;";
+445&nbsp;get&nbsp;ap$:if&nbsp;ap$&lt;&gt;"a"&nbsp;and&nbsp;ap$&lt;&gt;"p"&nbsp;then&nbsp;445
+446&nbsp;print&nbsp;ap$
+450&nbsp;ap=0:if&nbsp;ap$="p"&nbsp;then&nbsp;ap=128
+455&nbsp;rem&nbsp;convert&nbsp;input&nbsp;to&nbsp;bcd
 457&nbsp;ns=val(mid$(ns$,1,1))*16+val(mid$(ns$,2,1))
 460&nbsp;nm=val(mid$(nm$,1,1))*16+val(mid$(nm$,2,1))
 465&nbsp;nh=val(mid$(nh$,1,1))*16+val(mid$(nh$,2,1))
-470 nh=nh+ap
-475 rem now set values into clock
-480 poke hr,nh:rem set hour stops clock
-485 poke mr,nm:rem set minute
-490 poke sr,ns:rem set second
-495 poke tr,0 :rem set 1/10 starts clock
-497 b=1
-499 print chr$(147):return</pre>
+470&nbsp;nh=nh+ap
+475&nbsp;rem&nbsp;now&nbsp;set&nbsp;values&nbsp;into&nbsp;clock
+480&nbsp;poke&nbsp;hr,nh:rem&nbsp;set&nbsp;hour&nbsp;stops&nbsp;clock
+485&nbsp;poke&nbsp;mr,nm:rem&nbsp;set&nbsp;minute
+490&nbsp;poke&nbsp;sr,ns:rem&nbsp;set&nbsp;second
+495&nbsp;poke&nbsp;tr,0&nbsp;:rem&nbsp;set&nbsp;1/10&nbsp;starts&nbsp;clock
+497&nbsp;b=1
+499&nbsp;print&nbsp;chr$(147):return</pre>
             </div>
             <div class="program-comments">
                 <p>The goal of this program is to demonstrate displaying and modifying the system time of day clock. I actually wrote two different programs because there are two different ways the Commodore 64 can keep time. </p>

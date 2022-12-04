@@ -34,7 +34,7 @@
             <div class="column-header"><h3>Program Listing</h3></div>
             <div class="column-header"><h3>Comments</h3></div>
             <div class="listing-screenshots">
-                <img class="listing-img-top" src="images/prg-images/variables-1.png" alt="Screenshot of program execution">
+                <img class="listing-img" src="images/prg-images/variables-1.png" alt="Screenshot of program execution">
                 <img class="listing-img" src="images/prg-images/variables-2.png" alt="Screenshot of program execution">
                 <img class="listing-img" src="images/prg-images/variables-3.png" alt="Screenshot of program execution">
                 <img class="listing-img" src="images/prg-images/variables-4.png" alt="Screenshot of program execution">
@@ -45,136 +45,136 @@
                 <img class="listing-img" src="images/prg-images/variables-9.png" alt="Screenshot of program execution">
             </div>
             <div class="listing-code">
-                <pre>1 rem rosetta code
-5 rem commodore basic 
-      variable demonstration
-10 print chr$(147);chr$(14);
-   :ti$="000000"
-   :rem see lines 380-415
-15 rem numeric variables default to 0; 
-       strings default to empty
-20 print a:print b%:print c$:print
-25 :
-30 rem no symbol after variable defaults 
-       to float.
-35 let a=1.7
-40 rem "let" is not required and rarely used.
-45 b=2.42
-50 print a:print b
-55 rem % means integer type; 
-   digits after decimal are truncated
-60 b%=1.7
-65 print b%
-70 rem $ means string type
-75 c$="Commodore"
-80 print c$:print
-85 :
-90 rem each type is unique, even when name is "same"
-95 a=5.0
-100 a%=9
-105 a$="twenty-five"
-110 print a:print a%:print a$:print
-115 :
-120 rem names unique only to two characters; extra ignored
-125 li=10:lives=8:lights=64
-130 print li:print lives:print lights:print
-135 rem second character can be alphanumeric, but is not array
-140 s1=100 : s2=200 : s3=300
-145 print s1:print s2:print s3:print
-150 gosub 5000
-155 :
-160 rem strings preserve all literal 
-    characters
-165 rem numerics drop leading zeros 
-    and trailing zeros after decimal
-170 n$="01276":print n$:rem 01276
-175 o%=01276:print n%: rem 1276
-180 p=4.900:print p: print: rem 4.9
-185 :
-190 rem string-numeric 
-    conversion functions
-195 c$="05034"
-200 c%=val(c$) : rem converts to the numeric value of 5034 (first zero dropped)
-205 d=123.45600 : rem define a float
-210 d$=str$(d) : rem converts above into a string
-215 print c$:print c%:print d:print d$:print
-220 rem strings can be ordered/compared &gt; or &lt; like numbers
-225 input "Enter a string";x$:print
-230 input "Enter another string";y$:print
-235 if x$&gt;y$ then print x$;" comes after ";y$
-240 if x$&lt;y$ then print x$;" comes before ";y$
-245 if x$=y$ then print "You entered the same word twice!"
-250 gosub 5000
-255 :
-260 rem numbers have a leading character for pos/neg sign
-265 rem " " means positive
-270 a=-52:b=124
-275 print a:print b:print
-280 :
-285 rem variable operations
-290 e$="endothermic":print e$
-295 print left$(e$,3) : rem "end"
-300 print right$(e$,3) : rem "mic"
-305 print mid$(e$,4,5) : rem "other"
-310 print
-315 a=5:b=20:c=a+b:print a;"+";b;"=";c : rem addition
-320 q=90:r=60:s=q-r:print s : rem subtraction
-325 x=3:y=4:z=x*y:print x;"*";y;"=";z : rem 12 multiplication
-330 l=12:m=16:n=l/m:print l;"/";m;"=";n :rem division
-335 rem concatenation
-340 print
-345 f$="John":l$="Jones":n$=l$+", "+f$:print f$:print l$:print n$
-350 gosub 5000
-355 :
-360 rem arrays can be single or multidimensional
-365 rem array index starts at 0
-370 rem single dimenstion arrays of 11 elements or less
-375 rem do not need to be [dim]ensioned
-380 a$(0)="first":a$(1)="second":a$(3)="third":rem we skipped index 2
-385 for i=0 to 3:print a$(i):next
-390 gosub 5000
-395 dim b(1,20) : rem 42 elements
-400 for i=0 to 1:for j=0 to 20:b(i,j)=(i+1)*j:next j,i
-405 for i=0 to 1:print chr$(19):for j=0 to 20:print tab(i*6);b(i,j):next j,i
-410 gosub 5000
-415 :
-420 rem special variables - ti and st are technically functions,
-425 rem but ti$ can be assigned a value similar to a string variable
-430 t$=left$(ti$,2)+":"+mid$(ti$,3,2)+":"+right$(ti$,2)
-435 print "Ticks since program started:":print ti
-440 print "Elapsed time since program started:":print t$
-445 print "I/O Status:";st : rem i/o status
-450 print:print "Enter new time (HHMMSS): ";:gosub 5200
-455 ti$=left$(t$,6):gosub 5500
-460 print
-465 :
-470 rem all variables can be cleared with the "clr" statement
-475 rem however, this also clears the return address stack for subroutines
-480 rem making "return" not possible.
-485 print "Before CLR:":print a:print a$:print a$(0):print b:print c
-490 clr:print:print "After CLR:"
-495 print a:print a$:print a$(0):print b:print c
-500 print
-505 end
-600 :
-700 rem supporting subroutines
-800 :
-5000 rem screen pause routine
-5005 print:print "press a key to continue"
-5010 get k$:if k$="" then 5010
-5015 print chr$(147):return
-5020 :
-5200 rem custom time input routine
-5205 t$="":for d=1 to 6
-5210 get k$:if k$&lt;"0" or k$&gt;"9" then 5210
-5215 t$=t$+k$:print k$;:next
-5220 return
-5230 :
-5500 rem display live clock
-5505 print chr$(147):print:print "Press a key to continue."
-5510 print chr$(19);"Time: "left$(ti$,2)":"mid$(ti$,3,2)":"right$(ti$,2);
-5515 get k$:if k$="" then 5510
-5520 print chr$(147);:return</pre>
+                <pre>1&nbsp;rem&nbsp;rosetta&nbsp;code
+5&nbsp;rem&nbsp;commodore&nbsp;basic&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable&nbsp;demonstration
+10&nbsp;print&nbsp;chr$(147);chr$(14);
+&nbsp;&nbsp;&nbsp;:ti$="000000"
+&nbsp;&nbsp;&nbsp;:rem&nbsp;see&nbsp;lines&nbsp;380-415
+15&nbsp;rem&nbsp;numeric&nbsp;variables&nbsp;default&nbsp;to&nbsp;0;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strings&nbsp;default&nbsp;to&nbsp;empty
+20&nbsp;print&nbsp;a:print&nbsp;b%:print&nbsp;c$:print
+25&nbsp;:
+30&nbsp;rem&nbsp;no&nbsp;symbol&nbsp;after&nbsp;variable&nbsp;defaults&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;float.
+35&nbsp;let&nbsp;a=1.7
+40&nbsp;rem&nbsp;"let"&nbsp;is&nbsp;not&nbsp;required&nbsp;and&nbsp;rarely&nbsp;used.
+45&nbsp;b=2.42
+50&nbsp;print&nbsp;a:print&nbsp;b
+55&nbsp;rem&nbsp;%&nbsp;means&nbsp;integer&nbsp;type;&nbsp;
+&nbsp;&nbsp;&nbsp;digits&nbsp;after&nbsp;decimal&nbsp;are&nbsp;truncated
+60&nbsp;b%=1.7
+65&nbsp;print&nbsp;b%
+70&nbsp;rem&nbsp;$&nbsp;means&nbsp;string&nbsp;type
+75&nbsp;c$="Commodore"
+80&nbsp;print&nbsp;c$:print
+85&nbsp;:
+90&nbsp;rem&nbsp;each&nbsp;type&nbsp;is&nbsp;unique,&nbsp;even&nbsp;when&nbsp;name&nbsp;is&nbsp;"same"
+95&nbsp;a=5.0
+100&nbsp;a%=9
+105&nbsp;a$="twenty-five"
+110&nbsp;print&nbsp;a:print&nbsp;a%:print&nbsp;a$:print
+115&nbsp;:
+120&nbsp;rem&nbsp;names&nbsp;unique&nbsp;only&nbsp;to&nbsp;two&nbsp;characters;&nbsp;extra&nbsp;ignored
+125&nbsp;li=10:lives=8:lights=64
+130&nbsp;print&nbsp;li:print&nbsp;lives:print&nbsp;lights:print
+135&nbsp;rem&nbsp;second&nbsp;character&nbsp;can&nbsp;be&nbsp;alphanumeric,&nbsp;but&nbsp;is&nbsp;not&nbsp;array
+140&nbsp;s1=100&nbsp;:&nbsp;s2=200&nbsp;:&nbsp;s3=300
+145&nbsp;print&nbsp;s1:print&nbsp;s2:print&nbsp;s3:print
+150&nbsp;gosub&nbsp;5000
+155&nbsp;:
+160&nbsp;rem&nbsp;strings&nbsp;preserve&nbsp;all&nbsp;literal&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;characters
+165&nbsp;rem&nbsp;numerics&nbsp;drop&nbsp;leading&nbsp;zeros&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;trailing&nbsp;zeros&nbsp;after&nbsp;decimal
+170&nbsp;n$="01276":print&nbsp;n$:rem&nbsp;01276
+175&nbsp;o%=01276:print&nbsp;n%:&nbsp;rem&nbsp;1276
+180&nbsp;p=4.900:print&nbsp;p:&nbsp;print:&nbsp;rem&nbsp;4.9
+185&nbsp;:
+190&nbsp;rem&nbsp;string-numeric&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;conversion&nbsp;functions
+195&nbsp;c$="05034"
+200&nbsp;c%=val(c$)&nbsp;:&nbsp;rem&nbsp;converts&nbsp;to&nbsp;the&nbsp;numeric&nbsp;value&nbsp;of&nbsp;5034&nbsp;(first&nbsp;zero&nbsp;dropped)
+205&nbsp;d=123.45600&nbsp;:&nbsp;rem&nbsp;define&nbsp;a&nbsp;float
+210&nbsp;d$=str$(d)&nbsp;:&nbsp;rem&nbsp;converts&nbsp;above&nbsp;into&nbsp;a&nbsp;string
+215&nbsp;print&nbsp;c$:print&nbsp;c%:print&nbsp;d:print&nbsp;d$:print
+220&nbsp;rem&nbsp;strings&nbsp;can&nbsp;be&nbsp;ordered/compared&nbsp;&gt;&nbsp;or&nbsp;&lt;&nbsp;like&nbsp;numbers
+225&nbsp;input&nbsp;"Enter&nbsp;a&nbsp;string";x$:print
+230&nbsp;input&nbsp;"Enter&nbsp;another&nbsp;string";y$:print
+235&nbsp;if&nbsp;x$&gt;y$&nbsp;then&nbsp;print&nbsp;x$;"&nbsp;comes&nbsp;after&nbsp;";y$
+240&nbsp;if&nbsp;x$&lt;y$&nbsp;then&nbsp;print&nbsp;x$;"&nbsp;comes&nbsp;before&nbsp;";y$
+245&nbsp;if&nbsp;x$=y$&nbsp;then&nbsp;print&nbsp;"You&nbsp;entered&nbsp;the&nbsp;same&nbsp;word&nbsp;twice!"
+250&nbsp;gosub&nbsp;5000
+255&nbsp;:
+260&nbsp;rem&nbsp;numbers&nbsp;have&nbsp;a&nbsp;leading&nbsp;character&nbsp;for&nbsp;pos/neg&nbsp;sign
+265&nbsp;rem&nbsp;"&nbsp;"&nbsp;means&nbsp;positive
+270&nbsp;a=-52:b=124
+275&nbsp;print&nbsp;a:print&nbsp;b:print
+280&nbsp;:
+285&nbsp;rem&nbsp;variable&nbsp;operations
+290&nbsp;e$="endothermic":print&nbsp;e$
+295&nbsp;print&nbsp;left$(e$,3)&nbsp;:&nbsp;rem&nbsp;"end"
+300&nbsp;print&nbsp;right$(e$,3)&nbsp;:&nbsp;rem&nbsp;"mic"
+305&nbsp;print&nbsp;mid$(e$,4,5)&nbsp;:&nbsp;rem&nbsp;"other"
+310&nbsp;print
+315&nbsp;a=5:b=20:c=a+b:print&nbsp;a;"+";b;"=";c&nbsp;:&nbsp;rem&nbsp;addition
+320&nbsp;q=90:r=60:s=q-r:print&nbsp;s&nbsp;:&nbsp;rem&nbsp;subtraction
+325&nbsp;x=3:y=4:z=x*y:print&nbsp;x;"*";y;"=";z&nbsp;:&nbsp;rem&nbsp;12&nbsp;multiplication
+330&nbsp;l=12:m=16:n=l/m:print&nbsp;l;"/";m;"=";n&nbsp;:rem&nbsp;division
+335&nbsp;rem&nbsp;concatenation
+340&nbsp;print
+345&nbsp;f$="John":l$="Jones":n$=l$+",&nbsp;"+f$:print&nbsp;f$:print&nbsp;l$:print&nbsp;n$
+350&nbsp;gosub&nbsp;5000
+355&nbsp;:
+360&nbsp;rem&nbsp;arrays&nbsp;can&nbsp;be&nbsp;single&nbsp;or&nbsp;multidimensional
+365&nbsp;rem&nbsp;array&nbsp;index&nbsp;starts&nbsp;at&nbsp;0
+370&nbsp;rem&nbsp;single&nbsp;dimenstion&nbsp;arrays&nbsp;of&nbsp;11&nbsp;elements&nbsp;or&nbsp;less
+375&nbsp;rem&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;[dim]ensioned
+380&nbsp;a$(0)="first":a$(1)="second":a$(3)="third":rem&nbsp;we&nbsp;skipped&nbsp;index&nbsp;2
+385&nbsp;for&nbsp;i=0&nbsp;to&nbsp;3:print&nbsp;a$(i):next
+390&nbsp;gosub&nbsp;5000
+395&nbsp;dim&nbsp;b(1,20)&nbsp;:&nbsp;rem&nbsp;42&nbsp;elements
+400&nbsp;for&nbsp;i=0&nbsp;to&nbsp;1:for&nbsp;j=0&nbsp;to&nbsp;20:b(i,j)=(i+1)*j:next&nbsp;j,i
+405&nbsp;for&nbsp;i=0&nbsp;to&nbsp;1:print&nbsp;chr$(19):for&nbsp;j=0&nbsp;to&nbsp;20:print&nbsp;tab(i*6);b(i,j):next&nbsp;j,i
+410&nbsp;gosub&nbsp;5000
+415&nbsp;:
+420&nbsp;rem&nbsp;special&nbsp;variables&nbsp;-&nbsp;ti&nbsp;and&nbsp;st&nbsp;are&nbsp;technically&nbsp;functions,
+425&nbsp;rem&nbsp;but&nbsp;ti$&nbsp;can&nbsp;be&nbsp;assigned&nbsp;a&nbsp;value&nbsp;similar&nbsp;to&nbsp;a&nbsp;string&nbsp;variable
+430&nbsp;t$=left$(ti$,2)+":"+mid$(ti$,3,2)+":"+right$(ti$,2)
+435&nbsp;print&nbsp;"Ticks&nbsp;since&nbsp;program&nbsp;started:":print&nbsp;ti
+440&nbsp;print&nbsp;"Elapsed&nbsp;time&nbsp;since&nbsp;program&nbsp;started:":print&nbsp;t$
+445&nbsp;print&nbsp;"I/O&nbsp;Status:";st&nbsp;:&nbsp;rem&nbsp;i/o&nbsp;status
+450&nbsp;print:print&nbsp;"Enter&nbsp;new&nbsp;time&nbsp;(HHMMSS):&nbsp;";:gosub&nbsp;5200
+455&nbsp;ti$=left$(t$,6):gosub&nbsp;5500
+460&nbsp;print
+465&nbsp;:
+470&nbsp;rem&nbsp;all&nbsp;variables&nbsp;can&nbsp;be&nbsp;cleared&nbsp;with&nbsp;the&nbsp;"clr"&nbsp;statement
+475&nbsp;rem&nbsp;however,&nbsp;this&nbsp;also&nbsp;clears&nbsp;the&nbsp;return&nbsp;address&nbsp;stack&nbsp;for&nbsp;subroutines
+480&nbsp;rem&nbsp;making&nbsp;"return"&nbsp;not&nbsp;possible.
+485&nbsp;print&nbsp;"Before&nbsp;CLR:":print&nbsp;a:print&nbsp;a$:print&nbsp;a$(0):print&nbsp;b:print&nbsp;c
+490&nbsp;clr:print:print&nbsp;"After&nbsp;CLR:"
+495&nbsp;print&nbsp;a:print&nbsp;a$:print&nbsp;a$(0):print&nbsp;b:print&nbsp;c
+500&nbsp;print
+505&nbsp;end
+600&nbsp;:
+700&nbsp;rem&nbsp;supporting&nbsp;subroutines
+800&nbsp;:
+5000&nbsp;rem&nbsp;screen&nbsp;pause&nbsp;routine
+5005&nbsp;print:print&nbsp;"press&nbsp;a&nbsp;key&nbsp;to&nbsp;continue"
+5010&nbsp;get&nbsp;k$:if&nbsp;k$=""&nbsp;then&nbsp;5010
+5015&nbsp;print&nbsp;chr$(147):return
+5020&nbsp;:
+5200&nbsp;rem&nbsp;custom&nbsp;time&nbsp;input&nbsp;routine
+5205&nbsp;t$="":for&nbsp;d=1&nbsp;to&nbsp;6
+5210&nbsp;get&nbsp;k$:if&nbsp;k$&lt;"0"&nbsp;or&nbsp;k$&gt;"9"&nbsp;then&nbsp;5210
+5215&nbsp;t$=t$+k$:print&nbsp;k$;:next
+5220&nbsp;return
+5230&nbsp;:
+5500&nbsp;rem&nbsp;display&nbsp;live&nbsp;clock
+5505&nbsp;print&nbsp;chr$(147):print:print&nbsp;"Press&nbsp;a&nbsp;key&nbsp;to&nbsp;continue."
+5510&nbsp;print&nbsp;chr$(19);"Time:&nbsp;"left$(ti$,2)":"mid$(ti$,3,2)":"right$(ti$,2);
+5515&nbsp;get&nbsp;k$:if&nbsp;k$=""&nbsp;then&nbsp;5510
+5520&nbsp;print&nbsp;chr$(147);:return</pre>
             </div>
             <div class="program-comments">
                 <p>The task is to demonstrate all the different ways variables can be used and manipulated within a program. It is more informative to look at the code while running the program. At some point I will do a better version of the program for this website that explains what is going on.</p>
