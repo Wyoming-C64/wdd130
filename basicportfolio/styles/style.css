@@ -223,8 +223,6 @@ nav a:hover {
 
 .program-pic img {
     width: 100%;
-    transform: scaleX(0.9);
-    /* padding-top: 3.5em; */
 }
 
 .program-description {
@@ -246,20 +244,15 @@ nav a:hover {
 
 .program-screenshots img {
     min-width: 480px;
-    /* transform: scaleX(0.75); */
     margin-bottom: 1em;
 }
              
-
-
 #listing-grid {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-column-gap: 1em;
     grid-auto-rows: max-content;
-    justify-items: center;
-    
-    
+    justify-items: center;    
 }
 
 .column-header {
@@ -289,7 +282,7 @@ nav a:hover {
 }
 
 
-.listing-img:hover, .listing-img-top:hover, .listing-img-bottom:hover {
+.listing-img:hover {
     transform-origin: center left;
     position: relative;
     transform: scale(1.25);

@@ -50,7 +50,11 @@
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">3/3</div>
-                            <img class="slide-img" src="images/prg-images/machine-code-3.png" alt="Revised (shortened) machine code.">
+                            <img class="slide-img" src="images/prg-images/machine-code-3.png" alt="Execution of revised machine code.">
+                        </div>
+                        <div class="mySlides">
+                            <div class="numbertext">3/3</div>
+                            <img class="slide-img" src="images/prg-images/machine-code-4.png" alt="Revised (shortened) machine code.">
                         </div>
                         <!-- Next/previous controls -->
                         <a class="prev" onclick="plusSlides(-1)">&lt;</a>
@@ -86,20 +90,21 @@
             </div>
             <div class="program-comments">
                 <p>The goal is to have a piece of machine code execute from within the language you are programming in. This was done all the time on the Commodore 64 to provide much faster processing within BASIC programs. This example simply has the machine code add two numbers and place the result in a memory location which is later read and displayed to the screen.</p>
+                <p>This program reserves memory locations 8192, 8193, and 8194 (hex $2000, $2001, and $2002) for transferring the operands and result from BASIC to the machine code and back again.</p>
             </div>
-
             <div class="listing-title">
                 <h2>Alternate Solution</h2>
             </div>
             <div class="listing-screenshots">
                 <img class="listing-img" onclick="openModal();currentSlide(3)" src="images/prg-images/machine-code-3.png" alt="Screenshot of program execution">
+                <img class="listing-img" onclick="openModal();currentSlide(4)" src="images/prg-images/machine-code-4.png" alt="Screenshot of program execution">
             </div>
             <div class="listing-code">
                 <pre>10 print chr$(147);
 15 ml=49152
 20 if peek(ml)&lt;&gt;24 and peek(ml+4)&lt;&gt;96 then gosub 100
-30 poke 780,12:rem a register argument
-35 poke 781,7:rem x register argument
+30 poke 780,44:rem a register argument
+35 poke 781,2:rem x register argument
 40 sys 49152
 45 a=peek(780):print a
 50 end
@@ -113,9 +118,9 @@
 9156 data 96:       rem rts</pre>
             </div>
             <div class="program-comments">
-                <p>After some research (possibly when watching one of Robin Harbon's videos) I realized that Commodore BASIC has dedicated memory locations that allow the programmer to preset CPU register values for when the SYS command is executed. When the machine code returns control to BASIC, the registers are then unloaded into these same memory values, making a convenient pipleline for passing parameters.</p>
-                <p>In this example, whatever value is in location 780 will be loaded into the <b>.A</b> register (acumulator), and the value in location in 781 is loaded into the <b>.X</b> register. With the registers pre-loaded at this point, the machine code only needs to clear the carry flag and perform the "Add with Carry" (ADC) operation, which puts the result in the <b>.A</b> register.</p>
-                <p>On exit, the value is then transferred back to location 780 for reading by BASIC.</p>
+                <p>After some research (possibly when watching one of Robin Harbon's videos) I realized that Commodore BASIC has dedicated memory locations that allow the programmer to preset CPU register values for when the SYS command is executed. When the machine code returns control to BASIC, the registers are then automatically unloaded into these same memory values, making a convenient pipleline for passing parameters.</p>
+                <p>In this example, the machine code resides at location 49152 ($C000). Whatever value is in location 780 will be loaded into the <b>.A</b> register (acumulator). The value in location in 781 is loaded into the <b>.X</b> register, even though the <b>.X</b> register isn't used in the operation. The machine code only needs to clear the carry flag and perform the "Add with Carry" (ADC) operation with location 781 ($030D), which puts the result back in the <b>.A</b> register.</p>
+                <p>On exit, the value is then transferred back to location 780 and can be read there by BASIC in line 45.</p>
             </div>
         </main>
 

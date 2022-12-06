@@ -211,7 +211,9 @@
             </div>
             <div class="program-comments">
                 <p>You are given four random digits ranging from 1 through 9. Your goal is to use arithmetic operations (add, subtract, multiply, and divide) along with parentheses to make the resulting value equal 24.</p>
-                <p>The ZX Spectrum solution takes advantage of a feature not available on the Commodore 64: the VAL() function&mdash;which is used to convert numbers in strings into actual numeric values in Spectrum's BASIC is able to parse mathmaetcal expressions in addition to digits found within a string. The Commodore BASIC VAL() function looks only for numeric expressions, and the instant it encounters a non-digit character, it quits evaluating the string.After much thought, I decided to get the C64's BASIC interpreter to do the work of evaluating the expression. but I found my own solution that I thought was pretty clever, and this became my first self-modifying BASIC program.</p>
+                <p>The ZX Spectrum solution takes advantage of a feature not available on the Commodore 64: the VAL() function&mdash;which is used to convert numbers in strings into actual numeric values in Spectrum's BASIC is able to parse mathmaetcal expressions in addition to digits found within a string. Example: A=VAL("3+2+(4*4)") would set A equal to 29.</p>
+                <p>The Commodore BASIC VAL() function looks only for numeric expressions, and the instant it encounters a non-digit character, it quits evaluating the string. The same example sets A equal to the value of 3.</p>
+                <p>After much thought, I decided to get the C64's BASIC interpreter to do the work of evaluating the expression. I think my solution is pretty clever, and this became my first self-modifying BASIC program.</p>
             </div>
         </main>
 
