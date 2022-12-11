@@ -260,8 +260,30 @@ nav a:hover {
     width: 100%;
 }
 
+.listing-prev {
+    grid-row: 1/2;
+    grid-column: 1 / 2;
+    text-align: left;
+    margin: auto;
+    width: 100%;
+}
+
+.listing-next {
+    grid-row: 1/2;
+    grid-column: 3/4;
+    text-align: right;
+    margin: auto;
+    width: 100%;
+}
+
+.listing-prev a, .listing-next a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
 .listing-title {
-    grid-column: 1/4;
+    grid-row: 1/2;
+    grid-column: 2/3;
     text-align: center;
     width: 100%;
 }
