@@ -298,34 +298,37 @@ nav a:hover {
 
 
 .video {
-    justify-self: center;
     display: block;
     margin: 0 auto;
-    text-align: center;
 }
 
 .listing-code {
     margin: 0;
     padding: 0;
-    z-index: -9999;
+    z-index: -99;
 }
 
 .listing-code pre {
     font-family: var(--code-font);
     color: var(--c64-grey2);
-    background-color: var(--c64-white);
-    border: 00px solid var(--c64-grey2);
     font-size: 0.9em;
     line-height: 1em;
-    transform: scaleX(0.85);
+    transform: scaleX(0.75);
     white-space: pre-wrap;
     word-wrap: break-word;
+    margin: 0 0;
     width: 40em;
-    margin: 0 auto;
     max-width: 792px;
     padding: 0px;
     letter-spacing: 0;
   }
+
+.code {
+    font-family: var(--code-font);
+    color: var(--c64-blk);
+    text-decoration: none;
+    border: 0px solid;
+}
 
 .dot {
     text-align: center;
@@ -362,6 +365,7 @@ nav a:hover {
     display: block;
     width: 75%;
     margin: auto;
+    cursor: pointer;
   }
   
   /* The Close Button */
