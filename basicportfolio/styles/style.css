@@ -289,6 +289,12 @@ nav a:hover {
     width: 100%;
 }
 
+.listing-other-title {
+    grid-column: 1/4;
+    text-align: center;
+    width: 100%;
+}
+
 
 .listing-img {
     display: block;
