@@ -417,6 +417,13 @@ nav a:hover {
     margin: auto;
     cursor: pointer;
   }
+
+  .mom-slide-img {
+    display: block;
+    width: 65%;
+    margin: auto;
+    cursor: pointer;
+  }
   
   /* The Close Button */
   .close {
@@ -557,7 +564,37 @@ footer p a:hover {
     width: 100%;
     max-width: 640px;
     min-width: 320px;
+    margin-top: 1em;
+    transition: 
+        z-index 0.1s 0.6s,
+        transform-origin .2s 0.1s,
+        transform .2s 0.1s, 
+        box-shadow .2s 0.1s, 
+        position 0.2s 0.1s;
+    margin: 0 auto;
+    margin-bottom: 2em;
+    z-index: 90;
 }
+
+
+.mom-img:hover {
+    transform-origin: center left;
+    position: relative;
+    transform: scale(1.25);
+    box-shadow: 10px 10px 10px rgba(0.1,0.1,0.1,0.66);
+    z-index: 99;
+    transition:
+        z-index 0.1s 0.0s,
+        transform-origin .2s 0.1s,
+        transform .2s 0.1s, 
+        box-shadow .2s 0.1s, 
+        position 0.2s 0.1s;;
+}
+
+
+
+
+
 
 .card-img {
     width: 100%;

@@ -28,7 +28,21 @@
 
         <main class="mom-grid">
             <div class="left-image">
-                <img class="mom-img" src="images/mom-n-me.png" alt="Me and my mom">
+                <img class="mom-img" onclick="openModal();currentSlide(1)" src="images/mom-n-me.png" alt="Me and my mom">
+
+                <div id="myModal" class="modal">
+                    <span class="close cursor" onclick="closeModal()">&times;</span>
+                    <div class="modal-content">
+                        <div class="mySlides">
+                            <div class="numbertext">1/1</div>
+                            <img class="slide-img mom-slide-img" src="images/mom-n-me-real.jpg" alt="Me and my mom.">
+                        </div>
+                        <!-- Caption text -->
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="right-home-text">
                 <h2>Dedicated to Mom</h2>
@@ -43,7 +57,8 @@
 
                 <p>Mom passed away from a surgical complication one week before my first semester started.</p>
             
-                <p>This website is dedicated to her, because she let me explore and learn on this wonderful little computer.</p>
+                <p>This website is dedicated to her, because she let me explore and learn on this wonderful little computer. Everything that this site is about is all because of her.</p>
+                <p>-ML</p>
             </div>
                 
         </main>
@@ -68,6 +83,6 @@
         </footer>
         
     </div>
-    
+    <script src="script/images.js"></script>
 </body>
 </html>
