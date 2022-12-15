@@ -85,6 +85,10 @@
     font-family: var(--paragraph-font);
 }
 
+iframe {
+    border: 0px solid transparent;
+}
+
 html {
     height: 100%;
 }
